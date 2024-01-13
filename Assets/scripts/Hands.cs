@@ -14,63 +14,91 @@ public class Hands : MonoBehaviour
     [SerializeField] private Gripper left;
     [SerializeField] private Gripper right;
     private bool usingLeft;
+    private bool inUse;
     private Mode mode;
     [SerializeField] float moveSpeed = .1f;
     [SerializeField] float rotateSpeed = .1f;
     // Start is called before the first frame update
     void Start()
     {
+        inUse = false;
         mode = Mode.xy;
         usingLeft = false;
         //Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+
     // Update is called once per frame
     void Update()
+    {
+        if (inUse)
+        {
+            mainUpdateLoop();
+        }
+    }
+
+    public void Toggle()
+    {
+        inUse = !inUse;
+    }
+
+    private void mainUpdateLoop()
     {
         Vector3 handPos;
         if (usingLeft)
         {
-            handPos = left.transform.position;
-        }  
+            handPos = left.transform.localPosition;
+        }
         else
         {
-            handPos = right.transform.position;
+            handPos = right.transform.localPosition;
         }
         if (mode == Mode.xy)
         {
             handPos.x += Input.GetAxis("Mouse X") * moveSpeed;
             handPos.y += Input.GetAxis("Mouse Y") * moveSpeed;
             if (usingLeft)
-                left.transform.position = handPos;
+                left.transform.localPosition = handPos;
             else
-                right.transform.position = handPos;
+                right.transform.localPosition = handPos;
         }
         else if (mode == Mode.xz)
         {
             handPos.x += Input.GetAxis("Mouse X") * moveSpeed;
             handPos.z += Input.GetAxis("Mouse Y") * moveSpeed;
             if (usingLeft)
-                left.transform.position = handPos;
+                left.transform.localPosition = handPos;
             else
-                right.transform.position = handPos;
+                right.transform.localPosition = handPos;
         }
         else if (mode == Mode.rot1)
         {
             if (usingLeft)
-                left.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0), Space.World);
+            {
+                left.transform.RotateAround(left.transform.position, left.transform.forward, Input.GetAxis("Mouse Y"));
+                left.transform.RotateAround(left.transform.position, left.transform.right, -Input.GetAxis("Mouse X"));
+            }
             else
-                right.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0), Space.World);
+            {
+                right.transform.RotateAround(right.transform.position, right.transform.forward, Input.GetAxis("Mouse Y"));
+                right.transform.RotateAround(right.transform.position, right.transform.right, Input.GetAxis("Mouse X"));
+            }
         }
         else if (mode == Mode.rot2)
         {
             if (usingLeft)
-                left.transform.Rotate(new Vector3(Input.GetAxis("Mouse X"), 0, Input.GetAxis("Mouse Y")), Space.World);
+            {
+                left.transform.RotateAround(left.transform.position, left.transform.forward, Input.GetAxis("Mouse Y"));
+                left.transform.RotateAround(left.transform.position, left.transform.up, Input.GetAxis("Mouse X"));
+            }
             else
-                right.transform.Rotate(new Vector3(Input.GetAxis("Mouse X"), 0, Input.GetAxis("Mouse Y")), Space.World);
+            {
+                right.transform.RotateAround(right.transform.position, right.transform.forward, Input.GetAxis("Mouse Y"));
+                right.transform.RotateAround(right.transform.position, right.transform.up, Input.GetAxis("Mouse X"));
+            }
         }
-        
+
         if (Input.GetMouseButtonDown(2))
         {
             if (usingLeft)
