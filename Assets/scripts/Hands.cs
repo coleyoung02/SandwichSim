@@ -6,10 +6,8 @@ public class Hands : MonoBehaviour
 {
     private enum Mode
     {
-        xy,
-        xz,
-        rot1,
-        rot2
+        move,
+        rotate
     }
     [SerializeField] private Gripper left;
     [SerializeField] private Gripper right;
@@ -18,12 +16,14 @@ public class Hands : MonoBehaviour
     private Mode mode;
     [SerializeField] float moveSpeed = .1f;
     [SerializeField] float rotateSpeed = .1f;
+    private Gripper activeHand;
     // Start is called before the first frame update
     void Start()
     {
         inUse = false;
-        mode = Mode.xy;
+        mode = Mode.move;
         usingLeft = false;
+        activeHand = right;
         //Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -46,93 +46,74 @@ public class Hands : MonoBehaviour
     private void mainUpdateLoop()
     {
         Vector3 handPos;
-        if (usingLeft)
+        handPos = activeHand.transform.localPosition;
+
+        if (mode == Mode.move && !Input.GetKey(KeyCode.LeftShift))
         {
-            handPos = left.transform.localPosition;
+            handPos.x = Mathf.Clamp(handPos.x + Input.GetAxis("Mouse X") * moveSpeed, -handPos.z, handPos.z);
+            handPos.y = Mathf.Clamp(handPos.y + Input.GetAxis("Mouse Y") * moveSpeed, -handPos.z/2, handPos.z/2);
+            activeHand.transform.localPosition = handPos;
         }
-        else
+        else if (mode == Mode.move)
         {
-            handPos = right.transform.localPosition;
+            handPos.z = Mathf.Max(.75f, handPos.z + Input.GetAxis("Mouse Y") * moveSpeed);
+            handPos.x = Mathf.Clamp(handPos.x + Input.GetAxis("Mouse X") * moveSpeed, -handPos.z, handPos.z);
+            handPos.y = Mathf.Clamp(handPos.y, -handPos.z / 2, handPos.z / 2);
+            activeHand.transform.localPosition = handPos;
         }
-        if (mode == Mode.xy)
+        else if (mode == Mode.rotate)
         {
-            handPos.x += Input.GetAxis("Mouse X") * moveSpeed;
-            handPos.y += Input.GetAxis("Mouse Y") * moveSpeed;
-            if (usingLeft)
-                left.transform.localPosition = handPos;
-            else
-                right.transform.localPosition = handPos;
-        }
-        else if (mode == Mode.xz)
-        {
-            handPos.x += Input.GetAxis("Mouse X") * moveSpeed;
-            handPos.z += Input.GetAxis("Mouse Y") * moveSpeed;
-            if (usingLeft)
-                left.transform.localPosition = handPos;
-            else
-                right.transform.localPosition = handPos;
-        }
-        else if (mode == Mode.rot1)
-        {
-            if (usingLeft)
+            float mouseX = Input.GetAxis("Mouse X");
+            float mouseY = Input.GetAxis("Mouse Y");
+            if (mouseX != 0 && mouseY != 0)
             {
-                left.transform.RotateAround(left.transform.position, left.transform.forward, Input.GetAxis("Mouse Y"));
-                left.transform.RotateAround(left.transform.position, left.transform.right, -Input.GetAxis("Mouse X"));
+                if (mouseX / mouseY > 10f)
+                {
+                    mouseY = 0;
+                }
+                else if (mouseY / mouseX > 10f)
+                {
+                    mouseX = 0;
+                }
+            }
+            int rightMult = 1;
+            if (!usingLeft)
+            {
+                rightMult = -1;
+            }
+            activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.forward, mouseY * rightMult);
+            if (!Input.GetKey(KeyCode.LeftShift))
+            {
+                activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.right, -mouseX * rightMult);
             }
             else
             {
-                right.transform.RotateAround(right.transform.position, right.transform.forward, Input.GetAxis("Mouse Y"));
-                right.transform.RotateAround(right.transform.position, right.transform.right, Input.GetAxis("Mouse X"));
-            }
-        }
-        else if (mode == Mode.rot2)
-        {
-            if (usingLeft)
-            {
-                left.transform.RotateAround(left.transform.position, left.transform.forward, Input.GetAxis("Mouse Y"));
-                left.transform.RotateAround(left.transform.position, left.transform.up, Input.GetAxis("Mouse X"));
-            }
-            else
-            {
-                right.transform.RotateAround(right.transform.position, right.transform.forward, Input.GetAxis("Mouse Y"));
-                right.transform.RotateAround(right.transform.position, right.transform.up, Input.GetAxis("Mouse X"));
+                activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.up, mouseX);
+                
             }
         }
 
         if (Input.GetMouseButtonDown(2))
         {
-            if (usingLeft)
-            {
-                left.Toggle();
-            }
-            else
-            {
-                right.Toggle();
-            }
+            activeHand.Toggle();
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            mode = Mode.xy;
-        }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            mode = Mode.xz;
+            mode = Mode.move;
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.X))
         {
-            mode = Mode.rot1;
-        }
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            mode = Mode.rot2;
+            mode = Mode.rotate;
         }
         if (Input.GetMouseButton(0))
         {
+            activeHand = left;
             usingLeft = true;
         }
         if (Input.GetMouseButton(1))
         {
+            activeHand = right;
             usingLeft = false;
         }
     }
