@@ -57,6 +57,19 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
         }
+        if (Input.GetKey(KeyCode.S))
+        {
+            rb.velocity = new Vector3((-transform.forward * moveSpeed).x, rb.velocity.y, (-transform.forward * moveSpeed).z);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            rb.velocity = new Vector3((transform.right * moveSpeed).x, rb.velocity.y, (transform.right * moveSpeed).z);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb.velocity = new Vector3((-transform.right * moveSpeed).x, rb.velocity.y, (-transform.right * moveSpeed).z);
+        }
+
     }
 
 }
