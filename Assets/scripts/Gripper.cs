@@ -9,6 +9,8 @@ public class Gripper : MonoBehaviour
     [SerializeField] private List<GameObject> nearHand;
     [SerializeField] private List<GameObject> inHand;
     private bool isOpen;
+    
+    private List<float> distanceList = new List<float>();
 
     private void Start()
     {
@@ -34,8 +36,25 @@ public class Gripper : MonoBehaviour
             tryRelease();
         }
         isOpen = !isOpen;
+
+        distanceList.Clear();
+
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Grabbable");
+
+        foreach (var obj in objects)
+        {
+            float distance = Vector3.Distance(gameObject.transform.position, obj.transform.position);
+            distanceList.Add(distance);
+        }
+
+        float minDistance = Mathf.Min(distanceList.ToArray());
+        int minIndex = distanceList.IndexOf(minDistance);
+        GameObject closestObject = objects[minIndex];
+
         open.SetActive(isOpen);
+        Grab(closestObject);
         closed.SetActive(!isOpen);
+        }
     }
 
     public bool tryGrab()
