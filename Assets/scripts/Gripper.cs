@@ -48,14 +48,14 @@ public class Gripper : MonoBehaviour
         bool anything = false;
         foreach (GameObject g in nearHand)
         {
-            float distance = Vector3.Distance(gameObject.transform.position, obj.transform.position);
+            float distance = this.gameObject.transform.position - g.gameObject.transform.position;
             distanceList.Add(distance);
             //grab(g);
             //anything = true;
         }
         float minDistance = Mathf.Min(distanceList.ToArray());
         int minIndex = distanceList.IndexOf(minDistance);
-        GameObject closestObject = objects[minIndex];
+        GameObject closestObject = nearHand[minIndex];
         grab(closestObject);
         anything = true;
         return anything;
