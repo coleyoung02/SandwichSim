@@ -37,34 +37,27 @@ public class Gripper : MonoBehaviour
         }
         isOpen = !isOpen;
 
-        distanceList.Clear();
-
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Grabbable");
-
-        foreach (var obj in objects)
-        {
-            float distance = Vector3.Distance(gameObject.transform.position, obj.transform.position);
-            distanceList.Add(distance);
-        }
-
-        float minDistance = Mathf.Min(distanceList.ToArray());
-        int minIndex = distanceList.IndexOf(minDistance);
-        GameObject closestObject = objects[minIndex];
-
         open.SetActive(isOpen);
-        Grab(closestObject);
         closed.SetActive(!isOpen);
         }
     }
 
     public bool tryGrab()
     {
+        distanceList.Clear();
         bool anything = false;
         foreach (GameObject g in nearHand)
         {
-            grab(g);
-            anything = true;
+            float distance = Vector3.Distance(gameObject.transform.position, obj.transform.position);
+            distanceList.Add(distance);
+            //grab(g);
+            //anything = true;
         }
+        float minDistance = Mathf.Min(distanceList.ToArray());
+        int minIndex = distanceList.IndexOf(minDistance);
+        GameObject closestObject = objects[minIndex];
+        grab(closestObject);
+        anything = true;
         return anything;
     }
 
