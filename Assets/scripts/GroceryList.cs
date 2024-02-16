@@ -17,6 +17,10 @@ public class GroceryList : MonoBehaviour
     [SerializeField] private List<GroceryItem> itemsHad;
     [SerializeField] private GroceryUI ui;
 
+    // Note: * Add function and Remove function require us to  have every like item grouped next to each other in the list *
+
+
+
     // When adding, we need to check if that was an item that we needed
     // one more of, if it is, update the UI at the index of the needed list 
     // that corresponds to the item we just added
@@ -28,10 +32,35 @@ public class GroceryList : MonoBehaviour
     // Items may not be sorted in order, so it could be {Bread, Pickle, Tomato, Pickle, Bread}
     // in which case we would need to call updateUI(1, true) to add a first pickle,
     // and updateUI(3, true) to add a second
+
+
+    // adding this function to count occurrences of an item in a list
+    private int CountOccurrences(List<GroceryItem> list, GroceryItem item)
+    {
+        int count = 0;
+        foreach (GroceryItem i in list)
+        {
+            if (i == item)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public void AddItem(GroceryItem item)
     {
         itemsHad.Add(item);
         //do the check here and call the function as needed
+        int index = itemsNeeded.IndexOf(item);
+        if (index != -1)
+        {
+            int count = CountOccurrences(itemsHad, item);
+            if (CountOccurences(itemsNeeded, item) >= CountOccurences(itemsHad, item))
+                {
+                    updateUI(index + count - 1, true);
+                }
+        }
     }
 
     // When removing, we need to check if that was an item that we needed
@@ -48,6 +77,15 @@ public class GroceryList : MonoBehaviour
     {
         itemsHad.Remove(item);
         //do the check here and call the function as needed
+        int index = itemsNeeded.IndexOf(item);
+        if (index != -1)
+        {
+            int count = CountOccurrences(itemsHad, item);
+            if (CountOccurences(itemsNeeded, item) >= CountOccurences(itemsHad, item))
+                {
+                    updateUI(index + count - 1, false);
+                }
+        }
     }
 
     public List<GroceryItem> GetItemsHad() 
