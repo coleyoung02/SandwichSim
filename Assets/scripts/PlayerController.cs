@@ -1,34 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Hands hands;
     [SerializeField] private Camera cam;
+    [SerializeField] private Camera deathCam;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float moveSpeed = 6;
     private bool usingHands;
     private float xRotation;
+    private bool deceased;
     // Start is called before the first frame update
     void Start()
     {
         xRotation = 0f;
         usingHands = false;
+        deceased = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag.Equals("car"))
+        {
+            deathCam.gameObject.transform.parent = null;
+            deathCam.gameObject.SetActive(true);
+            deceased = true;
+            rb.freezeRotation = false;
+            rb.AddForce((collision.gameObject.GetComponent<Rigidbody>().velocity + Vector3.up * 20) / 3f, ForceMode.Impulse);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!usingHands)
+        if (!deceased)
         {
-            rotate();
-            move();
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            hands.Toggle();
-            usingHands = !usingHands;
+            if (!usingHands)
+            {
+                rotate();
+                move();
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                hands.Toggle();
+                usingHands = !usingHands;
+            }
+
         }
     }
 
@@ -48,26 +69,37 @@ public class PlayerController : MonoBehaviour
 
     private void move()
     {
+        bool noneSet = true;
+        Vector3 moveDir = Vector3.zero;
         //either switch this all to force mode, or leave it setting the velocity and do that for all wasd
         if (Input.GetKey(KeyCode.W))
         {
-            rb.velocity = new Vector3((transform.forward * moveSpeed).x, rb.velocity.y, (transform.forward * moveSpeed).z);
+            moveDir += new Vector3((transform.forward * moveSpeed).x, 0, (transform.forward * moveSpeed).z);
+            noneSet = false;
         }
-        else if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
-            rb.velocity = new Vector3((-transform.forward * moveSpeed).x, rb.velocity.y, (-transform.forward * moveSpeed).z);
+            moveDir += new Vector3((-transform.forward * moveSpeed).x, 0, (-transform.forward * moveSpeed).z);
+            noneSet = false;
         }
-        else if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
-            rb.velocity = new Vector3((transform.right * moveSpeed).x, rb.velocity.y, (transform.right * moveSpeed).z);
+            moveDir += new Vector3((transform.right * moveSpeed).x, 0, (transform.right * moveSpeed).z);
+            noneSet = false;
         }
-        else if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
-            rb.velocity = new Vector3((-transform.right * moveSpeed).x, rb.velocity.y, (-transform.right * moveSpeed).z);
+            moveDir += new Vector3((-transform.right * moveSpeed).x, 0, (-transform.right * moveSpeed).z);
+            noneSet = false;
         }
-        else if (rb.velocity.magnitude > .02f)
+        if (noneSet)
         {
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        }
+        else
+        {
+            moveDir = moveDir.normalized * moveSpeed;
+            rb.velocity = new Vector3(moveDir.x, rb.velocity.y, moveDir.z);
         }
 
     }
