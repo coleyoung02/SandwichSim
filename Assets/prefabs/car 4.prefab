@@ -148,4 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowingRate: -20
   maxDist: 409
-  moveSpeed: -65
+  moveSpeed: -55

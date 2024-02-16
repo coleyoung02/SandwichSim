@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
             deathCam.gameObject.SetActive(true);
             deceased = true;
             rb.freezeRotation = false;
-            rb.AddForce((collision.gameObject.GetComponent<Rigidbody>().velocity + Vector3.up * 20) / 3f, ForceMode.Impulse);
+            rb.AddForce((collision.gameObject.GetComponent<Rigidbody>().velocity + Vector3.up * 20) / 5f, ForceMode.Impulse);
+            rb.AddTorque(Vector3.Cross(collision.gameObject.GetComponent<Rigidbody>().velocity, Vector3.down).normalized * 4, ForceMode.Impulse);
         }
     }
 
