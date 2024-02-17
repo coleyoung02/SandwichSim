@@ -83,7 +83,7 @@ public class GroceryList : MonoBehaviour
             int count = CountOccurrences(itemsHad, item);
             if (CountOccurrences(itemsNeeded, item) > CountOccurrences(itemsHad, item))
                 {
-                    updateUI(index + count - 1, false);
+                    updateUI(index + count, false);
                 }
         }
     }

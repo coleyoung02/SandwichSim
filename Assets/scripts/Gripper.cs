@@ -63,7 +63,7 @@ public class Gripper : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "frobbable")
+        if (other.gameObject.GetComponent<Frobbable>() != null)
         {
             nearHand.Add(other.gameObject);
             Debug.Log("can grab " + other.gameObject.name);

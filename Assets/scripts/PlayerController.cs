@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag.Equals("car"))
         {
             deathCam.gameObject.transform.parent = null;

@@ -39,9 +39,14 @@ public class GroceryUI : MonoBehaviour
 
     void Start()
     {
+        groceryListRows = new List<TextMeshProUGUI>();
         foreach (GroceryItem g in groceryList.GetItemsNeeded()) {
             GameObject r = Instantiate(groceryListRow, groceryListUI.transform);
             groceryListRows.Add(r.GetComponent<TextMeshProUGUI>());
+        }
+        for (int i = 0; i < groceryListRows.Count; ++i)
+        {
+            MarkItemNeeded(i);
         }
     }
 
@@ -50,15 +55,12 @@ public class GroceryUI : MonoBehaviour
         groceryListRows[index].text = START_STRIKETHROUGH_TAG +
             stringAtIndex(index) +
             END_STRIKETHROUGH_TAG;
-        ;
     }
 
     public void MarkItemNeeded(int index)
     {
-        groceryListRows[index].text = START_STRIKETHROUGH_TAG +
-            stringAtIndex(index) +
-            END_STRIKETHROUGH_TAG;
-        ;
+        Debug.Log(index);
+        groceryListRows[index].text = stringAtIndex(index);
     }
 
     private string stringAtIndex(int index)
