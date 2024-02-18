@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4463151552940456962}
   - component: {fileID: 4368675907758026891}
+  - component: {fileID: 765616265693150387}
   m_Layer: 6
   m_Name: tomatoGeo
   m_TagString: Untagged
@@ -55,6 +56,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.82420564
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &765616265693150387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602202332876679529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d24c6a8130c83444b9d7c179f30c7a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cut: {fileID: 4908228813108507694, guid: f30e64173097264499b31ae65fe72941, type: 3}
+  sliceParent: {fileID: 9024690520507837779}
 --- !u!1 &4292837954528398780
 GameObject:
   m_ObjectHideFlags: 0

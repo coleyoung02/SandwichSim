@@ -85,4 +85,10 @@ public class Frobbable : MonoBehaviour
     {
         return (mask & (1 << layer)) != 0;
     }
+
+    public void slice(GameObject oldG, GameObject newG)
+    {
+        oldG.SetActive(false);
+        newG.SetActive(true);
+    }
 }
