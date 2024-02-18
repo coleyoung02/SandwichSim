@@ -13,6 +13,7 @@ public class Basket : MonoBehaviour
         if (f != null && f.IsGrocery())
         {
             list.AddItem(f.GetItem());
+            f.gameObject.transform.SetParent(transform);
             Debug.Log("added " + GroceryUI.groceryItemToString(f.GetItem()));
         }
     }

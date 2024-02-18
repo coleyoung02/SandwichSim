@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Camera deathCam;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float moveSpeed = 6;
+    [SerializeField] private float sensitivity = .5f;
     private bool usingHands;
     private float xRotation;
     private bool deceased;
@@ -55,9 +56,9 @@ public class PlayerController : MonoBehaviour
 
     private void rotate()
     {
-        transform.Rotate(new Vector3(0, 1, 0), Input.GetAxis("Mouse X"));
+        transform.Rotate(new Vector3(0, 1, 0), Input.GetAxis("Mouse X") * sensitivity);
         Vector3 camRot = cam.gameObject.transform.rotation.eulerAngles;
-        float unclamped = xRotation - Input.GetAxis("Mouse Y");
+        float unclamped = xRotation - Input.GetAxis("Mouse Y") * sensitivity;
         float newX = Mathf.Clamp(unclamped, -90f, 90f);
         xRotation = newX;
         if (Mathf.Abs(unclamped - newX) > 1f)

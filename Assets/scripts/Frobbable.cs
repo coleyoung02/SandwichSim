@@ -1,12 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.UI;
 
 public class Frobbable : MonoBehaviour
 {
 
-    [SerializeField] private bool isGroceryItem;
+    [SerializeField] private List<LayerMask> extraIgnoredLayers;
+    private Rigidbody rb;
+    private bool held;
+    private Gripper gripper;
+
+
+    [Header ("grocery items")]
     [SerializeField] private GroceryItem itemId;
+    [SerializeField] private bool isGroceryItem;
+    [SerializeField] private float soupChance;
+    [SerializeField] private GameObject geomoetry;
+    [SerializeField] private GameObject soupGeomoetry;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        held = false;
+    }
+
+    public void Grab(Gripper g)
+    {
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        held = true;
+        gripper = g;
+        if (soupChance > 0f)
+        {
+            float r = UnityEngine.Random.Range(0f, 1f);
+            if (r < soupChance)
+            {
+                geomoetry.SetActive(false);
+                soupGeomoetry.SetActive(true);
+                soupChance = 0f;
+                g.OnTriggerExit(geomoetry.GetComponent<Collider>());
+            }
+            else
+            {
+                soupChance = -1f;
+            }
+        }
+    }
+
+    public void Release()
+    {
+
+        rb.constraints = RigidbodyConstraints.None;
+        held = false;
+    }
 
     public bool IsGrocery()
     {
@@ -16,5 +63,26 @@ public class Frobbable : MonoBehaviour
     public GroceryItem GetItem()
     {
         return itemId;
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (held && !collision.gameObject.layer.Equals(LayerMask.GetMask("Hand")))
+        {
+            foreach (LayerMask lm in extraIgnoredLayers)
+            {
+                if (hasLayer(lm, collision.gameObject.layer))
+                {
+                    return;
+                }
+            }
+            gripper.Toggle(true);
+        }
+    }
+
+    private static bool hasLayer(LayerMask mask, int layer)
+    {
+        return (mask & (1 << layer)) != 0;
     }
 }
