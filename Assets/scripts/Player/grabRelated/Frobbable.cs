@@ -40,11 +40,20 @@ public class Frobbable : MonoBehaviour
                 soupGeomoetry.SetActive(true);
                 soupChance = 0f;
                 g.OnTriggerExit(geomoetry.GetComponent<Collider>());
+                FindFirstObjectByType<AudioManager>().PlayPooledClip(ClipPool.SOUP);
             }
             else
             {
                 soupChance = -1f;
             }
+        }
+    }
+
+    public void OnSlice()
+    {
+        foreach (Gripper g in FindObjectsByType<Gripper>(FindObjectsSortMode.None))
+        {
+            g.OnTriggerExit(geomoetry.GetComponent<Collider>());
         }
     }
 

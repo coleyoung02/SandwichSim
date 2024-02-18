@@ -10,6 +10,7 @@ public class Sliceable : MonoBehaviour
     public void Cut()
     {
         Instantiate(cut, transform.position, transform.rotation);
+        sliceParent.OnSlice();
         Destroy(sliceParent.gameObject);
     }
 

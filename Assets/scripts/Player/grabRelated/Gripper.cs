@@ -73,7 +73,6 @@ public class Gripper : MonoBehaviour
             return false;
         }
         GameObject closestObject = nearHand[minIndex];
-        Debug.Log(minDistance + " was min");
         grab(closestObject);
         anything = true;
         return anything;
