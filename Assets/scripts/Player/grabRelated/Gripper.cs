@@ -128,8 +128,8 @@ public class Gripper : MonoBehaviour
 
     private void release(GameObject g)
     {
-        g.GetComponent<Frobbable>().Release();
         g.transform.parent = null;
         g.GetComponent<Rigidbody>().useGravity = true;
+        g.GetComponent<Frobbable>().Release();
     }
 }

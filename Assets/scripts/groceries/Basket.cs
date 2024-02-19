@@ -15,8 +15,16 @@ public class Basket : MonoBehaviour
         if (f != null && f.IsGrocery())
         {
             list.AddItem(f.GetItem());
-            f.gameObject.transform.SetParent(transform);
-            Debug.Log("added " + GroceryUI.groceryItemToString(f.GetItem()));
+            f.SetInBasket(this, true);
+            if (f.GetHeld())
+            {
+                ;
+            }
+            else
+            {
+                f.gameObject.transform.SetParent(transform);
+                StartCoroutine(freezeConstraints(f.gameObject.GetComponent<Rigidbody>()));
+            }
         }
     }
 
@@ -28,9 +36,30 @@ public class Basket : MonoBehaviour
         if (f != null && f.IsGrocery())
         {
             list.RemoveItem(f.GetItem());
-            Debug.Log("removed " + GroceryUI.groceryItemToString(f.GetItem()));
+            f.SetInBasket(this, false);
+            if (f.GetHeld())
+            {
+                ;
+            }
+            else
+            {
+                f.gameObject.transform.SetParent(null);
+                f.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            }
         }
         
+    }
+
+    public void HoldReleased(Frobbable f)
+    {
+        f.gameObject.transform.SetParent(transform);
+        StartCoroutine(freezeConstraints(f.gameObject.GetComponent<Rigidbody>()));
+    }
+
+    private IEnumerator freezeConstraints(Rigidbody rb)
+    {
+        yield return new WaitForSeconds(.85f);
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     private Frobbable GetParentFrob(Collider other)

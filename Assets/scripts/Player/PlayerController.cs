@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
             rb.freezeRotation = false;
             rb.AddForce((collision.gameObject.GetComponent<Rigidbody>().velocity + Vector3.up * 20) / 5f, ForceMode.Impulse);
             rb.AddTorque(Vector3.Cross(collision.gameObject.GetComponent<Rigidbody>().velocity, Vector3.down).normalized * 4, ForceMode.Impulse);
+            hands.ForceRelease();
         }
     }
 
@@ -45,12 +47,21 @@ public class PlayerController : MonoBehaviour
                 rotate();
                 move();
             }
+            else
+            {
+                rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+            }
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 hands.Toggle();
                 usingHands = !usingHands;
             }
 
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
         }
     }
 

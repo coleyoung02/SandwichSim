@@ -17,8 +17,8 @@ TagManager:
   - HandOnly
   - Hand
   - IgnoreHand
-  - 
-  - 
+  - PlayerDetection
+  - Player
   - 
   - 
   - 

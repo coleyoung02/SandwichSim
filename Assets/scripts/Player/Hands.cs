@@ -38,6 +38,12 @@ public class Hands : MonoBehaviour
         }
     }
 
+    public void ForceRelease()
+    {
+        left.tryRelease();
+        right.tryRelease();
+    }
+
     public void Toggle()
     {
         inUse = !inUse;

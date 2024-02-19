@@ -11,6 +11,8 @@ public class Frobbable : MonoBehaviour
     private Rigidbody rb;
     private bool held;
     private Gripper gripper;
+    private Basket basket;
+    private bool isInBasket;
 
 
     [Header ("grocery items")]
@@ -24,6 +26,7 @@ public class Frobbable : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         held = false;
+        isInBasket = false;
     }
 
     public void Grab(Gripper g)
@@ -49,6 +52,17 @@ public class Frobbable : MonoBehaviour
         }
     }
 
+    public bool GetHeld()
+    {
+        return held;
+    }
+
+    public void SetInBasket(Basket b, bool entering)
+    {
+        isInBasket = entering;
+        basket = b;
+    }
+
     public void OnSlice()
     {
         foreach (Gripper g in FindObjectsByType<Gripper>(FindObjectsSortMode.None))
@@ -62,6 +76,10 @@ public class Frobbable : MonoBehaviour
 
         rb.constraints = RigidbodyConstraints.None;
         held = false;
+        if (isInBasket)
+        {
+            basket.HoldReleased(this);
+        }
     }
 
     public bool IsGrocery()
@@ -90,7 +108,7 @@ public class Frobbable : MonoBehaviour
         }
     }
 
-    private static bool hasLayer(LayerMask mask, int layer)
+    public static bool hasLayer(LayerMask mask, int layer)
     {
         return (mask & (1 << layer)) != 0;
     }

@@ -21,7 +21,8 @@ public class Car : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        stopping = true;
+        if (Frobbable.hasLayer(LayerMask.GetMask("Player"), collision.gameObject.layer))
+            stopping = true;
     }
 
     private void Update()
@@ -32,7 +33,7 @@ public class Car : MonoBehaviour
         }
         if (rb.velocity.magnitude > 0 && stopping)
         {
-            float newVmag = Mathf.Max(0, rb.velocity.magnitude - Time.deltaTime * slowingRate);
+            float newVmag = Mathf.Max(0, rb.velocity.magnitude - Time.deltaTime * slowingRate * Mathf.Sign(moveSpeed));
             rb.velocity = rb.velocity.normalized * newVmag;
         }
     }
