@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SandwichAssembly : MonoBehaviour
+public class SandwichAssembly : GroceryListUpdateable
 {
     [SerializeField] private GroceryList g;
     [SerializeField] private GameObject finalSandwich;
@@ -19,14 +19,12 @@ public class SandwichAssembly : MonoBehaviour
         Frobbable f = collision.gameObject.GetComponent<Frobbable>();
         if (f != null && f.IsPrepped())
         {
-            g.AddItem(f.GetItem());
             inside.Add(f.gameObject);
-            if (g.CheckCompletion())
-            {
-                CheckSandwichness();
-            }
+            g.AddItem(f.GetItem());
         }
     }
+
+
 
     public void OnWin()
     {
@@ -64,5 +62,15 @@ public class SandwichAssembly : MonoBehaviour
         }
         return inside[0].GetComponent<Frobbable>().GetItem() == GroceryItem.Bread &&
             inside[inside.Count - 1].GetComponent<Frobbable>().GetItem() == GroceryItem.Bread;
+    }
+
+    public override void OnCompletion()
+    {
+        CheckSandwichness();
+    }
+
+    public override void OnUpdate(int index, bool has)
+    {
+        return;
     }
 }

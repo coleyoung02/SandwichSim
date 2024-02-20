@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GroceryUI : MonoBehaviour
+public class GroceryUI : GroceryListUpdateable
 {
     public static string groceryItemToString(GroceryItem item)
     {
@@ -65,5 +65,22 @@ public class GroceryUI : MonoBehaviour
     private string stringAtIndex(int index)
     {
         return groceryItemToString(groceryList.GetItemsNeeded()[index]);
+    }
+
+    public override void OnCompletion()
+    {
+        return;
+    }
+
+    public override void OnUpdate(int index, bool has)
+    {
+        if (has)
+        {
+            MarkItemComplete(index);
+        }
+        else
+        {
+            MarkItemNeeded(index);
+        }
     }
 }

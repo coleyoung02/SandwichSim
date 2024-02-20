@@ -17,6 +17,7 @@ public class GroceryList : MonoBehaviour
     [SerializeField] private List<GroceryItem> itemsNeeded;
     [SerializeField] private List<GroceryItem> itemsHad;
     [SerializeField] private GroceryUI ui;
+    [SerializeField] private List<GroceryListUpdateable> listeners;
 
     // Note: * Add function and Remove function require us to  have every like item grouped next to each other in the list *
 
@@ -38,6 +39,7 @@ public class GroceryList : MonoBehaviour
     // adding this function to count occurrences of an item in a list
     private int CountOccurrences(List<GroceryItem> list, GroceryItem item)
     {
+
         int count = 0;
         foreach (GroceryItem i in list)
         {
@@ -113,17 +115,22 @@ public class GroceryList : MonoBehaviour
 
     private void updateUI(int index, bool has)
     {
-        if (ui != null)
+        foreach (GroceryListUpdateable l in listeners)
         {
-            if (has)
+            l.OnUpdate(index, has);
+        }
+        if (CheckCompletion())
+        {
+            Debug.LogWarning("completed");
+            foreach (GroceryListUpdateable l in listeners)
             {
-                ui.MarkItemComplete(index);
-            }
-            else
-            {
-                ui.MarkItemNeeded(index);
+                l.OnCompletion();
             }
         }
-    }
+        else
+        {
 
+            Debug.LogWarning("not completed");
+        }
+    }
 }
