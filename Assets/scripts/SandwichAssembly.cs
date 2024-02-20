@@ -19,7 +19,6 @@ public class SandwichAssembly : MonoBehaviour
         Frobbable f = collision.gameObject.GetComponent<Frobbable>();
         if (f != null && f.IsPrepped())
         {
-            Debug.Log("added");
             g.AddItem(f.GetItem());
             inside.Add(f.gameObject);
             if (g.CheckCompletion())
@@ -31,7 +30,6 @@ public class SandwichAssembly : MonoBehaviour
 
     public void OnWin()
     {
-        Debug.Log("YOU WIN");
         foreach (GameObject go in inside)
         {
             go.GetComponent<Frobbable>().GetRigidbody().constraints = RigidbodyConstraints.FreezeAll;
@@ -51,7 +49,6 @@ public class SandwichAssembly : MonoBehaviour
         Frobbable f = other.gameObject.GetComponent<Frobbable>();
         if (f != null && f.IsPrepped())
         {
-            Debug.Log("added");
             g.RemoveItem(f.GetItem());
             inside.Remove(f.gameObject);
         }
@@ -60,8 +57,6 @@ public class SandwichAssembly : MonoBehaviour
     private bool CheckSandwichness()
     {
         inside = inside.OrderBy(x => x.transform.position.y).ToList();
-        Debug.LogWarning(inside[0].GetComponent<Frobbable>().GetItem());
-        Debug.LogWarning(inside[inside.Count - 1].GetComponent<Frobbable>().GetItem());
         if (inside[0].GetComponent<Frobbable>().GetItem() == GroceryItem.Bread &&
             inside[inside.Count - 1].GetComponent<Frobbable>().GetItem() == GroceryItem.Bread)
         {
