@@ -69,9 +69,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   open: {fileID: 8526352908060095313}
+  isRight: 0
   closed: {fileID: 2929395013691147042}
-  nearHand: []
-  inHand: []
 --- !u!1 &2929395013691147042
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +88,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2211778718388311505
 Transform:
   m_ObjectHideFlags: 0

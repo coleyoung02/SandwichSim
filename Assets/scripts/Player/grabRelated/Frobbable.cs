@@ -23,8 +23,21 @@ public class Frobbable : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        gameObject.AddComponent<Highlight>();
         held = false;
         isInBasket = false;
+    }
+
+    public void SetHighlight(bool h)
+    {
+        if (h)
+        { 
+            gameObject.GetComponent<Highlight>().StartColors();
+        }
+        else
+        {
+            gameObject.GetComponent<Highlight>().ResetColors();
+        }
     }
 
     public void Grab(Gripper g)

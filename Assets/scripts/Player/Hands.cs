@@ -47,6 +47,8 @@ public class Hands : MonoBehaviour
     public void Toggle()
     {
         inUse = !inUse;
+        right.SetActivity(inUse && !usingLeft);
+        left.SetActivity(inUse && usingLeft);
     }
 
     private void mainUpdateLoop()
@@ -112,15 +114,19 @@ public class Hands : MonoBehaviour
         {
             mode = Mode.rotate;
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             activeHand = left;
             usingLeft = true;
+            left.SetActivity(true);
+            right.SetActivity(false);
         }
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             activeHand = right;
             usingLeft = false;
+            left.SetActivity(false);
+            right.SetActivity(true);
         }
     }
 }

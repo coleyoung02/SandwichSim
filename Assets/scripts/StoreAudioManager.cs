@@ -46,7 +46,6 @@ public class StoreAudioManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.LogWarning(other.gameObject.name);
         isIn = true;
     }
 

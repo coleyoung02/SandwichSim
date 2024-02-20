@@ -7,22 +7,58 @@ public class Gripper : MonoBehaviour
     [SerializeField] private GameObject open;
     [SerializeField] private bool isRight;
     [SerializeField] private GameObject closed;
-    [SerializeField] private List<GameObject> nearHand;
-    [SerializeField] private List<GameObject> inHand;
+    private List<GameObject> nearHand;
+    private GameObject inHand;
     private bool isOpen;
+    private GameObject closest;
+    private bool activity;
     
-    private List<float> distanceList = new List<float>();
 
     private void Start()
     {
         isOpen = true;
+        closest = null;
+        nearHand = new List<GameObject>();
+    }
+
+    public void SetActivity(bool a)
+    {
+        activity = a;
+        if (a)
+        {
+            closest = null;
+            if (inHand!= null)
+            {
+                inHand.GetComponent<Frobbable>().SetHighlight(true);
+                closest = inHand;
+            }
+        }
+        else
+        {
+            if (closest != null)
+            {
+                closest.GetComponent<Frobbable>().SetHighlight(false);
+            }
+        }
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(2))
+        if (activity && isOpen)
         {
-            
+            GameObject lastFrameClosest = closest;
+            closest = getClosest();
+            if (lastFrameClosest != closest)
+            {
+                if (lastFrameClosest != null)
+                {
+                    lastFrameClosest.GetComponent<Frobbable>().SetHighlight(false);
+                }
+                if (closest != null)
+                {
+                    closest.GetComponent<Frobbable>().SetHighlight(true);
+                }
+            }
         }
     }
 
@@ -54,7 +90,20 @@ public class Gripper : MonoBehaviour
 
     public bool tryGrab()
     {
-        distanceList.Clear();
+        if (closest != null)
+        {
+            grab(closest);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+
+    private GameObject getClosest()
+    {
         bool anything = false;
         float minDistance = float.MaxValue;
         int minIndex = -1;
@@ -64,31 +113,26 @@ public class Gripper : MonoBehaviour
             if (!anything || distance < minDistance)
             {
                 anything = true;
-                minIndex = i; 
+                minIndex = i;
                 minDistance = distance;
             }
         }
         if (!anything)
         {
-            return false;
+            return null;
         }
-        GameObject closestObject = nearHand[minIndex];
-        grab(closestObject);
-        anything = true;
-        return anything;
+        return nearHand[minIndex];
     }
-
-
 
     public bool tryRelease()
     {
         bool anything = false;
-        foreach (GameObject g in inHand)
+        if (inHand != null)
         {
-            release(g);
+            release(inHand);
             anything = true;
         }
-        inHand = new List<GameObject>();
+        inHand = null;
         return anything;
     }
 
@@ -114,8 +158,12 @@ public class Gripper : MonoBehaviour
         else if (other.gameObject.transform.parent != null && nearHand.Contains(other.gameObject.transform.parent.gameObject))
         {
             nearHand.Remove(other.gameObject.transform.parent.gameObject);
-
         }
+    }
+
+    private void OnRemove(GameObject g)
+    {
+        g.GetComponent<Frobbable>().SetHighlight(false);
     }
 
     private void grab(GameObject g)
@@ -123,7 +171,7 @@ public class Gripper : MonoBehaviour
         g.GetComponent<Frobbable>().Grab(this);
         g.transform.parent = gameObject.transform;
         g.GetComponent<Rigidbody>().useGravity = false;
-        inHand.Add(g);
+        inHand = g;
     }
 
     private void release(GameObject g)

@@ -315,7 +315,7 @@ MonoBehaviour:
     m_Bits: 64
   itemId: 1
   isGroceryItem: 1
-  soupChance: 0.7
+  soupChance: 0.8
   geomoetry: {fileID: 1602202332876679529}
   soupGeomoetry: {fileID: 4224890623612544675}
 --- !u!1001 &6611636799275063173

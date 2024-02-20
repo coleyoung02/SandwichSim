@@ -59,7 +59,6 @@ public class GroceryUI : MonoBehaviour
 
     public void MarkItemNeeded(int index)
     {
-        Debug.Log(index);
         groceryListRows[index].text = stringAtIndex(index);
     }
 
