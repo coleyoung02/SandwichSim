@@ -151,6 +151,7 @@ MonoBehaviour:
     m_Bits: 4160
   itemId: 0
   isGroceryItem: 0
+  isPreppedIngredient: 1
   soupChance: 0
   geomoetry: {fileID: 0}
   soupGeomoetry: {fileID: 0}

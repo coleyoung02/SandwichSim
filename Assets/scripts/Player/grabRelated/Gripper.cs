@@ -138,11 +138,12 @@ public class Gripper : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Frobbable>() != null)
+        if (other.gameObject.GetComponent<Frobbable>() != null && other.gameObject.GetComponent<Frobbable>().GetUsable())
         {
             nearHand.Add(other.gameObject);
         }
-        else if (other.gameObject.transform.parent != null && other.gameObject.transform.parent.gameObject.GetComponent<Frobbable>() != null)
+        else if (other.gameObject.transform.parent != null && other.gameObject.transform.parent.gameObject.GetComponent<Frobbable>() != null
+             && other.gameObject.transform.parent.gameObject.GetComponent<Frobbable>().GetUsable())
         {
             nearHand.Add(other.gameObject.transform.parent.gameObject);
 

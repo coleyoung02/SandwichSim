@@ -11,21 +11,31 @@ public class Frobbable : MonoBehaviour
     private Gripper gripper;
     private Basket basket;
     private bool isInBasket;
+    private bool winOnTouch;
+    private SandwichAssembly sand;
+    private bool usable;
 
 
     [Header ("grocery items")]
     [SerializeField] private GroceryItem itemId;
     [SerializeField] private bool isGroceryItem;
+    [SerializeField] private bool isPreppedIngredient;
     [SerializeField] private float soupChance;
     [SerializeField] private GameObject geomoetry;
     [SerializeField] private GameObject soupGeomoetry;
 
-    private void Start()
+    public void Start()
     {
         rb = GetComponent<Rigidbody>();
         gameObject.AddComponent<Highlight>();
         held = false;
         isInBasket = false;
+        usable = true;
+    }
+
+    public Rigidbody GetRigidbody()
+    {
+        return rb;
     }
 
     public void SetHighlight(bool h)
@@ -89,6 +99,30 @@ public class Frobbable : MonoBehaviour
         }
     }
 
+    public void SetUsable(bool u)
+    {
+        usable = u;
+        if (!u)
+        {
+            foreach (Gripper g in FindObjectsByType<Gripper>(FindObjectsSortMode.None))
+            {
+                if (geomoetry != null)
+                {
+                    g.OnTriggerExit(geomoetry.GetComponent<Collider>());
+                }
+                else
+                {
+                    g.OnTriggerExit(gameObject.GetComponent<Collider>());
+                }
+            }
+        }
+    }
+
+    public bool GetUsable()
+    {
+        return usable;
+    }
+
     public void Release()
     {
 
@@ -105,6 +139,11 @@ public class Frobbable : MonoBehaviour
         return isGroceryItem;
     }
 
+    public bool IsPrepped()
+    {
+        return isPreppedIngredient;
+    }
+
     public GroceryItem GetItem()
     {
         return itemId;
@@ -113,6 +152,10 @@ public class Frobbable : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (winOnTouch && hasLayer(LayerMask.GetMask("PreppedIngredient"), collision.gameObject.layer))
+        {
+            sand.OnWin();
+        }
         if (held && !collision.gameObject.layer.Equals(LayerMask.GetMask("Hand")))
         {
             if (hasLayer(extraIgnoredLayers, collision.gameObject.layer))
@@ -132,5 +175,11 @@ public class Frobbable : MonoBehaviour
     {
         oldG.SetActive(false);
         newG.SetActive(true);
+    }
+
+    public void WinOnTouch(SandwichAssembly s)
+    {
+        winOnTouch = true;
+        sand = s;
     }
 }

@@ -269,7 +269,7 @@ MonoBehaviour:
   left: {fileID: 8912329611672341615}
   right: {fileID: 7526225475910117952}
   moveSpeed: 0.1
-  rotateSpeed: 5
+  rotateSpeed: 1
 --- !u!1 &7958810696058223220
 GameObject:
   m_ObjectHideFlags: 0

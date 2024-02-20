@@ -89,15 +89,14 @@ public class Hands : MonoBehaviour
             {
                 rightMult = -1;
             }
-            activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.forward, mouseY * rightMult);
+            activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.forward, mouseY * rightMult * rotateSpeed);
             if (!Input.GetKey(KeyCode.LeftShift))
             {
-                activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.right, -mouseX * rightMult);
+                activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.right, -mouseX * rightMult * rotateSpeed);
             }
             else
             {
-                activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.up, mouseX);
-                
+                activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.up, mouseX * rotateSpeed);
             }
         }
 

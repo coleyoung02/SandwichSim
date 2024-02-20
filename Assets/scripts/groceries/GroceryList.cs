@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,6 +47,18 @@ public class GroceryList : MonoBehaviour
             }
         }
         return count;
+    }
+
+    public bool CheckCompletion()
+    {
+        foreach (GroceryItem gi in Enum.GetValues(typeof(GroceryItem)))
+        {
+            if (CountOccurrences(itemsNeeded, gi) > CountOccurrences(itemsHad, gi))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void AddItem(GroceryItem item)
@@ -100,14 +113,17 @@ public class GroceryList : MonoBehaviour
 
     private void updateUI(int index, bool has)
     {
-        if (has)
+        if (ui != null)
         {
-            ui.MarkItemComplete(index);
+            if (has)
+            {
+                ui.MarkItemComplete(index);
+            }
+            else
+            {
+                ui.MarkItemNeeded(index);
+            }
         }
-        else
-        {
-            ui.MarkItemNeeded(index);
-        }
-        
     }
+
 }
