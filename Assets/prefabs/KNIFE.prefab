@@ -180,8 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extraIgnoredLayers:
-  - serializedVersion: 2
-    m_Bits: 64
+    serializedVersion: 2
+    m_Bits: 4096
   itemId: 0
   isGroceryItem: 0
   soupChance: 0

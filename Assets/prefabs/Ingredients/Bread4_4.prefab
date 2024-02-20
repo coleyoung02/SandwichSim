@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3218455858089479563}
   - component: {fileID: 1414979626712930865}
   - component: {fileID: 1905632430679315358}
+  - component: {fileID: 2894421631635833193}
   m_Layer: 6
   m_Name: Bread4_4
   m_TagString: Untagged
@@ -122,8 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extraIgnoredLayers:
-  - serializedVersion: 2
-    m_Bits: 64
+    serializedVersion: 2
+    m_Bits: 4160
   itemId: 0
   isGroceryItem: 1
   soupChance: 0
@@ -156,3 +157,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2894421631635833193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030973395551488195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d24c6a8130c83444b9d7c179f30c7a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cut: {fileID: 3112058778649940224, guid: 010ac3f8bf40aa148b318415a04aa255, type: 3}
+  sliceParent: {fileID: 1414979626712930865}

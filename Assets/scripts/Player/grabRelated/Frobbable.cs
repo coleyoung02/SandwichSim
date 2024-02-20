@@ -5,7 +5,7 @@ using UnityEngine;
 public class Frobbable : MonoBehaviour
 {
 
-    [SerializeField] private List<LayerMask> extraIgnoredLayers;
+    [SerializeField] private LayerMask extraIgnoredLayers;
     private Rigidbody rb;
     private bool held;
     private Gripper gripper;
@@ -78,7 +78,14 @@ public class Frobbable : MonoBehaviour
     {
         foreach (Gripper g in FindObjectsByType<Gripper>(FindObjectsSortMode.None))
         {
-            g.OnTriggerExit(geomoetry.GetComponent<Collider>());
+            if (geomoetry != null)
+            {
+                g.OnTriggerExit(geomoetry.GetComponent<Collider>());
+            }
+            else
+            {
+                g.OnTriggerExit(gameObject.GetComponent<Collider>());
+            }
         }
     }
 
@@ -108,12 +115,9 @@ public class Frobbable : MonoBehaviour
     {
         if (held && !collision.gameObject.layer.Equals(LayerMask.GetMask("Hand")))
         {
-            foreach (LayerMask lm in extraIgnoredLayers)
+            if (hasLayer(extraIgnoredLayers, collision.gameObject.layer))
             {
-                if (hasLayer(lm, collision.gameObject.layer))
-                {
-                    return;
-                }
+                return;
             }
             gripper.Toggle(true);
         }

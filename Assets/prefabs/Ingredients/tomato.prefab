@@ -311,8 +311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extraIgnoredLayers:
-  - serializedVersion: 2
-    m_Bits: 64
+    serializedVersion: 2
+    m_Bits: 4160
   itemId: 1
   isGroceryItem: 1
   soupChance: 0.8

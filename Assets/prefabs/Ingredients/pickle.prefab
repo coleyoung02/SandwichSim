@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4271438124420080122}
   - component: {fileID: 6476679733133845919}
   - component: {fileID: 6933706567207671339}
+  - component: {fileID: 4640680945851212072}
   m_Layer: 6
   m_Name: pickle
   m_TagString: Untagged
@@ -99,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extraIgnoredLayers:
-  - serializedVersion: 2
-    m_Bits: 64
+    serializedVersion: 2
+    m_Bits: 4160
   itemId: 3
   isGroceryItem: 1
   soupChance: 0
@@ -156,3 +157,17 @@ CapsuleCollider:
   m_Height: 0.06
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4640680945851212072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935464841831633847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d24c6a8130c83444b9d7c179f30c7a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cut: {fileID: 4908228813108507694, guid: ccae55022c704ff458c1946445a94a75, type: 3}
+  sliceParent: {fileID: 4271438124420080122}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5451347433519538677}
   - component: {fileID: 1275364901305284792}
   - component: {fileID: 4363451307957814607}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: tomatoSlice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c90577c73ad5c44185c1c4d53e2016b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extraIgnoredLayers: []
+  extraIgnoredLayers:
+    serializedVersion: 2
+    m_Bits: 4160
   itemId: 0
   isGroceryItem: 0
   soupChance: 0
