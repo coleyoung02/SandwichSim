@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3846018093981099296, guid: ab00e26e8a337824d8a6d9fd2373d910, type: 3}
+  - {fileID: 2100000, guid: 624d511ef20d46546ac19901c0eaad2e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
     m_Bits: 4160
   itemId: 3
   isGroceryItem: 1
+  isPreppedIngredient: 0
   soupChance: 0
   geomoetry: {fileID: 0}
   soupGeomoetry: {fileID: 0}
