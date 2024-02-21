@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private bool usingHands;
     private float xRotation;
     private bool deceased;
+    private bool handsOnly;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void SetHandsOnly(bool only)
+    {
+        if (only)
+        {
+            usingHands = true;
+        }
+        handsOnly = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -51,7 +62,7 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && !handsOnly)
             {
                 hands.Toggle();
                 usingHands = !usingHands;

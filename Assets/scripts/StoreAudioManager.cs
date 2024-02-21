@@ -6,8 +6,10 @@ public class StoreAudioManager : MonoBehaviour
 {
     [SerializeField] private List<AudioSource> sources;
     [SerializeField] private float lerpInTime;
+    [SerializeField] private bool mustExit;
     private float t;
     private bool isIn;
+    private bool hasExited;
 
     // Start is called before the first frame update
     void Start()
@@ -46,11 +48,22 @@ public class StoreAudioManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        isIn = true;
+        if (hasExited || !mustExit)
+        {
+            isIn = true;
+            foreach (AudioSource source in sources)
+            {
+                if (!source.isPlaying)
+                {
+                    source.Play();
+                }
+            }
+        }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         isIn = false;
+        hasExited = true;
     }
 }

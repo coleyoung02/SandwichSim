@@ -15,7 +15,7 @@ public class Car : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         stopping = false;
-        rb.velocity = new Vector3(-moveSpeed, 0f, 0f);
+        rb.velocity = moveSpeed * transform.right;
         player = FindFirstObjectByType<PlayerController>().gameObject;
     }
 

@@ -6,7 +6,6 @@ public class StoreLock : GroceryListUpdateable
 {
 
     [SerializeField] private GameObject door;
-    [SerializeField] private GroceryList gList;
 
     private bool hasLocked = false;
 
@@ -25,6 +24,7 @@ public class StoreLock : GroceryListUpdateable
         if (!hasLocked)
         {
             door.SetActive(true);
+            hasLocked = true;
         }
     }
 

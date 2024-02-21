@@ -14,6 +14,7 @@ public class Frobbable : MonoBehaviour
     private bool winOnTouch;
     private SandwichAssembly sand;
     private bool usable;
+    protected bool highlightDisabled = false;
 
 
     [Header ("grocery items")]
@@ -38,19 +39,22 @@ public class Frobbable : MonoBehaviour
         return rb;
     }
 
-    public void SetHighlight(bool h)
+    public virtual void SetHighlight(bool h)
     {
-        if (h)
-        { 
-            gameObject.GetComponent<Highlight>().StartColors();
-        }
-        else
+        if (!highlightDisabled)
         {
-            gameObject.GetComponent<Highlight>().ResetColors();
+            if (h)
+            {
+                gameObject.GetComponent<Highlight>().StartColors();
+            }
+            else
+            {
+                gameObject.GetComponent<Highlight>().ResetColors();
+            }
         }
     }
 
-    public void Grab(Gripper g)
+    public virtual void Grab(Gripper g)
     {
         rb.constraints = RigidbodyConstraints.FreezeAll;
         held = true;

@@ -17,7 +17,6 @@ public enum ClipPool
 
 public class AudioManager : MonoBehaviour
 {
-
     public static AudioManager Instance { get; private set; }
 
     [SerializeField] private List<AudioSource> VOsources;

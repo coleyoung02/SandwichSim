@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Eat : MonoBehaviour
 {
-    private bool winEnabled = false;
+    private bool winEnabled = true;
 
     public void SetWinable(bool b)
     {
@@ -16,7 +16,7 @@ public class Eat : MonoBehaviour
     {
         if (winEnabled && Frobbable.hasLayer(LayerMask.GetMask("Player"), collision.gameObject.layer))
         {
-            SceneManager.LoadScene("WinScene");
+            FindFirstObjectByType<FadeIn>().BeginFade();
         }
     }
 

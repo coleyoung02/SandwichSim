@@ -29,10 +29,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5821681915056507025}
   - {fileID: 954341092856063306}
-  - {fileID: 7772510271914113719}
+  - {fileID: 5821681915056507025}
   - {fileID: 4867499279226492618}
+  - {fileID: 7772510271914113719}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1201879266851287992
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 2078914987801510609}
   - component: {fileID: 8339462071591296215}
   m_Layer: 0
-  m_Name: 3
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,13 +63,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201879266851287992}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -49.129112, y: 0.8055258, z: 217}
   m_LocalScale: {x: 1000, y: 1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7581579338538345561}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &1524286241657152877
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -153,9 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b433e28a8da0245ae07ea0f94817f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 7660634716805426127, guid: 0dba3ec5b1402e043a76823ad64c65b0, type: 3}
+  car: {fileID: 2215564383965321734, guid: b72b1a106a5a4594da5fbf1017871d00, type: 3}
   gap: 50
   spawnDistance: 390
+  debug: 0
 --- !u!1 &1903831025505162822
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ GameObject:
   - component: {fileID: 4325959911895192181}
   - component: {fileID: 7278604628512289620}
   m_Layer: 0
-  m_Name: 4
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,13 +185,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903831025505162822}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -49.129112, y: 0.8055258, z: 193}
   m_LocalScale: {x: 1000, y: 1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7581579338538345561}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &7948155930613700188
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -274,9 +275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b433e28a8da0245ae07ea0f94817f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 7660634716805426127, guid: 8e349825250ab8f4e8bcbc62cd33ec04, type: 3}
+  car: {fileID: 292328473073274036, guid: 6f110328cbe0ec9478706af633a735a7, type: 3}
   gap: 80
   spawnDistance: 390
+  debug: 0
 --- !u!1 &8259145871141771896
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +293,7 @@ GameObject:
   - component: {fileID: 2935326807583709700}
   - component: {fileID: 8758143066375409821}
   m_Layer: 0
-  m_Name: 1
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -395,9 +397,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b433e28a8da0245ae07ea0f94817f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 7660634716805426127, guid: e4e9f28d19b250446bb4cf96af880db7, type: 3}
+  car: {fileID: 292328473073274036, guid: 6f110328cbe0ec9478706af633a735a7, type: 3}
   gap: 80
   spawnDistance: 390
+  debug: 0
 --- !u!1 &8440329544491983787
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +415,7 @@ GameObject:
   - component: {fileID: 9215312212483380980}
   - component: {fileID: 3533784121718679651}
   m_Layer: 0
-  m_Name: 2
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -516,6 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b433e28a8da0245ae07ea0f94817f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 7660634716805426127, guid: f7b20fd9b9fa07b40b6be8260c6a97f5, type: 3}
+  car: {fileID: 2215564383965321734, guid: b72b1a106a5a4594da5fbf1017871d00, type: 3}
   gap: 50
   spawnDistance: 390
+  debug: 0

@@ -24,7 +24,7 @@ public class GroceryUI : GroceryListUpdateable
             case "tomato": return GroceryItem.Tomato;
             case "lettuce": return GroceryItem.Lettuce;
             case "pickle": return GroceryItem.Pickle;
-                //might break C#
+            //might break C#
             default: return (GroceryItem)(-1);
         }
     }
@@ -33,6 +33,8 @@ public class GroceryUI : GroceryListUpdateable
     [SerializeField] private GroceryList groceryList;
     [SerializeField] private GameObject groceryListRow;
     private List<TextMeshProUGUI> groceryListRows;
+    private bool started;
+    private bool completed;
 
     private const string START_STRIKETHROUGH_TAG = "<s>";
     private const string END_STRIKETHROUGH_TAG = "</s>";
@@ -47,6 +49,21 @@ public class GroceryUI : GroceryListUpdateable
         for (int i = 0; i < groceryListRows.Count; ++i)
         {
             MarkItemNeeded(i);
+        }
+    }
+
+    private void Update()
+    {
+        if (!completed)
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                if (!started)
+                {
+                    started = true;
+                    StartCoroutine(Twist(!groceryListUI.activeSelf));
+                }
+            }
         }
     }
 
@@ -69,7 +86,44 @@ public class GroceryUI : GroceryListUpdateable
 
     public override void OnCompletion()
     {
-        return;
+        if (!started)
+        {
+            started = true;
+            StartCoroutine(Twist(false));
+        }
+        completed = true;
+    }
+
+    private IEnumerator Twist(bool appear)
+    {
+        float totalTime;
+        if (appear)
+        {
+            totalTime = .5f;
+            groceryListUI.SetActive(true);
+            for (float i = 0; i <= totalTime; i += Time.deltaTime)
+            {
+                groceryListUI.GetComponent<RectTransform>().rotation = Quaternion.Euler(Mathf.Lerp(45, 0, i / totalTime), Mathf.Lerp(90, 0, i / totalTime), Mathf.Lerp(270, 0, i / totalTime));
+                yield return new WaitForEndOfFrame();
+            }
+            groceryListUI.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 0);
+            yield return new WaitForEndOfFrame();
+            if (completed)
+            {
+                StartCoroutine(Twist(false));
+            }
+        }
+        else
+        {
+            totalTime = 1f;
+            for (float i = 0; i <= totalTime; i += Time.deltaTime)
+            {
+                groceryListUI.GetComponent<RectTransform>().rotation = Quaternion.Euler(Mathf.Lerp(0, 45, i / totalTime), Mathf.Lerp(0, 90, i / totalTime), Mathf.Lerp(0, 270, i / totalTime));
+                yield return new WaitForEndOfFrame();
+            }
+            groceryListUI.SetActive(false);
+        }
+        started = false;
     }
 
     public override void OnUpdate(int index, bool has)

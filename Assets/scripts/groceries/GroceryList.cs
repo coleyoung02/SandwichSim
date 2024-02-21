@@ -121,16 +121,10 @@ public class GroceryList : MonoBehaviour
         }
         if (CheckCompletion())
         {
-            Debug.LogWarning("completed");
             foreach (GroceryListUpdateable l in listeners)
             {
                 l.OnCompletion();
             }
-        }
-        else
-        {
-
-            Debug.LogWarning("not completed");
         }
     }
 }

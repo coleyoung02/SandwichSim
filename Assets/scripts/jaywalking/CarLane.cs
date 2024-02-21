@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CarLane : MonoBehaviour
@@ -7,27 +8,16 @@ public class CarLane : MonoBehaviour
     [SerializeField] private GameObject car;
     [SerializeField] private float gap = 30f;
     [SerializeField] private float spawnDistance = 390f;
+    [SerializeField] private bool debug;
     private GameObject lastCar;
     private GameObject player;
-    private int sign;
 
     void Start()
     {
-        sign = car.GetComponent<Car>().GetSign();
         player = FindFirstObjectByType<PlayerController>().gameObject;
-        if (sign == 1)
+        for (float i = 0; i <= 2* spawnDistance; i += gap)
         {
-            for (float i = -spawnDistance; i <= spawnDistance; i += gap)
-            {
-                lastCar = Instantiate(car, new Vector3(player.transform.position.x + i, transform.position.y + 6f, transform.position.z), Quaternion.identity);
-            }
-        }
-        else
-        {
-            for (float i = spawnDistance; i >= -spawnDistance; i -= gap)
-            {
-                lastCar = Instantiate(car, new Vector3(player.transform.position.x + i, transform.position.y + 6f, transform.position.z), Quaternion.identity);
-            }
+            lastCar = Instantiate(car, getSpawnLoc(true) - i * transform.right, transform.localRotation);
         }
     }
 
@@ -36,26 +26,32 @@ public class CarLane : MonoBehaviour
     {
         if (lastCar != null)
         {
-            if (sign == 1)
+            if (Vector3.Dot(player.transform.position, transform.right) - Vector3.Dot(lastCar.transform.position, transform.right) + gap < spawnDistance)
             {
-                if (((player.transform.position.x + spawnDistance) - lastCar.transform.position.x) > gap)
+                lastCar = Instantiate(car, getSpawnLoc(), transform.localRotation);
+                if (debug)
                 {
-                    lastCar = Instantiate(car, new Vector3(player.transform.position.x + spawnDistance, transform.position.y + 6f, transform.position.z), Quaternion.identity);
-
-                }
-            }
-            else
-            {
-                if ((lastCar.transform.position.x - (player.transform.position.x - spawnDistance)) > gap)
-                {
-                    lastCar = Instantiate(car, new Vector3(player.transform.position.x - spawnDistance, transform.position.y + 6f, transform.position.z), Quaternion.identity);
-
+                    Debug.LogWarning("car proj = " + Vector3.Dot(lastCar.transform.position, transform.right));
                 }
             }
         }
         else
         {
-            lastCar = Instantiate(car, new Vector3(player.transform.position.x + sign * spawnDistance, transform.position.y + 6f, transform.position.z), Quaternion.identity);
+            lastCar = Instantiate(car, getSpawnLoc(), transform.localRotation);
         }
+    }
+
+    private Vector3 getSpawnLoc(bool inv=false)
+    {
+        int mult = 1;
+        if (inv)
+        {
+            mult = -1;
+        }
+        return transform.forward * Vector3.Dot(transform.forward, transform.position) + 
+            Vector3.up * Vector3.Dot(transform.up, transform.position) +
+            Vector3.up * 6f - 
+            spawnDistance * transform.right * mult + 
+            transform.right * Vector3.Dot(player.transform.position, transform.right);
     }
 }

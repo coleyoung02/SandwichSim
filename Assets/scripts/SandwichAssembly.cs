@@ -28,17 +28,17 @@ public class SandwichAssembly : GroceryListUpdateable
 
     public void OnWin()
     {
+        
+        GameObject g = Instantiate(finalSandwich, this.transform.position - Vector3.up *.212f, Quaternion.identity);
+        finalSandwich.layer = 0;
         foreach (GameObject go in inside)
         {
             go.GetComponent<Frobbable>().GetRigidbody().constraints = RigidbodyConstraints.FreezeAll;
             go.GetComponent<Frobbable>().SetUsable(false);
             Destroy(go.GetComponent<Rigidbody>());
-            go.transform.parent = finalSandwich.transform;
+            go.transform.parent = g.transform;
         }
-        finalSandwich.AddComponent<Frobbable>();
-        finalSandwich.layer = 0;
-        finalSandwich.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        finalSandwich.GetComponent<Eat>().SetWinable(true);
+        //finalSandwich.GetComponent<Eat>().SetWinable(true);
     }
 
 
