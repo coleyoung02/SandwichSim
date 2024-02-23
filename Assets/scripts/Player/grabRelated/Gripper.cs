@@ -23,6 +23,7 @@ public class Gripper : MonoBehaviour
 
     public void SetActivity(bool a)
     {
+        if (a == activity) return;
         activity = a;
         if (a)
         {
