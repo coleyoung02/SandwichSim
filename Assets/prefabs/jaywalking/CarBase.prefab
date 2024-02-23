@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowingRate: 20
-  maxDist: 409
+  maxDist: 209
   moveSpeed: 35
 --- !u!65 &193510429803495305
 BoxCollider:

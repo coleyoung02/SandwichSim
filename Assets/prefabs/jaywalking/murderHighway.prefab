@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 2215564383965321734, guid: b72b1a106a5a4594da5fbf1017871d00, type: 3}
   gap: 50
-  spawnDistance: 390
+  spawnDistance: 190
   debug: 0
 --- !u!1 &1903831025505162822
 GameObject:
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 292328473073274036, guid: 6f110328cbe0ec9478706af633a735a7, type: 3}
   gap: 80
-  spawnDistance: 390
+  spawnDistance: 190
   debug: 0
 --- !u!1 &8259145871141771896
 GameObject:
@@ -399,7 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 292328473073274036, guid: 6f110328cbe0ec9478706af633a735a7, type: 3}
   gap: 80
-  spawnDistance: 390
+  spawnDistance: 190
   debug: 0
 --- !u!1 &8440329544491983787
 GameObject:
@@ -521,5 +521,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 2215564383965321734, guid: b72b1a106a5a4594da5fbf1017871d00, type: 3}
   gap: 50
-  spawnDistance: 390
+  spawnDistance: 190
   debug: 0

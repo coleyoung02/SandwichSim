@@ -16,6 +16,7 @@ public class Eat : MonoBehaviour
     {
         if (winEnabled && Frobbable.hasLayer(LayerMask.GetMask("Player"), collision.gameObject.layer))
         {
+            FindFirstObjectByType<FadeIn>().SetWinOnFinish(true);
             FindFirstObjectByType<FadeIn>().BeginFade();
         }
     }

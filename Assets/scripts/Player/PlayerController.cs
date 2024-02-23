@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private float xRotation;
     private bool deceased;
     private bool handsOnly;
-    private bool inChase;
+    private bool controlsLocked;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         xRotation = 0f;
         usingHands = false;
         deceased = false;
-        inChase = false;
+        controlsLocked = false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -50,17 +50,16 @@ public class PlayerController : MonoBehaviour
         handsOnly = true;
     }
 
-    public void SetChaseMode(bool mode)
+    public void LockControls(bool mode)
     {
-        inChase = mode;
+        controlsLocked = mode;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!deceased && !inChase)
+        if (!deceased && !controlsLocked)
         {
-            Debug.LogWarning("NOT CHASING");
             if (!usingHands)
             {
                 rotate();

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - frobbable
   - car
+  - basket
   layers:
   - Default
   - TransparentFX

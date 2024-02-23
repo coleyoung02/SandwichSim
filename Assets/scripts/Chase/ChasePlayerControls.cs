@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 
 public class ChasePlayerControls : MonoBehaviour
 {
@@ -22,16 +23,19 @@ public class ChasePlayerControls : MonoBehaviour
     [SerializeField] private float bumpAmount;
     [SerializeField] private float startingOffset;
 
+    [SerializeField] private GameObject startSpawn;
+    [SerializeField] private GameObject playerModel;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private GameObject feds;
-    [SerializeField] private float fedSpeed;
     [SerializeField] private AudioClip clang;
+    [SerializeField] private GameObject loseScreen;
 
     private bool manuevering;
     private bool manueveringOut;
     private bool jumping;
     private bool slowed;
+    private bool isOn;
 
     private float manueverInClock;
     private float manueverOutClock;
@@ -41,109 +45,134 @@ public class ChasePlayerControls : MonoBehaviour
     private float fedZOffest;
     private float prevFedZ;
 
-    private Vector3 shift;
-
     // Update is called once per frame
     void Update()
     {
-        if (!manuevering && !jumping)
+        if (isOn)
         {
+            if (!manuevering && !jumping)
+            {
 
-            rb.velocity = new Vector3(0f, rb.velocity.y, curSpeed);
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                manuevering = true;
-                jumping = true;
-                rb.AddForce(Vector3.up * 50f, ForceMode.Impulse);
+                rb.velocity = new Vector3(0f, rb.velocity.y, curSpeed);
+                BaseInputChecks();
             }
-            else if (Input.GetKey(KeyCode.S))
+            else
             {
-                SetMove(move.SLIDE);
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                SetMove(move.LEFT);
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                SetMove(move.RIGHT);
-            }
-        }
-        else
-        {
-            rb.velocity = new Vector3(0f, rb.velocity.y, curSpeed);
-            if (manueverInClock > 0f)
-            {
-                manueverInClock = Mathf.Max(manueverInClock - Time.deltaTime, 0f);
-                if (curMov == move.SLIDE)
+                rb.velocity = new Vector3(0f, rb.velocity.y, curSpeed);
+                if (manueverInClock > 0f)
                 {
-                    rb.gameObject.transform.rotation = Quaternion.Euler(Mathf.Lerp(72.5f, 0f, manueverInClock / manueverInTime), 0f, 0f);
+                    ManueverIn();
                 }
-                else if (curMov == move.LEFT)
+                else if (manueveringOut || !checkSameInput())
                 {
-                    Vector3 p = rb.gameObject.transform.position;
-                    p.x = Mathf.Lerp(baseX - xShift, baseX, manueverInClock / manueverInTime);
-                    rb.gameObject.transform.position = p;
-                }
-                else if (curMov == move.RIGHT)
-                {
-                    Vector3 p = rb.gameObject.transform.position;
-                    p.x = Mathf.Lerp(baseX + xShift, baseX, manueverInClock / manueverInTime);
-                    rb.gameObject.transform.position = p;
+                    ManueverOut();
                 }
             }
-            else if (manueveringOut || !checkSameInput())
+            UpdateFeds();
+            if (fedZOffest < .001f)
             {
-                manueveringOut = true;
-                manueverOutClock = Mathf.Max(manueverOutClock - Time.deltaTime, 0f);
-                if (curMov == move.SLIDE)
-                {
-                    rb.gameObject.transform.rotation = Quaternion.Euler(Mathf.Lerp(0f, 72.5f, manueverOutClock / manueverOutTime), 0f, 0f);
-                }
-                else if (curMov == move.LEFT)
-                {
-                    Vector3 p = rb.gameObject.transform.position;
-                    p.x = Mathf.Lerp(baseX, baseX - xShift, manueverOutClock / manueverOutTime);
-                    rb.gameObject.transform.position = p;
-                }
-                else if (curMov == move.RIGHT)
-                {
-                    Vector3 p = rb.gameObject.transform.position;
-                    p.x = Mathf.Lerp(baseX, baseX + xShift, manueverOutClock / manueverOutTime);
-                    rb.gameObject.transform.position = p;
-                }
-                if (manueverOutClock == 0f)
-                {
-                    manueveringOut = false;
-                    manuevering = false;
-                }
+                fedZOffest = 1f;
+                loseScreen.SetActive(true);
+                isOn = false;
+                rb.velocity = Vector3.zero;
+                StartCoroutine(Rerun());
             }
-        }
-        UpdateFeds();
-        if (fedZOffest <- .001f)
-        {
-        }
-        rb.AddForce(Vector3.down * 30);
+            rb.AddForce(Vector3.down * 30);
+        }   
+    }
+
+    private IEnumerator Rerun()
+    {
+        yield return new WaitForSeconds(5f);
+        gameObject.transform.position = startSpawn.transform.position;
+        gameObject.transform.rotation = startSpawn.transform.rotation;
     }
 
     private bool checkSameInput()
     {
         if (curMov == move.LEFT && Input.GetKey(KeyCode.A))
         {
-            Debug.Log("LEFT TRUE");
             return true;
         }
         if (curMov == move.RIGHT && Input.GetKey(KeyCode.D))
         {
-            Debug.Log("RIGHT TRUE");
             return true;
         }
         if (curMov == move.SLIDE && Input.GetKey(KeyCode.S))
         {
-            Debug.Log("DOWN TRUE");
             return true;
         }
         return false;
+    }
+
+    private void BaseInputChecks()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            manuevering = true;
+            jumping = true;
+            rb.AddForce(Vector3.up * 50f, ForceMode.Impulse);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            SetMove(move.SLIDE);
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            SetMove(move.LEFT);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            SetMove(move.RIGHT);
+        }
+    }
+
+    private void ManueverIn()
+    {
+        manueverInClock = Mathf.Max(manueverInClock - Time.deltaTime, 0f);
+        if (curMov == move.SLIDE)
+        {
+            rb.gameObject.transform.rotation = Quaternion.Euler(Mathf.Lerp(72.5f, 0f, manueverInClock / manueverInTime), 0f, 0f);
+        }
+        else if (curMov == move.LEFT)
+        {
+            Vector3 p = rb.gameObject.transform.position;
+            p.x = Mathf.Lerp(baseX - xShift, baseX, manueverInClock / manueverInTime);
+            rb.gameObject.transform.position = p;
+        }
+        else if (curMov == move.RIGHT)
+        {
+            Vector3 p = rb.gameObject.transform.position;
+            p.x = Mathf.Lerp(baseX + xShift, baseX, manueverInClock / manueverInTime);
+            rb.gameObject.transform.position = p;
+        }
+    }
+
+    private void ManueverOut()
+    {
+        manueveringOut = true;
+        manueverOutClock = Mathf.Max(manueverOutClock - Time.deltaTime, 0f);
+        if (curMov == move.SLIDE)
+        {
+            rb.gameObject.transform.rotation = Quaternion.Euler(Mathf.Lerp(0f, 72.5f, manueverOutClock / manueverOutTime), 0f, 0f);
+        }
+        else if (curMov == move.LEFT)
+        {
+            Vector3 p = rb.gameObject.transform.position;
+            p.x = Mathf.Lerp(baseX, baseX - xShift, manueverOutClock / manueverOutTime);
+            rb.gameObject.transform.position = p;
+        }
+        else if (curMov == move.RIGHT)
+        {
+            Vector3 p = rb.gameObject.transform.position;
+            p.x = Mathf.Lerp(baseX, baseX + xShift, manueverOutClock / manueverOutTime);
+            rb.gameObject.transform.position = p;
+        }
+        if (manueverOutClock == 0f)
+        {
+            manueveringOut = false;
+            manuevering = false;
+        }
     }
 
     private void UpdateFeds()
@@ -153,32 +182,34 @@ public class ChasePlayerControls : MonoBehaviour
         feds.transform.position = p;
     }
 
-
-
-    private void Start()
-    {
-        SetOn(true);
-    }
-
     public void SetOn(bool on)
     {
         if (on)
         {
+            isOn = false;
             manuevering = false;
             jumping = false;
-            rb.velocity = new Vector3(0f, 0f, moveSpeed);
             rb.rotation = Quaternion.identity;
             baseX = rb.position.x;
-            shift = Vector3.zero;
             curSpeed = moveSpeed;
             fedZOffest = startingOffset;
             prevFedZ = fedZOffest;
+            UpdateFeds();
+            loseScreen.SetActive(false);
+            StartCoroutine(WaitToStart());
         }
         else
         {
-            ;
+            feds.SetActive(false);
+            isOn = false;
         }
-        playerController.SetChaseMode(on);
+        playerController.LockControls(on);
+    }
+
+    private IEnumerator WaitToStart()
+    {
+        yield return new WaitForSeconds(1.5f);
+        isOn = true;
     }
 
     private void SetMove(move m)
@@ -191,7 +222,7 @@ public class ChasePlayerControls : MonoBehaviour
 
     public void bump()
     {
-        if (!slowed)
+        if (!slowed && isOn)
         {
             slowed = true;
             curSpeed = slowedSpeed;
@@ -204,9 +235,18 @@ public class ChasePlayerControls : MonoBehaviour
     {
         for (float i = 0; i < slowDuration; i += Time.deltaTime)
         {
+            if ((i > slowDuration *.1 && i < slowDuration * .25) || (i > slowDuration * .35 && i < slowDuration * .5) || (i > slowDuration * .6 && i < slowDuration * .72) || (i > slowDuration * .82 && i < slowDuration * .95))
+            {
+                playerModel.SetActive(false);
+            }
+            else
+            {
+                playerModel.SetActive(true);
+            }
             fedZOffest -= Time.deltaTime / slowDuration * bumpAmount;
             yield return new WaitForEndOfFrame();
         }
+        playerModel.SetActive(true);
         fedZOffest = prevFedZ - bumpAmount;
         prevFedZ = fedZOffest;
         curSpeed = moveSpeed;

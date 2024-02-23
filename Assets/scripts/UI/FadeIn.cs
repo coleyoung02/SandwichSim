@@ -11,7 +11,7 @@ public class FadeIn : MonoBehaviour
     private float a = 0f;
     [SerializeField] private Image image;
     [SerializeField] private float fadeDuration;
-    [SerializeField] private bool winOnFinish;
+    private bool winOnFinish = false;
 
     //might allow fade out eventually
     public void BeginFade(bool fadeIn=true)
@@ -20,12 +20,17 @@ public class FadeIn : MonoBehaviour
         image.gameObject.SetActive(true);
     }
 
+    public void SetWinOnFinish(bool shouldWin)
+    {
+        winOnFinish = shouldWin;
+    }
+
     private void Update()
     {
         if (fadingIn)
         {
             a += Time.deltaTime * (1f / fadeDuration);
-            if (a >= 1f)
+            if (a >= 1f && winOnFinish)
             {
                 SceneManager.LoadScene("WinScene");
             }
