@@ -9,6 +9,7 @@ public class CarLane : MonoBehaviour
     [SerializeField] private float gap = 30f;
     [SerializeField] private float spawnDistance = 390f;
     [SerializeField] private bool debug;
+    private static float yOffset = 3.75f;
     private GameObject lastCar;
     private GameObject player;
 
@@ -50,7 +51,7 @@ public class CarLane : MonoBehaviour
         }
         return transform.forward * Vector3.Dot(transform.forward, transform.position) + 
             Vector3.up * Vector3.Dot(transform.up, transform.position) +
-            Vector3.up * 6f - 
+            Vector3.up * yOffset - 
             spawnDistance * transform.right * mult + 
             transform.right * Vector3.Dot(player.transform.position, transform.right);
     }

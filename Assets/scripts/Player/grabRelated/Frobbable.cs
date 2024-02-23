@@ -158,6 +158,7 @@ public class Frobbable : MonoBehaviour
     {
         if (winOnTouch && hasLayer(LayerMask.GetMask("PreppedIngredient"), collision.gameObject.layer))
         {
+            gripper.Toggle(true);
             sand.OnWin();
         }
         if (held && !collision.gameObject.layer.Equals(LayerMask.GetMask("Hand")))

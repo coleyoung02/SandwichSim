@@ -14,7 +14,6 @@ public class ChasePlayerControls : MonoBehaviour
         RIGHT
     }
     [SerializeField] private float manueverInTime;
-    [SerializeField] private float manueverHoldDuration;
     [SerializeField] private float manueverOutTime;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float slowedSpeed;
@@ -25,14 +24,16 @@ public class ChasePlayerControls : MonoBehaviour
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private Feds feds;
+    [SerializeField] private GameObject feds;
+    [SerializeField] private float fedSpeed;
+    [SerializeField] private AudioClip clang;
 
     private bool manuevering;
+    private bool manueveringOut;
     private bool jumping;
     private bool slowed;
 
     private float manueverInClock;
-    private float manueverHoldClock;
     private float manueverOutClock;
     private move curMov;
     private float baseX;
@@ -45,25 +46,25 @@ public class ChasePlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(Vector3.down * 50);
         if (!manuevering && !jumping)
         {
+
             rb.velocity = new Vector3(0f, rb.velocity.y, curSpeed);
             if (Input.GetKeyDown(KeyCode.W))
             {
                 manuevering = true;
                 jumping = true;
-                rb.AddForce(Vector3.up * 30f, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * 50f, ForceMode.Impulse);
             }
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKey(KeyCode.S))
             {
                 SetMove(move.SLIDE);
             }
-            else if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A))
             {
                 SetMove(move.LEFT);
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D))
             {
                 SetMove(move.RIGHT);
             }
@@ -91,12 +92,9 @@ public class ChasePlayerControls : MonoBehaviour
                     rb.gameObject.transform.position = p;
                 }
             }
-            else if (manueverHoldClock > 0f)
+            else if (manueveringOut || !checkSameInput())
             {
-                manueverHoldClock = Mathf.Max(manueverHoldClock - Time.deltaTime, 0f);
-            }
-            else if (manueverOutClock > 0f)
-            {
+                manueveringOut = true;
                 manueverOutClock = Mathf.Max(manueverOutClock - Time.deltaTime, 0f);
                 if (curMov == move.SLIDE)
                 {
@@ -114,23 +112,45 @@ public class ChasePlayerControls : MonoBehaviour
                     p.x = Mathf.Lerp(baseX, baseX + xShift, manueverOutClock / manueverOutTime);
                     rb.gameObject.transform.position = p;
                 }
-            }
-            else
-            {
-                manuevering = false;
+                if (manueverOutClock == 0f)
+                {
+                    manueveringOut = false;
+                    manuevering = false;
+                }
             }
         }
         UpdateFeds();
         if (fedZOffest <- .001f)
         {
         }
+        rb.AddForce(Vector3.down * 30);
+    }
+
+    private bool checkSameInput()
+    {
+        if (curMov == move.LEFT && Input.GetKey(KeyCode.A))
+        {
+            Debug.Log("LEFT TRUE");
+            return true;
+        }
+        if (curMov == move.RIGHT && Input.GetKey(KeyCode.D))
+        {
+            Debug.Log("RIGHT TRUE");
+            return true;
+        }
+        if (curMov == move.SLIDE && Input.GetKey(KeyCode.S))
+        {
+            Debug.Log("DOWN TRUE");
+            return true;
+        }
+        return false;
     }
 
     private void UpdateFeds()
     {
-        Vector3 p = feds.gameObject.transform.position;
+        Vector3 p = feds.transform.position;
         p.z = transform.position.z - fedZOffest;
-        feds.gameObject.transform.position = p;
+        feds.transform.position = p;
     }
 
 
@@ -166,7 +186,6 @@ public class ChasePlayerControls : MonoBehaviour
         curMov = m;
         manuevering = true;
         manueverInClock = manueverInTime;
-        manueverHoldClock = manueverHoldDuration;
         manueverOutClock = manueverOutTime;
     }
 
@@ -176,6 +195,7 @@ public class ChasePlayerControls : MonoBehaviour
         {
             slowed = true;
             curSpeed = slowedSpeed;
+            FindObjectOfType<AudioManager>().PlayClip(Channel.SFX, clang);
             StartCoroutine(slow());
         }
     }
