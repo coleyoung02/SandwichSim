@@ -64,6 +64,7 @@ public class Frobbable : MonoBehaviour
             float r = UnityEngine.Random.Range(0f, 1f);
             if (r < soupChance)
             {
+                isGroceryItem = false;
                 geomoetry.SetActive(false);
                 soupGeomoetry.SetActive(true);
                 soupChance = 0f;

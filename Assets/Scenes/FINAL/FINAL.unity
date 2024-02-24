@@ -7476,7 +7476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &657072178
 Transform:
   m_ObjectHideFlags: 0
@@ -10341,16 +10341,6 @@ PrefabInstance:
       propertyPath: feds
       value: 
       objectReference: {fileID: 1656785152}
-    - target: {fileID: 1274514497735531991, guid: 29524a713a635234692329bc09eccbad,
-        type: 3}
-      propertyPath: downForce
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1274514497735531991, guid: 29524a713a635234692329bc09eccbad,
-        type: 3}
-      propertyPath: jumpForce
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 1274514497735531991, guid: 29524a713a635234692329bc09eccbad,
         type: 3}
       propertyPath: loseScreen

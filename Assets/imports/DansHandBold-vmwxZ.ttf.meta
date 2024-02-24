@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fb83c8ba72981084b9254509c98c259b
+guid: 3e68f2ffa295cb145a83c2b17f4f48ea
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - paint
+  - Dan's Hand Bold
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

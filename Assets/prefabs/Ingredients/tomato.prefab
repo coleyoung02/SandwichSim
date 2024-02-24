@@ -279,7 +279,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4908228813108507694}
   serializedVersion: 4
-  m_Mass: 0.01
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -315,6 +315,7 @@ MonoBehaviour:
     m_Bits: 4160
   itemId: 1
   isGroceryItem: 1
+  isPreppedIngredient: 0
   soupChance: 0.8
   geomoetry: {fileID: 1602202332876679529}
   soupGeomoetry: {fileID: 4224890623612544675}

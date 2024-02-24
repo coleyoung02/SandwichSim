@@ -127,6 +127,7 @@ MonoBehaviour:
     m_Bits: 4160
   itemId: 0
   isGroceryItem: 1
+  isPreppedIngredient: 0
   soupChance: 0
   geomoetry: {fileID: 0}
   soupGeomoetry: {fileID: 0}
@@ -138,7 +139,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3030973395551488195}
   serializedVersion: 4
-  m_Mass: 0.5
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
