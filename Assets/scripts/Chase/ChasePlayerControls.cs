@@ -22,6 +22,8 @@ public class ChasePlayerControls : MonoBehaviour
     [SerializeField] private float xShift;
     [SerializeField] private float bumpAmount;
     [SerializeField] private float startingOffset;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float downForce;
 
     [SerializeField] private GameObject startSpawn;
     [SerializeField] private GameObject playerModel;
@@ -77,8 +79,15 @@ public class ChasePlayerControls : MonoBehaviour
                 rb.velocity = Vector3.zero;
                 StartCoroutine(Rerun());
             }
-            rb.AddForce(Vector3.down * 30);
         }   
+    }
+
+    void FixedUpdate()
+    {
+        if (isOn)
+        {
+            rb.AddForce(Vector3.down * downForce, ForceMode.Force);
+        }
     }
 
     private IEnumerator Rerun()
@@ -111,7 +120,7 @@ public class ChasePlayerControls : MonoBehaviour
         {
             manuevering = true;
             jumping = true;
-            rb.AddForce(Vector3.up * 50f, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
         else if (Input.GetKey(KeyCode.S))
         {

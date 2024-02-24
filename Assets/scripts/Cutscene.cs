@@ -49,16 +49,16 @@ public class Cutscene : MonoBehaviour
         FindObjectOfType<PlayerController>().gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (index < cameras.Count)
         {
-            if (timer <= 0)
+            if (timer <= 0 || CheckSkip())
             {
                 ReadState();
                 MainUpdateLoop();
             }
-            else
+            else 
             {
                 timer -= Time.deltaTime;
                 if (scene == Scene.FBI_One && index ==  3)
@@ -101,15 +101,31 @@ public class Cutscene : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private bool CheckSkip()
+    {
+        return Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0);
+    }
+
     private void MainUpdateLoop()
     {
         if (cmode == Mode.Char)
         {
+            bool skipped = false;
             if (charIndex < dialogue[index].Length)
             {
-                textBox.text += dialogue[index][charIndex];
-                timer = charDelay;
-                charIndex++;
+                if (CheckSkip())
+                {
+                    skipped = true;
+                    textBox.text = dialogue[index];
+                    charIndex = dialogue[index].Length;
+                }
+                else
+                {
+                    textBox.text += dialogue[index][charIndex];
+                    timer = charDelay;
+                    charIndex++;
+                }
+
                 if (charIndex == dialogue[index].Length)
                 {
                     timer = afterTextLength;
@@ -118,7 +134,16 @@ public class Cutscene : MonoBehaviour
             }
             if (timer >= 0)
             {
-                timer -= Time.deltaTime;
+                if (CheckSkip() && ! skipped)
+                {
+                    timer = 0;
+                    cmode = Mode.Read;
+                    index++;
+                }
+                else
+                {
+                    timer -= Time.deltaTime;
+                }
             }
             else
             {
@@ -128,7 +153,13 @@ public class Cutscene : MonoBehaviour
         }
         else if (cmode == Mode.Wait)
         {
-            if (timer >= 0)
+            if (CheckSkip())
+            {
+                timer = 0;
+                cmode = Mode.Read;
+                index++;
+            }
+            else if (timer >= 0)
             {
                 timer -= Time.deltaTime;
             }

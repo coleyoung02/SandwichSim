@@ -14,9 +14,10 @@ public class Hands : MonoBehaviour
     private bool usingLeft;
     private bool inUse;
     private Mode mode;
-    [SerializeField] float moveSpeed = .1f;
-    [SerializeField] float rotateSpeed = .1f;
+    [SerializeField] float moveSpeed = .2f;
+    [SerializeField] float rotateSpeed = .2f;
     private Gripper activeHand;
+    private float sensitivity = .5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +27,14 @@ public class Hands : MonoBehaviour
         activeHand = right;
         //Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        sensitivity = PlayerPrefs.GetFloat("Sensitivity", .5f);
     }
 
+    public void SetSensitivity(float s)
+    {
+        sensitivity = s;
+        PlayerPrefs.SetFloat("Sensitivity", s);
+    }
 
     // Update is called once per frame
     void Update()
@@ -58,14 +65,14 @@ public class Hands : MonoBehaviour
 
         if (mode == Mode.move && !Input.GetKey(KeyCode.LeftShift))
         {
-            handPos.x = Mathf.Clamp(handPos.x + Input.GetAxis("Mouse X") * moveSpeed, -handPos.z, handPos.z);
-            handPos.y = Mathf.Clamp(handPos.y + Input.GetAxis("Mouse Y") * moveSpeed, -handPos.z/2, handPos.z/2);
+            handPos.x = Mathf.Clamp(handPos.x + Input.GetAxis("Mouse X") * moveSpeed * sensitivity, -handPos.z, handPos.z);
+            handPos.y = Mathf.Clamp(handPos.y + Input.GetAxis("Mouse Y") * moveSpeed * sensitivity, -handPos.z/2, handPos.z/2);
             activeHand.transform.localPosition = handPos;
         }
         else if (mode == Mode.move)
         {
-            handPos.z = Mathf.Max(.75f, handPos.z + Input.GetAxis("Mouse Y") * moveSpeed);
-            handPos.x = Mathf.Clamp(handPos.x + Input.GetAxis("Mouse X") * moveSpeed, -handPos.z, handPos.z);
+            handPos.z = Mathf.Max(.75f, handPos.z + Input.GetAxis("Mouse Y") * moveSpeed * sensitivity);
+            handPos.x = Mathf.Clamp(handPos.x + Input.GetAxis("Mouse X") * moveSpeed * sensitivity, -handPos.z, handPos.z);
             handPos.y = Mathf.Clamp(handPos.y, -handPos.z / 2, handPos.z / 2);
             activeHand.transform.localPosition = handPos;
         }
@@ -84,19 +91,15 @@ public class Hands : MonoBehaviour
                     mouseX = 0;
                 }
             }
-            int rightMult = 1;
-            if (!usingLeft)
-            {
-                rightMult = -1;
-            }
-            activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.forward, mouseY * rightMult * rotateSpeed);
             if (!Input.GetKey(KeyCode.LeftShift))
             {
-                activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.right, -mouseX * rightMult * rotateSpeed);
+                activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.right, mouseX * rotateSpeed * sensitivity);
+                activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.forward, mouseY * rotateSpeed * sensitivity);
             }
             else
             {
-                activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.up, mouseX * rotateSpeed);
+                activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.up, mouseY * rotateSpeed * sensitivity);
+                activeHand.transform.RotateAround(activeHand.transform.position, activeHand.transform.forward, mouseX * rotateSpeed * sensitivity);
             }
         }
 

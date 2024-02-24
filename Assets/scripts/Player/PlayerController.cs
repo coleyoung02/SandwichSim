@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Camera deathCam;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float moveSpeed = 6;
-    [SerializeField] private float sensitivity = .5f;
+    private float sensitivity = .5f;
     private bool usingHands;
     private float xRotation;
     private bool deceased;
@@ -25,6 +25,13 @@ public class PlayerController : MonoBehaviour
         usingHands = false;
         deceased = false;
         controlsLocked = false;
+        sensitivity = PlayerPrefs.GetFloat("Sensitivity", .5f);
+    }
+
+    public void SetSensitivity(float s)
+    {
+        sensitivity = s;
+        PlayerPrefs.SetFloat("Sensitivity", s);
     }
 
     private void OnCollisionEnter(Collision collision)

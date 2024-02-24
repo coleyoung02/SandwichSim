@@ -7476,7 +7476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &657072178
 Transform:
   m_ObjectHideFlags: 0
@@ -7532,7 +7532,7 @@ MonoBehaviour:
   - FBI FREEZE!
   - We are with the Federation of Bread and Ingredients and we have reason to believe
     you are preparing to assemble a sandwich that will threaten the profits of agribusinesses.
-  - wait, no, i was supposed to say threaten democracy or libery or something...
+  - wait, no, i was supposed to say threaten democracy or liberty or something...
   - 
   - THE BEAR IS GETTING AWAY!
   - Good thing it doesn't know how to navigate that obstacle course our agents have
@@ -10341,6 +10341,16 @@ PrefabInstance:
       propertyPath: feds
       value: 
       objectReference: {fileID: 1656785152}
+    - target: {fileID: 1274514497735531991, guid: 29524a713a635234692329bc09eccbad,
+        type: 3}
+      propertyPath: downForce
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274514497735531991, guid: 29524a713a635234692329bc09eccbad,
+        type: 3}
+      propertyPath: jumpForce
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1274514497735531991, guid: 29524a713a635234692329bc09eccbad,
         type: 3}
       propertyPath: loseScreen
