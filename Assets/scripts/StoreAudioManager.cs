@@ -80,6 +80,7 @@ public class StoreAudioManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
             UpdateVolume(i);
         }
+        transform.GetChild(0).gameObject.SetActive(true);
         StoreVO.Play();
         yield return new WaitForSeconds(StoreVO.clip.length);
         for (float i = lerpInTime / 4; i < lerpInTime; i += Time.deltaTime)

@@ -15,13 +15,15 @@ public class Cutscene : MonoBehaviour
 
     private enum Scene
     {
-        FBI_One
+        FBI_One,
+        GrocerySubtitles
     }
 
     [SerializeField] private List<Camera> cameras;
     [SerializeField] private List<string> dialogue;
     [SerializeField] private GameObject textHolder;
     [SerializeField] private TextMeshProUGUI textBox;
+    [SerializeField] private bool lockControls;
     // for shots with no lines
     [SerializeField] private float shotLength;
     // for shots with lines
@@ -43,9 +45,13 @@ public class Cutscene : MonoBehaviour
         {
             c.gameObject.SetActive(false);
         }
+        cameras[0].gameObject.SetActive(true);
         index = 0;
         cmode = Mode.Read;
-        FindObjectOfType<PlayerController>().LockControls(true);
+        if (lockControls)
+        {
+            FindObjectOfType<PlayerController>().LockControls(true);
+        }
         FindObjectOfType<PlayerController>().gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
@@ -87,16 +93,20 @@ public class Cutscene : MonoBehaviour
     private void OnEnd()
     {
         textHolder.SetActive(false);
-        trigger.SetActive(false);
+        if (trigger != null)
+            trigger.SetActive(false);
 
-        FindObjectOfType<PlayerController>().LockControls(false);
+        if (lockControls)
+        {
+            FindObjectOfType<PlayerController>().LockControls(false);
+        }
         if (scene == Scene.FBI_One)
         {
             surferCloneTrigger.SetActive(true);
+            GameObject g = FindObjectOfType<PlayerController>().gameObject;
+            g.transform.position = endTeleportLocation.transform.position;
+            g.transform.rotation = endTeleportLocation.transform.rotation;
         }
-        GameObject g = FindObjectOfType<PlayerController>().gameObject;
-        g.transform.position = endTeleportLocation.transform.position;
-        g.transform.rotation = endTeleportLocation.transform.rotation;
 
         gameObject.SetActive(false);
     }

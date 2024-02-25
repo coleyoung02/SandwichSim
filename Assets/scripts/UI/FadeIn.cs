@@ -37,7 +37,6 @@ public class FadeIn : MonoBehaviour
             Color c = image.color;
             c.a = a;
             image.color = c;
-            Debug.LogWarning(image.color.a);
 
         }
     }

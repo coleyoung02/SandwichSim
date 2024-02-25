@@ -30,7 +30,7 @@ public class Gripper : MonoBehaviour
             closest = null;
             if (inHand!= null)
             {
-                inHand.GetComponent<Frobbable>().SetHighlight(true);
+                inHand.GetComponent<HandInteractable>().SetHighlight(true);
                 closest = inHand;
             }
         }
@@ -38,7 +38,7 @@ public class Gripper : MonoBehaviour
         {
             if (closest != null)
             {
-                closest.GetComponent<Frobbable>().SetHighlight(false);
+                closest.GetComponent<HandInteractable>().SetHighlight(false);
             }
         }
     }
@@ -53,11 +53,11 @@ public class Gripper : MonoBehaviour
             {
                 if (lastFrameClosest != null)
                 {
-                    lastFrameClosest.GetComponent<Frobbable>().SetHighlight(false);
+                    lastFrameClosest.GetComponent<HandInteractable>().SetHighlight(false);
                 }
                 if (closest != null)
                 {
-                    closest.GetComponent<Frobbable>().SetHighlight(true);
+                    closest.GetComponent<HandInteractable>().SetHighlight(true);
                 }
             }
         }
@@ -93,7 +93,14 @@ public class Gripper : MonoBehaviour
     {
         if (closest != null)
         {
-            grab(closest);
+            if (closest.GetComponent<DoorHandle>() != null)
+            {
+                closest.GetComponent<DoorHandle>().Grab(this);
+            }
+            else
+            {
+                grab(closest);
+            }
             return true;
         }
         else
@@ -139,12 +146,12 @@ public class Gripper : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Frobbable>() != null && other.gameObject.GetComponent<Frobbable>().GetUsable())
+        if (other.gameObject.GetComponent<HandInteractable>() != null && other.gameObject.GetComponent<HandInteractable>().GetUsable())
         {
             nearHand.Add(other.gameObject);
         }
-        else if (other.gameObject.transform.parent != null && other.gameObject.transform.parent.gameObject.GetComponent<Frobbable>() != null
-             && other.gameObject.transform.parent.gameObject.GetComponent<Frobbable>().GetUsable())
+        else if (other.gameObject.transform.parent != null && other.gameObject.transform.parent.gameObject.GetComponent<HandInteractable>() != null
+             && other.gameObject.transform.parent.gameObject.GetComponent<HandInteractable>().GetUsable())
         {
             nearHand.Add(other.gameObject.transform.parent.gameObject);
 
@@ -165,12 +172,12 @@ public class Gripper : MonoBehaviour
 
     private void OnRemove(GameObject g)
     {
-        g.GetComponent<Frobbable>().SetHighlight(false);
+        g.GetComponent<HandInteractable>().SetHighlight(false);
     }
 
     private void grab(GameObject g)
     {
-        g.GetComponent<Frobbable>().Grab(this);
+        g.GetComponent<HandInteractable>().Grab(this);
         g.transform.parent = gameObject.transform;
         g.GetComponent<Rigidbody>().useGravity = false;
         inHand = g;

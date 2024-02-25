@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Frobbable : MonoBehaviour
+public class Frobbable : HandInteractable
 {
 
     [SerializeField] private LayerMask extraIgnoredLayers;
@@ -14,7 +14,6 @@ public class Frobbable : MonoBehaviour
     private bool winOnTouch;
     private SandwichAssembly sand;
     private bool usable;
-    protected bool highlightDisabled = false;
 
 
     [Header ("grocery items")]
@@ -25,8 +24,9 @@ public class Frobbable : MonoBehaviour
     [SerializeField] private GameObject geomoetry;
     [SerializeField] private GameObject soupGeomoetry;
 
-    public void Start()
+    protected override void Start()
     {
+        base.Start();
         rb = GetComponent<Rigidbody>();
         gameObject.AddComponent<Highlight>();
         held = false;
@@ -39,22 +39,8 @@ public class Frobbable : MonoBehaviour
         return rb;
     }
 
-    public virtual void SetHighlight(bool h)
-    {
-        if (!highlightDisabled)
-        {
-            if (h)
-            {
-                gameObject.GetComponent<Highlight>().StartColors();
-            }
-            else
-            {
-                gameObject.GetComponent<Highlight>().ResetColors();
-            }
-        }
-    }
 
-    public virtual void Grab(Gripper g)
+    public override void Grab(Gripper g)
     {
         rb.constraints = RigidbodyConstraints.FreezeAll;
         held = true;
@@ -123,7 +109,7 @@ public class Frobbable : MonoBehaviour
         }
     }
 
-    public bool GetUsable()
+    public override bool GetUsable()
     {
         return usable;
     }
