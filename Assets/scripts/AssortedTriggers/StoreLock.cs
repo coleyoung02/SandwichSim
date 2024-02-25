@@ -5,15 +5,18 @@ using UnityEngine;
 public class StoreLock : GroceryListUpdateable
 {
 
-    [SerializeField] private GameObject door;
+    [SerializeField] private GameObject leftDoor;
+    [SerializeField] private GameObject rightDoor;
+    [SerializeField] private float closedX;
     [SerializeField] private GameObject cutsceneTrigger;
+    [SerializeField] private StoreDoorOpen openTrigger;
 
     private bool hasLocked = false;
 
     public override void OnCompletion()
     {
         cutsceneTrigger.SetActive(true);
-        door.SetActive(false);
+        openTrigger.StartOpen();
     }
 
     public override void OnUpdate(int index, bool has)
@@ -25,7 +28,11 @@ public class StoreLock : GroceryListUpdateable
     {
         if (!hasLocked)
         {
-            door.SetActive(true);
+            openTrigger.StopAllCoroutines();
+            openTrigger.TurnOff();
+            Vector3 pos = leftDoor.transform.localPosition;
+            leftDoor.transform.localPosition = new Vector3(-closedX, pos.y, pos.z);
+            rightDoor.transform.localPosition = new Vector3(closedX, pos.y, pos.z);
             hasLocked = true;
         }
     }

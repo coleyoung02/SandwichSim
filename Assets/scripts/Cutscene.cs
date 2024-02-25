@@ -24,6 +24,7 @@ public class Cutscene : MonoBehaviour
     [SerializeField] private GameObject textHolder;
     [SerializeField] private TextMeshProUGUI textBox;
     [SerializeField] private bool lockControls;
+    [SerializeField] private bool skippable;
     // for shots with no lines
     [SerializeField] private float shotLength;
     // for shots with lines
@@ -36,8 +37,10 @@ public class Cutscene : MonoBehaviour
 
     private float timer;
     private int index;
-    private int charIndex;
     private Mode cmode;
+    private float expectedLength;
+    private float charClock;
+    private bool charAddingMode = false;
 
     private void OnEnable()
     {
@@ -59,7 +62,7 @@ public class Cutscene : MonoBehaviour
     {
         if (index < cameras.Count)
         {
-            if (timer <= 0 || CheckSkip())
+            if (charAddingMode || timer <= 0 || CheckSkip())
             {
                 ReadState();
                 MainUpdateLoop();
@@ -113,7 +116,7 @@ public class Cutscene : MonoBehaviour
 
     private bool CheckSkip()
     {
-        return Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0);
+        return skippable && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0));
     }
 
     private void MainUpdateLoop()
@@ -121,28 +124,27 @@ public class Cutscene : MonoBehaviour
         if (cmode == Mode.Char)
         {
             bool skipped = false;
-            if (charIndex < dialogue[index].Length)
+            if (charAddingMode)
             {
                 if (CheckSkip())
                 {
                     skipped = true;
                     textBox.text = dialogue[index];
-                    charIndex = dialogue[index].Length;
+                    charClock = expectedLength;
                 }
                 else
                 {
-                    textBox.text += dialogue[index][charIndex];
-                    timer = charDelay;
-                    charIndex++;
+                    textBox.text = dialogue[index].Substring(0, Mathf.Min(Mathf.RoundToInt(dialogue[index].Length * charClock / expectedLength), dialogue[index].Length));
+                    charClock += Time.deltaTime;
                 }
 
-                if (charIndex == dialogue[index].Length)
+                if (textBox.text.Length == dialogue[index].Length)
                 {
                     timer = afterTextLength;
-
+                    charAddingMode = false;
                 }
             }
-            if (timer >= 0)
+            else if (timer >= 0)
             {
                 if (CheckSkip() && ! skipped)
                 {
@@ -188,9 +190,11 @@ public class Cutscene : MonoBehaviour
             if (dialogue[index] != null && dialogue[index].Length > 0)
             {
                 textHolder.SetActive(true);
-                charIndex = 0;
                 textBox.text = "";
                 cmode = Mode.Char;
+                charClock = 0;
+                expectedLength = charDelay * dialogue[index].Length;
+                charAddingMode = true;
             }
             else
             {

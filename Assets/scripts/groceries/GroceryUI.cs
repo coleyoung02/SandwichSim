@@ -8,10 +8,11 @@ public class GroceryUI : GroceryListUpdateable
     public static string groceryItemToString(GroceryItem item)
     {
         switch (item) {
-            case GroceryItem.Bread: return "BREAD";
-            case GroceryItem.Tomato: return "TOMATO";
-            case GroceryItem.Lettuce: return "LETTUCE";
-            case GroceryItem.Pickle: return "PICKLE";
+            case GroceryItem.Bread: return "Bread";
+            case GroceryItem.Tomato: return "Tomato";
+            case GroceryItem.Lettuce: return "Lettuce";
+            case GroceryItem.Pickle: return "Pickle";
+            case GroceryItem.Cheese: return "Cheese";
             default: return "oh no";
         }
     }
@@ -24,6 +25,7 @@ public class GroceryUI : GroceryListUpdateable
             case "tomato": return GroceryItem.Tomato;
             case "lettuce": return GroceryItem.Lettuce;
             case "pickle": return GroceryItem.Pickle;
+            case "cheese": return GroceryItem.Cheese;
             //might break C#
             default: return (GroceryItem)(-1);
         }
