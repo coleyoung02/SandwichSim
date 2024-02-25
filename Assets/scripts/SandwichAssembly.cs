@@ -8,6 +8,7 @@ public class SandwichAssembly : GroceryListUpdateable
     [SerializeField] private GroceryList g;
     [SerializeField] private GameObject finalSandwich;
     private List<GameObject> inside;
+    private bool alreadyWon = false;
 
     private void Start()
     {
@@ -50,14 +51,23 @@ public class SandwichAssembly : GroceryListUpdateable
             g.RemoveItem(f.GetItem());
             inside.Remove(f.gameObject);
         }
+        if (g.CheckCompletion() && !alreadyWon)
+        {
+            if (CheckSandwichness(true))
+            {
+                OnWin();
+            }
+        }
     }
 
-    private bool CheckSandwichness()
+    private bool CheckSandwichness(bool skipAdd=false)
     {
         inside = inside.OrderBy(x => x.transform.position.y).ToList();
         if (inside[0].GetComponent<Frobbable>().GetItem() == GroceryItem.Bread &&
-            inside[inside.Count - 1].GetComponent<Frobbable>().GetItem() == GroceryItem.Bread)
+            inside[inside.Count - 1].GetComponent<Frobbable>().GetItem() == GroceryItem.Bread &&
+            !skipAdd)
         {
+            alreadyWon = true;
             inside[inside.Count - 1].GetComponent<Frobbable>().WinOnTouch(this);
         }
         return inside[0].GetComponent<Frobbable>().GetItem() == GroceryItem.Bread &&

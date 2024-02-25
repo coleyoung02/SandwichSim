@@ -8,7 +8,8 @@ public enum GroceryItem
     Bread,
     Tomato,
     Lettuce,
-    Pickle
+    Pickle,
+    Cheese
 }
 
 public class GroceryList : MonoBehaviour
