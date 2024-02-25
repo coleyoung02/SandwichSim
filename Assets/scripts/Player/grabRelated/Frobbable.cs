@@ -114,7 +114,7 @@ public class Frobbable : HandInteractable
         return usable;
     }
 
-    public void Release()
+    public virtual void Release()
     {
 
         rb.constraints = RigidbodyConstraints.None;

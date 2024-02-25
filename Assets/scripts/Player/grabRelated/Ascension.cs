@@ -11,6 +11,7 @@ public class Ascension : Frobbable
     private GameObject leftRoof;
     private GameObject rightRoof;
     private GameObject beams;
+    private float roofAngle = 0f;
 
     private bool activated = false;
 
@@ -28,6 +29,7 @@ public class Ascension : Frobbable
         base.Grab(g);
         activated = true;
         player.gameObject.GetComponent<Rigidbody>().useGravity = false;
+        player.gameObject.GetComponent<Rigidbody>().velocity = Vector3.up * 3f;
         ascensionSource.Play();
         SetHighlight(false);
         highlightDisabled = true;
@@ -44,21 +46,46 @@ public class Ascension : Frobbable
             Destroy(c.gameObject);
         }
         beams.SetActive(false);
+
+        StopAllCoroutines();
         StartCoroutine(MoveAway());
     }
 
-    public override re
-
     private IEnumerator MoveAway()
     {
-        for (float i = 0; i < 65; i += Time.deltaTime * 5f)
+        for (float i = roofAngle; i < 95; i += Time.deltaTime * 5f)
         {
+            roofAngle = i;
             leftRoof.transform.rotation = Quaternion.Euler(0, 0, i);
             rightRoof.transform.rotation = Quaternion.Euler(0, 0, -i);
             yield return new WaitForEndOfFrame();
         }
-        leftRoof.transform.rotation = Quaternion.Euler(0, 0, 65);
-        rightRoof.transform.rotation = Quaternion.Euler(0, 0, -65);
+        leftRoof.transform.rotation = Quaternion.Euler(0, 0, 95);
+        rightRoof.transform.rotation = Quaternion.Euler(0, 0, -95);
+    }
+    private IEnumerator MoveTowards()
+    {
+        for (float i = roofAngle; i > 0; i -= Time.deltaTime * 8f)
+        {
+            roofAngle = i;
+            leftRoof.transform.rotation = Quaternion.Euler(0, 0, i);
+            rightRoof.transform.rotation = Quaternion.Euler(0, 0, -i);
+            yield return new WaitForEndOfFrame();
+        }
+        beams.SetActive(true);
+        leftRoof.transform.rotation = Quaternion.Euler(0, 0, 0);
+        rightRoof.transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    public override void Release()
+    {
+        highlightDisabled = false;
+        base.Release();
+        player.gameObject.GetComponent<Rigidbody>().useGravity = true;
+        activated = false;
+        ascensionSource.Pause();
+        StopAllCoroutines();
+        StartCoroutine(MoveTowards());
     }
 
 
@@ -66,7 +93,6 @@ public class Ascension : Frobbable
     {
         if (activated)
         {
-            player.gameObject.transform.position += Vector3.up * Time.deltaTime;
             player.gameObject.transform.Rotate(Vector3.up * Time.deltaTime * 10);
         }    
     }
