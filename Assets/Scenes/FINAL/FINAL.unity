@@ -50559,7 +50559,6 @@ GameObject:
   - component: {fileID: 1951452375}
   - component: {fileID: 1951452374}
   - component: {fileID: 1951452372}
-  - component: {fileID: 1951452371}
   m_Layer: 0
   m_Name: UICam
   m_TagString: MainCamera
@@ -50567,22 +50566,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1951452371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1951452369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b37864f7cfb37847b24280170a0011c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  left: {fileID: 0}
-  right: {fileID: 0}
-  moveSpeed: 0.2
-  rotateSpeed: 2
 --- !u!114 &1951452372
 MonoBehaviour:
   m_ObjectHideFlags: 0
