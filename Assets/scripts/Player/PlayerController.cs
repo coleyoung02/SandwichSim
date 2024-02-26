@@ -7,7 +7,10 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Hands hands;
-    [SerializeField] private Camera cam;
+    [SerializeField] private GameObject cam;
+    [SerializeField] private GameObject realCam;
+    [SerializeField] private float maxShift;
+    [SerializeField] private float frequency;
     [SerializeField] private Camera deathCam;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float moveSpeed = 6;
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool deceased;
     private bool handsOnly;
     private bool controlsLocked;
+    private float shiftClock;
 
     // Start is called before the first frame update
     void Awake()
@@ -93,7 +97,6 @@ public class PlayerController : MonoBehaviour
     private void rotate()
     {
         transform.Rotate(new Vector3(0, 1, 0), Input.GetAxis("Mouse X") * sensitivity);
-        Vector3 camRot = cam.gameObject.transform.rotation.eulerAngles;
         float unclamped = xRotation - Input.GetAxis("Mouse Y") * sensitivity;
         float newX = Mathf.Clamp(unclamped, -90f, 90f);
         xRotation = newX;
@@ -137,6 +140,15 @@ public class PlayerController : MonoBehaviour
         {
             moveDir = moveDir.normalized * moveSpeed;
             rb.velocity = new Vector3(moveDir.x, rb.velocity.y, moveDir.z);
+            shiftClock += Time.deltaTime;
+            Vector3 cp = cam.transform.localPosition;
+            cp.y += Mathf.Sin(shiftClock * Mathf.PI * 2 * frequency) * maxShift / 2;
+            cp.x += Mathf.Cos(shiftClock * Mathf.PI * frequency) * maxShift / 2;
+            cam.transform.localPosition = cp;
+            cp = realCam.transform.localPosition;
+            cp.y += Mathf.Sin(shiftClock * Mathf.PI * 2 * frequency) * maxShift / 8;
+            cp.x += Mathf.Cos(shiftClock * Mathf.PI * frequency) * maxShift / 8;
+            realCam.transform.localPosition = cp;
         }
 
     }

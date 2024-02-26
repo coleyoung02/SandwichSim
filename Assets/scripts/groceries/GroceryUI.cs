@@ -106,10 +106,10 @@ public class GroceryUI : GroceryListUpdateable
             groceryListUI.SetActive(true);
             for (float i = 0; i <= totalTime; i += Time.deltaTime)
             {
-                groceryListUI.GetComponent<RectTransform>().rotation = Quaternion.Euler(Mathf.Lerp(45, 0, i / totalTime), Mathf.Lerp(90, 0, i / totalTime), Mathf.Lerp(270, 0, i / totalTime));
+                groceryListUI.GetComponent<RectTransform>().localRotation = Quaternion.Euler(Mathf.Lerp(45, 0, i / totalTime), Mathf.Lerp(90, 0, i / totalTime), Mathf.Lerp(270, 0, i / totalTime));
                 yield return new WaitForEndOfFrame();
             }
-            groceryListUI.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 0);
+            groceryListUI.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 0);
             yield return new WaitForEndOfFrame();
             if (completed)
             {
@@ -121,7 +121,7 @@ public class GroceryUI : GroceryListUpdateable
             totalTime = 1f;
             for (float i = 0; i <= totalTime; i += Time.deltaTime)
             {
-                groceryListUI.GetComponent<RectTransform>().rotation = Quaternion.Euler(Mathf.Lerp(0, 45, i / totalTime), Mathf.Lerp(0, 90, i / totalTime), Mathf.Lerp(0, 270, i / totalTime));
+                groceryListUI.GetComponent<RectTransform>().localRotation = Quaternion.Euler(Mathf.Lerp(0, 45, i / totalTime), Mathf.Lerp(0, 90, i / totalTime), Mathf.Lerp(0, 270, i / totalTime));
                 yield return new WaitForEndOfFrame();
             }
             groceryListUI.SetActive(false);

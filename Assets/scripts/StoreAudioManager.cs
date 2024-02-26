@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class StoreAudioManager : MonoBehaviour
@@ -8,6 +9,10 @@ public class StoreAudioManager : MonoBehaviour
     [SerializeField] private float lerpInTime;
     [SerializeField] private bool mustExit;
     [SerializeField] private AudioSource StoreVO;
+    [SerializeField] private bool wide;
+    [SerializeField] private float maxDist;
+    [SerializeField] private float minDist;
+    private GameObject player;
     private float t;
     private bool isIn;
     private bool hasExited;
@@ -20,6 +25,10 @@ public class StoreAudioManager : MonoBehaviour
         isIn = false;
         announcementPlaying = false;
         SetVolumes(0);
+        if (wide)
+        {
+            player = FindObjectOfType<PlayerController>().gameObject;
+        }
     }
 
     // Update is called once per frame
@@ -28,13 +37,22 @@ public class StoreAudioManager : MonoBehaviour
         float oldT = t;
         if (!announcementPlaying)
         {
-            if (isIn)
+            if (wide)
             {
-                t = Mathf.Clamp(t + Time.deltaTime, 0, lerpInTime);
+                t = Mathf.Max(maxDist - Mathf.Max(Mathf.Abs(player.transform.position.z - transform.position.z), minDist), 0);
+                t /= (maxDist - minDist);
             }
             else
             {
-                t = Mathf.Clamp(t - Time.deltaTime, 0, lerpInTime);
+                if (isIn)
+                {
+                    t = Mathf.Clamp(t + Time.deltaTime, 0, lerpInTime);
+                }
+                else
+                {
+                    t = Mathf.Clamp(t - Time.deltaTime, 0, lerpInTime);
+                }
+
             }
             if (Mathf.Abs(t - oldT) >= .0001f)
             {

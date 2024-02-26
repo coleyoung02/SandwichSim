@@ -1255,11 +1255,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4361169905956829687, guid: 2d7309d99a8bc2c47874d453e12018bf,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5220760325553488659, guid: 2d7309d99a8bc2c47874d453e12018bf,
         type: 3}
       propertyPath: groceryList
