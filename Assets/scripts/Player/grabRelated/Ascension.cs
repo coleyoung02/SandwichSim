@@ -12,6 +12,7 @@ public class Ascension : Frobbable
     private GameObject rightRoof;
     private GameObject beams;
     private float roofAngle = 0f;
+    private GameObject[] lights;
 
     private bool activated = false;
 
@@ -21,6 +22,7 @@ public class Ascension : Frobbable
         leftRoof = GameObject.Find("leftRotatePoint");
         rightRoof = GameObject.Find("rightRotatePoint");
         beams = GameObject.Find("topBeams");
+        lights = GameObject.FindGameObjectsWithTag("ascensionLight");
     }
 
     public override void Grab(Gripper g)
@@ -46,6 +48,10 @@ public class Ascension : Frobbable
             Destroy(c.gameObject);
         }
         beams.SetActive(false);
+        foreach (GameObject go in lights)
+        {
+            go.GetComponent<Light>().range = 9f;
+        }
 
         StopAllCoroutines();
         StartCoroutine(MoveAway());
@@ -84,6 +90,10 @@ public class Ascension : Frobbable
         player.gameObject.GetComponent<Rigidbody>().useGravity = true;
         activated = false;
         ascensionSource.Pause();
+        foreach (GameObject go in lights)
+        {
+            go.GetComponent<Light>().range = 0f;
+        }
         StopAllCoroutines();
         StartCoroutine(MoveTowards());
     }

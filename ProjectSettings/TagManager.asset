@@ -8,6 +8,7 @@ TagManager:
   - car
   - basket
   - vanish
+  - ascensionLight
   layers:
   - Default
   - TransparentFX
