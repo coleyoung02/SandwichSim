@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.332
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 75969226}
-  m_IndirectSpecularColor: {r: 0.0010406852, g: 0.00026977438, b: 0.0031471797, a: 0.332}
+  m_IndirectSpecularColor: {r: 0.005481893, g: 0.0004652048, b: 0.0077100066, a: 0.332}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15300,6 +15300,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a30547bca3f9d0444b56b16c33e96ef3, type: 3}
+--- !u!114 &634295456 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5686894184601314736, guid: a97340d1e028bec49b46a875490d4d63,
+    type: 3}
+  m_PrefabInstance: {fileID: 703852551}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed71b3ddfb345744b3f837eb428598f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &635796176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15874,7 +15886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &657072178
 Transform:
   m_ObjectHideFlags: 0
@@ -21377,12 +21389,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 516301392761450897, guid: 29524a713a635234692329bc09eccbad,
+    - target: {fileID: 284054428946495383, guid: 29524a713a635234692329bc09eccbad,
         type: 3}
-      propertyPath: m_Material
+      propertyPath: pinballUI
       value: 
-      objectReference: {fileID: 13400000, guid: 4f78c5b9b4d62404a82d6b59f645d0a3,
-        type: 2}
+      objectReference: {fileID: 634295456}
     - target: {fileID: 844011619377754179, guid: 29524a713a635234692329bc09eccbad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21448,32 +21459,6 @@ PrefabInstance:
       propertyPath: startSpawn
       value: 
       objectReference: {fileID: 970751207}
-    - target: {fileID: 2542990383127620165, guid: 29524a713a635234692329bc09eccbad,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 4f78c5b9b4d62404a82d6b59f645d0a3,
-        type: 2}
-    - target: {fileID: 3350909716909814340, guid: 29524a713a635234692329bc09eccbad,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3350909716909814340, guid: 29524a713a635234692329bc09eccbad,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 27.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3350909716909814340, guid: 29524a713a635234692329bc09eccbad,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -29.900002
-      objectReference: {fileID: 0}
-    - target: {fileID: 4083183135862733285, guid: 29524a713a635234692329bc09eccbad,
-        type: 3}
-      propertyPath: m_Cameras.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4083183135862733285, guid: 29524a713a635234692329bc09eccbad,
         type: 3}
       propertyPath: m_Cameras.Array.data[0]
@@ -21484,23 +21469,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
-    - target: {fileID: 5601090569628382437, guid: 29524a713a635234692329bc09eccbad,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 4f78c5b9b4d62404a82d6b59f645d0a3,
-        type: 2}
     - target: {fileID: 8398584236487385545, guid: 29524a713a635234692329bc09eccbad,
         type: 3}
       propertyPath: m_Cameras.Array.data[0]
       value: 
       objectReference: {fileID: 1951452374}
-    - target: {fileID: 8681825179312838546, guid: 29524a713a635234692329bc09eccbad,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 4f78c5b9b4d62404a82d6b59f645d0a3,
-        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -54842,11 +54815,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 592691018}
-    - target: {fileID: 3533784121718679651, guid: d2f9189aa52b9e64aa0bf58370bcbb37,
-        type: 3}
-      propertyPath: spawnDistance
-      value: 390
-      objectReference: {fileID: 0}
     - target: {fileID: 7581579338538345561, guid: d2f9189aa52b9e64aa0bf58370bcbb37,
         type: 3}
       propertyPath: m_LocalPosition.x

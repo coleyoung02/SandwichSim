@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Hands hands;
     [SerializeField] private GameObject cam;
     [SerializeField] private GameObject realCam;
+    [SerializeField] private PinballUI pinballUI;
     [SerializeField] private GameObject deceasedColliders;
     [SerializeField] private float maxShift;
     [SerializeField] private float frequency;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool handsOnly;
     private bool controlsLocked;
     private float shiftClock;
+    private GameObject lastCarHit;
 
     // Start is called before the first frame update
     void Awake()
@@ -43,7 +45,16 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("car"))
         {
-            AudioManager.Instance.PlayPooledClip(ClipPool.PINBALL);
+            pinballUI.gameObject.SetActive(true);
+            if (lastCarHit == null || collision.gameObject != lastCarHit)
+            {
+                Debug.Log(lastCarHit);
+                pinballUI.CarHit();
+                AudioManager.Instance.PlayPooledClip(ClipPool.PINBALL);
+                lastCarHit = collision.gameObject;
+                StopAllCoroutines();
+                StartCoroutine(WaitABit());
+            }
             deathCam.gameObject.transform.parent = null;
             deathCam.gameObject.SetActive(true);
             deceased = true;
@@ -53,6 +64,19 @@ public class PlayerController : MonoBehaviour
             rb.AddTorque(Vector3.Cross(collision.gameObject.GetComponent<Rigidbody>().velocity, Vector3.down).normalized * 16, ForceMode.Impulse);
             hands.ForceRelease();
         }
+        else
+        {
+            if (pinballUI.gameObject.activeSelf)
+            {
+                pinballUI.ResetMult();
+            }
+        }
+    }
+
+    private IEnumerator WaitABit()
+    {
+        yield return new WaitForSeconds(.03f);
+        lastCarHit = null;
     }
 
     public void SetHandsOnly(bool only)
