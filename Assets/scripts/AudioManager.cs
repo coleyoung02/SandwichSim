@@ -20,15 +20,17 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
-    [SerializeField] private List<AudioSource> VOsources;
-    [SerializeField] private List<AudioSource> SFXsources;
-    [SerializeField] private List<AudioSource> MUSICsources;
-
+    [SerializeField] private float pitchShiftAmmount;
 
     [Header ("Clips")]
     [SerializeField] private List<AudioClip> soupClips;
     [SerializeField] private List<AudioClip> sandwichClips;
     [SerializeField] private List<AudioClip> pinballClips;
+
+    [Header ("Sources")]
+    [SerializeField] private List<AudioSource> VOsources;
+    [SerializeField] private List<AudioSource> SFXsources;
+    [SerializeField] private List<AudioSource> MUSICsources;
 
 
     private Dictionary<Channel, List<AudioSource>> sources;
@@ -55,7 +57,7 @@ public class AudioManager : MonoBehaviour
         AudioSource s = sources[channel][indicies[channel]];
         if (channel == Channel.SFX)
         {
-            s.pitch = UnityEngine.Random.Range(.8f, 1.2f);
+            s.pitch = UnityEngine.Random.Range(1f - pitchShiftAmmount, 1 + pitchShiftAmmount);
         }
         s.clip = clip;
         s.Play();

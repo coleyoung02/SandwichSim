@@ -9591,6 +9591,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6534988053764089354, guid: 2a015d4a3f912cf4aa45e37d8aef377d,
+        type: 3}
+      propertyPath: pitchShiftAmmount
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6748802951307902267, guid: 2a015d4a3f912cf4aa45e37d8aef377d,
         type: 3}
       propertyPath: m_Name
@@ -15951,25 +15956,25 @@ MonoBehaviour:
   - No, everything about me makes sense and everything I do and say is what a normal
     real person would do.
   audios:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 6418cb9c5153f0c46b1b40f2226b7770, type: 3}
   - {fileID: 8300000, guid: 894de0ba6292b2347a6637e700340114, type: 3}
   - {fileID: 8300000, guid: 453dc1ca344a87d41873cd809ed1c1db, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: d8030424723ec54408b724728a32e1ea, type: 3}
   - {fileID: 8300000, guid: bb0adbf21524ded42807e859d21d2205, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 55ce7fa35e96a2a48bf2aca9fd291eb5, type: 3}
   - {fileID: 8300000, guid: 8521f14e32f0ced4498e32bbfc6fcc72, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 2ca5bd0a694e2b545be91c555d52555e, type: 3}
   - {fileID: 8300000, guid: 6ff8b98ab753a3140a3b4b580a4994f5, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: d09c7a527cf09df478330d7177c1bec3, type: 3}
   - {fileID: 8300000, guid: 00e2431b06de83c43a0c6587788d6786, type: 3}
   - {fileID: 8300000, guid: 9c9616801bc44bb42bcf39843008c491, type: 3}
+  - {fileID: 8300000, guid: 2063ba26f2fc9e242b1d129473657dcd, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 138a0ae9a7368424fab1ca396b0aeb4d, type: 3}
   - {fileID: 8300000, guid: 1a209bb525c1feb4ba86b717ebf14e6a, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: bbc4a5dc1e9b66344b4e2cfa4f4a0023, type: 3}
+  - {fileID: 8300000, guid: 288a6f507c80b8d4297ab564f20fc214, type: 3}
   - {fileID: 8300000, guid: f0c6deaea4b99c04bbb0c0cd7452a3ea, type: 3}
   textHolder: {fileID: 703852553}
   textBox: {fileID: 703852552}
@@ -15978,7 +15983,7 @@ MonoBehaviour:
   source: {fileID: 657072180}
   shotLength: 3
   charDelay: 0.035
-  afterTextLength: 1.5
+  afterTextLength: 0.75
   endTeleportLocation: {fileID: 970751207}
   trigger: {fileID: 1435953962}
   scene: 0
@@ -21449,6 +21454,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 13400000, guid: 4f78c5b9b4d62404a82d6b59f645d0a3,
         type: 2}
+    - target: {fileID: 3350909716909814340, guid: 29524a713a635234692329bc09eccbad,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350909716909814340, guid: 29524a713a635234692329bc09eccbad,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 27.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350909716909814340, guid: 29524a713a635234692329bc09eccbad,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -29.900002
+      objectReference: {fileID: 0}
     - target: {fileID: 4083183135862733285, guid: 29524a713a635234692329bc09eccbad,
         type: 3}
       propertyPath: m_Cameras.Array.size
@@ -54822,6 +54842,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 592691018}
+    - target: {fileID: 3533784121718679651, guid: d2f9189aa52b9e64aa0bf58370bcbb37,
+        type: 3}
+      propertyPath: spawnDistance
+      value: 390
+      objectReference: {fileID: 0}
     - target: {fileID: 7581579338538345561, guid: d2f9189aa52b9e64aa0bf58370bcbb37,
         type: 3}
       propertyPath: m_LocalPosition.x
