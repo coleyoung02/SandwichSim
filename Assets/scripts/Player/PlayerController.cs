@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
             deceased = true;
             deceasedColliders.SetActive(true);
             rb.freezeRotation = false;
-            rb.AddForce((collision.gameObject.GetComponent<Rigidbody>().velocity + Vector3.up * 20) / 4f, ForceMode.Impulse);
+            rb.AddForce((collision.gameObject.GetComponent<Rigidbody>().velocity + Vector3.up * 15) / 3f, ForceMode.Impulse);
             rb.AddTorque(Vector3.Cross(collision.gameObject.GetComponent<Rigidbody>().velocity, Vector3.down).normalized * 16, ForceMode.Impulse);
             hands.ForceRelease();
         }

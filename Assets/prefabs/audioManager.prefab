@@ -64,7 +64,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ea2acdc05412ae6429c18ac3ec66bb77, type: 3}
   - {fileID: 8300000, guid: fe18c3d7edc7e9846979612ff32f7400, type: 3}
   sandwichClips: []
-  pinballClips: []
+  pinballClips:
+  - {fileID: 8300000, guid: ae9bf725c7d48764e9dc38281f6ca733, type: 3}
+  - {fileID: 8300000, guid: 4e956711f40c70347ac69d4b40c70232, type: 3}
+  - {fileID: 8300000, guid: 27f75afe77d210149a4a7b7f0a4d7a1f, type: 3}
+  - {fileID: 8300000, guid: 7bdc122a210dae64dae1658b75d64da0, type: 3}
+  - {fileID: 8300000, guid: 9572e474ea66ee6449d5cfd3d52e716b, type: 3}
 --- !u!82 &9049267867061747796
 AudioSource:
   m_ObjectHideFlags: 0
@@ -556,7 +561,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
