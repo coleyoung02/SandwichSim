@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Hands hands;
     [SerializeField] private GameObject cam;
     [SerializeField] private GameObject realCam;
+    [SerializeField] private GameObject deceasedColliders;
     [SerializeField] private float maxShift;
     [SerializeField] private float frequency;
     [SerializeField] private Camera deathCam;
@@ -42,12 +43,14 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("car"))
         {
+            AudioManager.Instance.PlayPooledClip(ClipPool.PINBALL);
             deathCam.gameObject.transform.parent = null;
             deathCam.gameObject.SetActive(true);
             deceased = true;
+            deceasedColliders.SetActive(true);
             rb.freezeRotation = false;
-            rb.AddForce((collision.gameObject.GetComponent<Rigidbody>().velocity + Vector3.up * 20) / 5f, ForceMode.Impulse);
-            rb.AddTorque(Vector3.Cross(collision.gameObject.GetComponent<Rigidbody>().velocity, Vector3.down).normalized * 4, ForceMode.Impulse);
+            rb.AddForce((collision.gameObject.GetComponent<Rigidbody>().velocity + Vector3.up * 20) / 4f, ForceMode.Impulse);
+            rb.AddTorque(Vector3.Cross(collision.gameObject.GetComponent<Rigidbody>().velocity, Vector3.down).normalized * 16, ForceMode.Impulse);
             hands.ForceRelease();
         }
     }
