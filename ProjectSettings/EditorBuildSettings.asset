@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FINAL/WinScene.unity
     guid: 603f6acba3c69854ca265f2211472eb2
+  - enabled: 1
+    path: Assets/imports/SugarBear/Final Levels/Prologue_Scene.unity
+    guid: 83ffa9d295e46b64993356d9c42ee91e
   m_configObjects: {}

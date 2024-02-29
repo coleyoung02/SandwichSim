@@ -11,10 +11,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject realCam;
     [SerializeField] private PinballUI pinballUI;
     [SerializeField] private GameObject deceasedColliders;
-    [SerializeField] private float maxShift;
-    [SerializeField] private float frequency;
     [SerializeField] private Camera deathCam;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private GameObject nearHomeReset;
+    [SerializeField] private GameObject nearStoreReset;
+    [SerializeField] private float maxShift;
+    [SerializeField] private float frequency;
     [SerializeField] private float moveSpeed = 6;
     private float sensitivity = .5f;
     private bool usingHands;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool controlsLocked;
     private float shiftClock;
     private GameObject lastCarHit;
+    private bool isNearHome;
 
     // Start is called before the first frame update
     void Awake()
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
         deceased = false;
         controlsLocked = false;
         sensitivity = PlayerPrefs.GetFloat("Sensitivity", .5f);
+        isNearHome = true;
     }
 
     public void SetSensitivity(float s)
@@ -73,6 +77,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void SetDeceased(bool d)
+    {
+        deathCam.gameObject.transform.parent = null;
+        deathCam.gameObject.SetActive(true);
+        deceased = true;
+        deceasedColliders.SetActive(true);
+        rb.freezeRotation = false;
+    }
+
     private IEnumerator WaitABit()
     {
         yield return new WaitForSeconds(.03f);
@@ -91,6 +104,16 @@ public class PlayerController : MonoBehaviour
     public void LockControls(bool mode)
     {
         controlsLocked = mode;
+    }
+
+    public bool GetDeceased()
+    {
+        return deceased;
+    }
+
+    public void SetRoadSide(bool home)
+    {
+        isNearHome = home;
     }
 
     // Update is called once per frame
@@ -114,11 +137,25 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        else if (deceased)
         {
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentSceneName);
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (isNearHome)
+                {
+                    transform.rotation = nearHomeReset.transform.rotation;
+                    transform.position = nearHomeReset.transform.position;
+                }
+                else
+                {
+                    transform.rotation = nearStoreReset.transform.rotation;
+                    transform.position = nearStoreReset.transform.position;
+                }
+                rb.angularVelocity = Vector3.zero;
+                rb.velocity = Vector3.zero;
+            }
         }
+        
     }
 
     private void rotate()

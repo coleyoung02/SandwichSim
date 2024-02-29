@@ -9,6 +9,7 @@ TagManager:
   - basket
   - vanish
   - ascensionLight
+  - DoorBreak
   layers:
   - Default
   - TransparentFX
@@ -27,10 +28,10 @@ TagManager:
   - PostProcessing
   - CamEffect
   - DontRenderToMainCam
-  - 
-  - 
-  - 
-  - 
+  - SugarDefault
+  - SugarUI
+  - Bees
+  - Bear
   - 
   - 
   - 
