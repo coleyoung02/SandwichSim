@@ -12,7 +12,7 @@ public class LevelEnd : MonoBehaviour
     {
         if (bear.Done() && bees.Done())
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            FindFirstObjectByType<GameInstanceManager>().NextLevel();
         }
     }
 }

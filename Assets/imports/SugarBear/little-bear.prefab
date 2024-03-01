@@ -240,7 +240,7 @@ MonoBehaviour:
   groundCheck: {fileID: 5302537004645987991}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2097152
   breakRight: {fileID: 2531711481532924495}
   bees: {fileID: 0}
   animator: {fileID: 4261531961009964344}

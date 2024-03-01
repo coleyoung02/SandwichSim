@@ -13,6 +13,8 @@ public class GameInstanceManager : MonoBehaviour
     [SerializeField] private AudioSource music;
 
     [SerializeField] private GameState gameState;
+    [SerializeField] private List<string> levels;
+    private int levelIndex;
 
     protected void Awake()
     {
@@ -69,5 +71,19 @@ public class GameInstanceManager : MonoBehaviour
     public void UpdateGameState(GameState newGameState)
     {
         gameState = newGameState;
+    }
+
+    public void NextLevel()
+    {
+        Debug.LogWarning(levels[levelIndex]);
+        SceneManager.UnloadSceneAsync(levels[levelIndex]);
+        SceneManager.LoadScene(levels[levelIndex + 1], LoadSceneMode.Additive);
+        levelIndex++;
+    }
+
+    public void LoadLevel(int i)
+    {
+        SceneManager.LoadScene(levels[i], LoadSceneMode.Additive);
+        levelIndex = i;
     }
 }

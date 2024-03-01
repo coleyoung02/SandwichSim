@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         controlsLocked = false;
         sensitivity = PlayerPrefs.GetFloat("Sensitivity", .5f);
         isNearHome = true;
+        FindFirstObjectByType<GameInstanceManager>().LoadLevel(3);
     }
 
     public void SetSensitivity(float s)

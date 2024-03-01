@@ -12,6 +12,36 @@ EditorBuildSettings:
     path: Assets/Scenes/FINAL/WinScene.unity
     guid: 603f6acba3c69854ca265f2211472eb2
   - enabled: 1
-    path: Assets/imports/SugarBear/Final Levels/Prologue_Scene.unity
+    path: Assets/imports/SugarBear/Final Levels/1.unity
     guid: 83ffa9d295e46b64993356d9c42ee91e
+  - enabled: 1
+    path: Assets/imports/SugarBear/Final Levels/PauseMenu.unity
+    guid: 48dd2fcd00db5cf4cb62aff49c27f9fd
+  - enabled: 1
+    path: Assets/imports/SugarBear/Final Levels/2.unity
+    guid: 9319f6546976cf642b2985dd1109e943
+  - enabled: 1
+    path: Assets/imports/SugarBear/Final Levels/3.unity
+    guid: 7ffd659bc3041164cbcd3b5228a7d641
+  - enabled: 1
+    path: Assets/imports/SugarBear/Final Levels/4.unity
+    guid: f9668b51a0290ac47aedb0bd777ee8b2
+  - enabled: 1
+    path: Assets/imports/SugarBear/Final Levels/5.unity
+    guid: 43219fa11f6c9594999f99433e8ef7e4
+  - enabled: 1
+    path: Assets/imports/SugarBear/Final Levels/6.unity
+    guid: cd7150bf5a635004788f615a87058613
+  - enabled: 1
+    path: Assets/imports/SugarBear/Final Levels/7.unity
+    guid: c28f97bf40682f4469d723e0ff1e732b
+  - enabled: 1
+    path: Assets/imports/SugarBear/Final Levels/PrologueTextScroll.unity
+    guid: d289f981e4e7f884b953abc6e2d5fa22
+  - enabled: 1
+    path: Assets/imports/SugarBear/Final Levels/StartMenu.unity
+    guid: 92d87e6667b8b5d469ff204f7e085ba5
+  - enabled: 1
+    path: Assets/imports/SugarBear/Final Levels/Win_Screen.unity
+    guid: a17459bb2e9d48c47a222076c559a6eb
   m_configObjects: {}
