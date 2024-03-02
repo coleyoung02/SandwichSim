@@ -55,6 +55,7 @@ public class BeeController : MonoBehaviour, IPlayerInput
 
     public void Update()
     {
+        
         if (instance.isUnpaused())
         {
             Move();

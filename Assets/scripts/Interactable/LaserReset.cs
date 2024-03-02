@@ -9,7 +9,7 @@ public class LaserReset : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bear"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameInstanceManager.Instance.Retry();
         }
     }
 }

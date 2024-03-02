@@ -9,7 +9,7 @@ public class SprinklerReset : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bees"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameInstanceManager.Instance.Retry();
         }
     }
 }

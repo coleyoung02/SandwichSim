@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
         controlsLocked = false;
         sensitivity = PlayerPrefs.GetFloat("Sensitivity", .5f);
         isNearHome = true;
-        FindFirstObjectByType<GameInstanceManager>().LoadLevel(3);
     }
 
     public void SetSensitivity(float s)
@@ -105,6 +104,11 @@ public class PlayerController : MonoBehaviour
     public void LockControls(bool mode)
     {
         controlsLocked = mode;
+    }
+
+    public bool GetControlsLocked() 
+    {
+        return controlsLocked;
     }
 
     public bool GetDeceased()
@@ -207,12 +211,12 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(moveDir.x, rb.velocity.y, moveDir.z);
             shiftClock += Time.deltaTime;
             Vector3 cp = cam.transform.localPosition;
-            cp.y += Mathf.Sin(shiftClock * Mathf.PI * 2 * frequency) * maxShift / 2;
-            cp.x += Mathf.Cos(shiftClock * Mathf.PI * frequency) * maxShift / 2;
+            cp.y += Mathf.Sin(shiftClock * Mathf.PI * 2 * frequency * (rb.velocity.magnitude / moveSpeed)) * maxShift / 4;
+            cp.x += Mathf.Cos(shiftClock * Mathf.PI * frequency * (rb.velocity.magnitude / moveSpeed)) * maxShift / 4;
             cam.transform.localPosition = cp;
             cp = realCam.transform.localPosition;
-            cp.y += Mathf.Sin(shiftClock * Mathf.PI * 2 * frequency) * maxShift / 8;
-            cp.x += Mathf.Cos(shiftClock * Mathf.PI * frequency) * maxShift / 8;
+            cp.y += Mathf.Sin(shiftClock * Mathf.PI * 2 * frequency * (rb.velocity.magnitude/moveSpeed)) * maxShift / 2;
+            cp.x += Mathf.Cos(shiftClock * Mathf.PI * frequency * (rb.velocity.magnitude / moveSpeed)) * maxShift / 2;
             realCam.transform.localPosition = cp;
         }
 

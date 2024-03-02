@@ -18,6 +18,7 @@ public class Hands : MonoBehaviour
     [SerializeField] float rotateSpeed = .2f;
     private Gripper activeHand;
     private float sensitivity = .5f;
+    private PlayerController pc;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class Hands : MonoBehaviour
         //Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         sensitivity = PlayerPrefs.GetFloat("Sensitivity", .5f);
+        pc = FindFirstObjectByType<PlayerController>();
     }
 
     public void SetSensitivity(float s)
@@ -39,7 +41,7 @@ public class Hands : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inUse)
+        if (inUse && !pc.GetControlsLocked())
         {
             mainUpdateLoop();
         }

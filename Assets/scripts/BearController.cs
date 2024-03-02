@@ -42,7 +42,6 @@ public class BearController : MonoBehaviour, IPlayerInput
         {
             animator.runtimeAnimatorController = crisp;
         }
-        PlayNoise();
     }
 
     private bool isFacingRight = true;
@@ -122,9 +121,8 @@ public class BearController : MonoBehaviour, IPlayerInput
 
     public void BreakDoor()
     {
-        if (Input.GetKeyDown(breakKey) && !breakRight.activeSelf && beeDistance() < 1)
+        if (Input.GetKeyDown(breakKey) && !breakRight.activeSelf && beeDistance() < 1.1f)
         {
-            Debug.Log(beeDistance());
             animator.SetTrigger("Slam");
             PlayNoise();
             StartCoroutine(breakAndWait(breakRight));

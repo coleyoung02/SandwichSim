@@ -8,10 +8,17 @@ public class CameraScript : MonoBehaviour
     private BearController bear;
     private float startX;
     [SerializeField] private float maxX;
+    [SerializeField] private bool justAudio;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (justAudio)
+        {
+            GameInstanceManager.Instance.TurnOnMusic();
+            return;
+        }
+        GameInstanceManager.Instance.TurnOnMusic();
         bees = Resources.FindObjectsOfTypeAll<BeeController>()[0];
         bear = Resources.FindObjectsOfTypeAll<BearController>()[0];
         startX = gameObject.transform.position.x;
@@ -20,6 +27,10 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (justAudio)
+        {
+            return;
+        }
         Transform t = gameObject.transform;
         float off = (bees.transform.position.x + bear.transform.position.x + 8) / 2 - t.position.x;
         if (Mathf.Abs(off) > 2 && (t.position.x >= startX || off > 0) && (t.position.x <= maxX || off < 0))

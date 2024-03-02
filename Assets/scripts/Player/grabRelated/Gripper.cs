@@ -67,14 +67,21 @@ public class Gripper : MonoBehaviour
     {
         if (forceRelease)
         {
+            
+            Debug.LogWarning("forced " + gameObject.name);
             isOpen = true;
             tryRelease();
+            Debug.LogWarning("setting " + gameObject.name + "  " + isOpen);
             open.SetActive(isOpen);
             closed.SetActive(!isOpen);
         }
         else
         {
-            if (isOpen)
+            isOpen = !isOpen;
+
+            open.SetActive(isOpen);
+            closed.SetActive(!isOpen);
+            if (!isOpen)
             {
                 tryGrab();
             }
@@ -82,10 +89,6 @@ public class Gripper : MonoBehaviour
             {
                 tryRelease();
             }
-            isOpen = !isOpen;
-
-            open.SetActive(isOpen);
-            closed.SetActive(!isOpen);
         }
     }
 
@@ -93,14 +96,7 @@ public class Gripper : MonoBehaviour
     {
         if (closest != null)
         {
-            if (closest.GetComponent<DoorHandle>() != null)
-            {
-                closest.GetComponent<DoorHandle>().Grab(this);
-            }
-            else
-            {
-                grab(closest);
-            }
+            grab(closest);
             return true;
         }
         else
@@ -177,10 +173,14 @@ public class Gripper : MonoBehaviour
 
     private void grab(GameObject g)
     {
-        g.GetComponent<HandInteractable>().Grab(this);
-        g.transform.parent = gameObject.transform;
-        g.GetComponent<Rigidbody>().useGravity = false;
-        inHand = g;
+        HandInteractable h = g.GetComponent<HandInteractable>();
+        h.Grab(this);
+        if (h is Frobbable)
+        {
+            g.transform.parent = gameObject.transform;
+            g.GetComponent<Rigidbody>().useGravity = false;
+            inHand = g;
+        }
     }
 
     private void release(GameObject g)

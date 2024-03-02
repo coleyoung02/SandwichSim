@@ -26,6 +26,7 @@ public class DoorHandle : HandInteractable
             swinging = true;
             StartCoroutine(Swing());
         }
+        g.Toggle(true);
     }
 
     private IEnumerator Swing()

@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum GameState { StartMenu, Gameplay, Paused}
+public enum GameState { StartMenu, Gameplay, Inactive }
 
 public class GameInstanceManager : MonoBehaviour
 {
     public static GameInstanceManager Instance { get; private set; }
 
-    [SerializeField] private string pauseMenuSceneName = "PauseMenu";
     [SerializeField] private AudioSource music;
 
-    [SerializeField] private GameState gameState;
+    [SerializeField] private GameState gameState = GameState.Inactive;
     [SerializeField] private List<string> levels;
-    private int levelIndex;
+    private int levelIndex = -1;
+    private bool loading = false;
 
     protected void Awake()
     {
@@ -28,25 +28,55 @@ public class GameInstanceManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         Instance.music.volume = .1f;
-        Instance.music.Play();
+    }
+
+    public void TurnOn()
+    {
+        gameState = GameState.StartMenu;
+        LoadDesktop(true);
+        FindFirstObjectByType<PlayerController>().LockControls(true);
     }
     
+    public void TurnOnMusic()
+    {
+        music.Play();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        // Pause game
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (gameState == GameState.StartMenu)
         {
-            if (gameState == GameState.Paused)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                UnpauseGame();
-            }
-            else if (gameState == GameState.Gameplay)
-            {
-                PauseGame();
+                ExitDesktop();
             }
         }
+        if (gameState == GameState.Gameplay)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ExitGame();
+            }
+        }
+        // Pause game
+    }
+
+    public void LoadDesktop(bool fromScratch=false)
+    {
+        if (fromScratch)
+        {
+            SceneManager.LoadScene("BearOS", LoadSceneMode.Additive);
+            return;
+        }
+        music.Stop();
+        if (levelIndex >= 0)
+        {
+            SceneManager.UnloadSceneAsync(levels[levelIndex]);
+            levelIndex = -1;
+        }
+        SceneManager.LoadScene("BearOS", LoadSceneMode.Additive);
+
     }
 
     public bool isUnpaused()
@@ -54,16 +84,29 @@ public class GameInstanceManager : MonoBehaviour
         return gameState == GameState.Gameplay;
     }
 
-    public void PauseGame()
+    public void ExitGame()
     {
-        gameState = GameState.Paused;
-        Time.timeScale = 0f;
-        SceneManager.LoadScene(pauseMenuSceneName, LoadSceneMode.Additive);
+        gameState = GameState.StartMenu;
+        if (levelIndex >= 0)
+        {
+            LoadDesktop();
+        }
+    }
+
+    public void ExitDesktop()
+    {
+        SceneManager.UnloadSceneAsync("BearOS");
+        gameState = GameState.Inactive;
+        foreach (Computer c in FindObjectsByType<Computer>(FindObjectsSortMode.None))
+        {
+            c.TurnOff();
+        }
+        FindFirstObjectByType<PlayerController>().LockControls(false);
     }
 
     public void UnpauseGame()
     {
-        SceneManager.UnloadSceneAsync(pauseMenuSceneName);
+        FindAnyObjectByType<PauseManager>().TogglePause(false);
         Time.timeScale = 1f;
         gameState = GameState.Gameplay;
     }
@@ -75,15 +118,37 @@ public class GameInstanceManager : MonoBehaviour
 
     public void NextLevel()
     {
-        Debug.LogWarning(levels[levelIndex]);
         SceneManager.UnloadSceneAsync(levels[levelIndex]);
         SceneManager.LoadScene(levels[levelIndex + 1], LoadSceneMode.Additive);
         levelIndex++;
     }
 
-    public void LoadLevel(int i)
+    public void LoadLevel(int i, bool fromDesktop=false)
     {
+        gameState = GameState.Gameplay;
+        if (fromDesktop)
+        {
+            SceneManager.UnloadSceneAsync("BearOS");
+        }
         SceneManager.LoadScene(levels[i], LoadSceneMode.Additive);
         levelIndex = i;
+    }
+
+    public void Retry()
+    {
+        if (!loading)
+        {
+            loading = true;
+            StartCoroutine(StartRetry());
+        }
+    }
+
+    IEnumerator StartRetry()
+    {
+        AsyncOperation ao = SceneManager.UnloadSceneAsync(levels[levelIndex]);
+        yield return ao; 
+        ao = SceneManager.LoadSceneAsync(levels[levelIndex], LoadSceneMode.Additive);
+        yield return ao;
+        loading = false;
     }
 }

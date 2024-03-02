@@ -14,7 +14,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - GroceryItem
@@ -32,7 +32,7 @@ TagManager:
   - SugarUI
   - Bees
   - Bear
-  - Ground
+  - 
   - Laser
   - 
   - 
