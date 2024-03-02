@@ -9,7 +9,7 @@ public class PlayerResetSetter : MonoBehaviour
         PlayerController pc = FindObjectOfType<PlayerController>();
         if (!pc.GetDeceased())
         {
-            pc.SetRoadSide(Vector3.Dot(transform.position - pc.gameObject.transform.position, transform.forward) < 0);
+            pc.SetRoadSide(Vector3.Dot(transform.position - pc.gameObject.transform.position, transform.forward) > 0);
         }
     }
 
@@ -18,7 +18,7 @@ public class PlayerResetSetter : MonoBehaviour
         PlayerController pc = FindObjectOfType<PlayerController>();
         if (!pc.GetDeceased())
         {
-            pc.SetRoadSide(Vector3.Dot(transform.position - pc.gameObject.transform.position, transform.forward) < 0);
+            pc.SetRoadSide(Vector3.Dot(transform.position - pc.gameObject.transform.position, transform.forward) > 0);
         }
     }
 }

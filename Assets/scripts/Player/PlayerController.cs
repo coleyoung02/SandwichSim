@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private float shiftClock;
     private GameObject lastCarHit;
     private bool isNearHome;
+    private Vector3 deathCamPos;
+    private Quaternion deathCamRot;
 
     // Start is called before the first frame update
     void Awake()
@@ -37,6 +39,8 @@ public class PlayerController : MonoBehaviour
         controlsLocked = false;
         sensitivity = PlayerPrefs.GetFloat("Sensitivity", .5f);
         isNearHome = true;
+        deathCamPos = deathCam.transform.localPosition;
+        deathCamRot = deathCam.transform.localRotation;
     }
 
     public void SetSensitivity(float s)
@@ -49,7 +53,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("car"))
         {
-            pinballUI.gameObject.SetActive(true);
             if (lastCarHit == null || collision.gameObject != lastCarHit)
             {
                 Debug.Log(lastCarHit);
@@ -59,11 +62,7 @@ public class PlayerController : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine(WaitABit());
             }
-            deathCam.gameObject.transform.parent = null;
-            deathCam.gameObject.SetActive(true);
-            deceased = true;
-            deceasedColliders.SetActive(true);
-            rb.freezeRotation = false;
+            SetDeceased(true);
             rb.AddForce((collision.gameObject.GetComponent<Rigidbody>().velocity + Vector3.up * 15) / 3f, ForceMode.Impulse);
             rb.AddTorque(Vector3.Cross(collision.gameObject.GetComponent<Rigidbody>().velocity, Vector3.down).normalized * 16, ForceMode.Impulse);
             hands.ForceRelease();
@@ -79,11 +78,26 @@ public class PlayerController : MonoBehaviour
 
     private void SetDeceased(bool d)
     {
-        deathCam.gameObject.transform.parent = null;
-        deathCam.gameObject.SetActive(true);
-        deceased = true;
-        deceasedColliders.SetActive(true);
-        rb.freezeRotation = false;
+        deathCam.gameObject.SetActive(d);
+        deceased = d;
+        deceasedColliders.SetActive(d);
+        rb.freezeRotation = !d;
+        pinballUI.gameObject.SetActive(d);
+        if (d)
+        {
+            deathCam.gameObject.transform.parent = null;
+        }
+        else
+        {
+            deathCam.transform.parent = transform;
+            deathCam.transform.localPosition = deathCamPos;
+            deathCam.transform.localRotation = deathCamRot;
+            pinballUI.ResetAll();
+            foreach (Gripper gr in FindObjectsByType<Gripper>(FindObjectsSortMode.None))
+            {
+                gr.Toggle(true);
+            }
+        }
     }
 
     private IEnumerator WaitABit()
@@ -158,6 +172,13 @@ public class PlayerController : MonoBehaviour
                 }
                 rb.angularVelocity = Vector3.zero;
                 rb.velocity = Vector3.zero;
+                SetDeceased(false);
+                CarLane cl1 = FindFirstObjectByType<CarLane>();
+                cl1.NukeCars();
+                foreach (CarLane cl in FindObjectsByType<CarLane>(FindObjectsSortMode.None))
+                {
+                    cl.InitializeCars();
+                }
             }
         }
         

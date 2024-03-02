@@ -30,4 +30,10 @@ public class PinballUI : MonoBehaviour
         scoreText.text = score.ToString();
         multText.text = "x " + mult.ToString();
     }
+
+    public void ResetAll()
+    {
+        score = 0;
+        mult = 1;
+    }
 }

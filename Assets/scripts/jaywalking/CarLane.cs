@@ -16,7 +16,20 @@ public class CarLane : MonoBehaviour
     void Start()
     {
         player = FindFirstObjectByType<PlayerController>().gameObject;
-        for (float i = 0; i <= 2* spawnDistance; i += gap)
+        InitializeCars();
+    }
+
+    public void NukeCars()
+    {
+        foreach (Car c in FindObjectsByType<Car>(FindObjectsSortMode.None))
+        {
+            Destroy(c.gameObject);
+        }
+    }
+
+    public void InitializeCars()
+    {
+        for (float i = 0; i <= 2 * spawnDistance; i += gap)
         {
             lastCar = Instantiate(car, getSpawnLoc(true) - i * transform.right, transform.localRotation);
         }

@@ -6,7 +6,7 @@ public class DeathCam : MonoBehaviour
 {
     private GameObject player;
     private Vector3 offset;
-    void Start()
+    void OnEnable()
     {
         player = FindFirstObjectByType<PlayerController>().gameObject;
         offset = transform.position - player.transform.position;
