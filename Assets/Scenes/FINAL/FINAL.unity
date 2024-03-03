@@ -4186,6 +4186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd5321b3b457384eb42247d9b5037fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstLevelName: FINAL
   pauseMenuUI: {fileID: 1604299890}
 --- !u!1001 &162018380
 PrefabInstance:
@@ -7015,7 +7016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &263591782
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8815,6 +8816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd5321b3b457384eb42247d9b5037fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstLevelName: FINAL
   pauseMenuUI: {fileID: 343591400}
 --- !u!224 &343591402
 RectTransform:
@@ -42684,6 +42686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd5321b3b457384eb42247d9b5037fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstLevelName: FINAL
   pauseMenuUI: {fileID: 1604299890}
 --- !u!1 &1604821338
 GameObject:
