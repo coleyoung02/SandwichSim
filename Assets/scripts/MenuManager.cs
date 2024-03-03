@@ -5,22 +5,52 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    //[SerializeField] private string firstLevelName = "Level_1";
+    [SerializeField] private string firstLevelName = "FINAL";
+
+    public static bool GameIsPaused = false;
+    public GameObject pauseMenuUI;
+
 
     public void StartGame()
-    {
+   {
         //GameInstanceManager.Instance.UpdateGameState(GameState.Gameplay);
-        //SceneManager.LoadScene(firstLevelName);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(firstLevelName);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(GameIsPaused){
+                ResumeGame();
+            }
+            else{
+                PauseGame();
+            }
+        }
     }
 
     public void ResumeGame()
     {
-        GameInstanceManager.Instance.UnpauseGame();
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        //GameInstanceManager.Instance.UnpauseGame();
+    }
+
+    public void PauseGame()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+
+        //GameInstanceManager.Instance.PauseGame();
     }
 
     public void QuitGame()
     {
+        Debug.Log("Quitting Game...");
         Application.Quit();
     }
+
 }
