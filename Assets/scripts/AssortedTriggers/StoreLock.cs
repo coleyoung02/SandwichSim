@@ -28,8 +28,7 @@ public class StoreLock : GroceryListUpdateable
     {
         if (!hasLocked)
         {
-            openTrigger.StopAllCoroutines();
-            openTrigger.TurnOff();
+            openTrigger.Cancel();
             Vector3 pos = leftDoor.transform.localPosition;
             leftDoor.transform.localPosition = new Vector3(-closedX, pos.y, pos.z);
             rightDoor.transform.localPosition = new Vector3(closedX, pos.y, pos.z);
