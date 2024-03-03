@@ -1000,7 +1000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstLevelName: FINAL
-  pauseMenuUI: {fileID: 818376801}
+  pauseMenuUI: {fileID: 0}
 --- !u!1 &972008649
 GameObject:
   m_ObjectHideFlags: 0
