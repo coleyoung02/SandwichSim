@@ -6,15 +6,26 @@ public class DeathCam : MonoBehaviour
 {
     private GameObject player;
     private Vector3 offset;
-    void OnEnable()
+    [SerializeField] private GameObject actualCam;
+    private bool isOn = false;
+
+    public void SetOn(bool on)
     {
-        player = FindFirstObjectByType<PlayerController>().gameObject;
-        offset = transform.position - player.transform.position;
+        isOn = on;
+        actualCam.SetActive(on);
+        if (on)
+        {
+            player = FindFirstObjectByType<PlayerController>().gameObject;
+            offset = transform.position - player.transform.position;
+        }
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        transform.position = player.transform.position + offset;
+        if (isOn)
+        {
+            transform.position = player.transform.position + offset;
+        }
     }
 }

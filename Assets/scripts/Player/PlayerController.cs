@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject realCam;
     [SerializeField] private PinballUI pinballUI;
     [SerializeField] private GameObject deceasedColliders;
-    [SerializeField] private Camera deathCam;
+    [SerializeField] private DeathCam deathCam;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private GameObject nearHomeReset;
     [SerializeField] private GameObject nearStoreReset;
@@ -78,14 +78,14 @@ public class PlayerController : MonoBehaviour
 
     private void SetDeceased(bool d)
     {
-        deathCam.gameObject.SetActive(d);
+        deathCam.SetOn(d);
         deceased = d;
         deceasedColliders.SetActive(d);
         rb.freezeRotation = !d;
         pinballUI.gameObject.SetActive(d);
         if (d)
         {
-            deathCam.gameObject.transform.parent = null;
+            deathCam.transform.parent = null;
         }
         else
         {

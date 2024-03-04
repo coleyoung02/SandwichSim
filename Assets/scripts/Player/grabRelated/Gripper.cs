@@ -67,11 +67,8 @@ public class Gripper : MonoBehaviour
     {
         if (forceRelease)
         {
-            
-            Debug.LogWarning("forced " + gameObject.name);
             isOpen = true;
             tryRelease();
-            Debug.LogWarning("setting " + gameObject.name + "  " + isOpen);
             open.SetActive(isOpen);
             closed.SetActive(!isOpen);
         }

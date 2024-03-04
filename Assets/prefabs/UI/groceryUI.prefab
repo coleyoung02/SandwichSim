@@ -972,7 +972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ed91a541cf3554ea22ac64648585fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completeColor: {r: 0.59415185, g: 0.8301887, b: 0.5125588, a: 1}
+  completeColor: {r: 0.5534334, g: 0.9150943, b: 0.42685217, a: 1}
   groceryListUI: {fileID: 2907529312935168330}
   groceryList: {fileID: 0}
   groceryListRow: {fileID: 3231161848571130654, guid: 18de47b825f8da8418628c8979c9db28,

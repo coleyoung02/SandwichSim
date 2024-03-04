@@ -72,7 +72,7 @@ public class GroceryUI : GroceryListUpdateable
 
     public void MarkItemComplete(int index)
     {
-        groceryListRows[index].text = stringAtIndex(index);
+        groceryListRows[index].text = "<s>" + stringAtIndex(index) + "</s>";
         groceryListRows[index].color = completeColor;
     }
 

@@ -24,10 +24,10 @@ public class Highlight : MonoBehaviour
             if (down)
             {
                 bVal -= 7;
-                if (bVal <= 10)
+                if (bVal <= 11)
                 {
                     down = false;
-                    bVal = 10;
+                    bVal = 1;
                 }
             }
             else
