@@ -318,8 +318,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -453,8 +453,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -518,16 +518,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
-    - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -538,6 +531,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Icon (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5522843949078575469, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6515396635140599047, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_Sprite
@@ -547,7 +545,7 @@ PrefabInstance:
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.75
+      value: -3.75
       objectReference: {fileID: 0}
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
@@ -639,16 +637,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
-    - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -659,6 +650,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Icon (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5522843949078575469, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6515396635140599047, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_Sprite
@@ -668,7 +664,7 @@ PrefabInstance:
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.75
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
@@ -760,16 +756,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
-    - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -780,6 +769,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Icon (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5522843949078575469, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6515396635140599047, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_Sprite
@@ -789,7 +783,7 @@ PrefabInstance:
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.75
+      value: -3.75
       objectReference: {fileID: 0}
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
@@ -918,7 +912,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Step 4: Finish with sauce, and a final slice of bread'
+  m_text: 'Step 4: Finish with sauce, and a slice of bread'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf, type: 2}
   m_sharedMaterial: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
@@ -946,8 +940,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1081,8 +1075,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1216,8 +1210,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1662,8 +1656,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1959,8 +1953,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2066,7 +2060,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Step 3: Place one of each ingredient on the bread'
+  m_text: 'Step 3: Add a slice of each ingredient'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf, type: 2}
   m_sharedMaterial: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
@@ -2094,8 +2088,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2230,22 +2224,15 @@ PrefabInstance:
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_text
-      value: 'sandwich_recipe.txt
+      value: 'recipe.txt
 
 '
       objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
-    - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -2259,7 +2246,7 @@ PrefabInstance:
     - target: {fileID: 5522843949078575469, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 150
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
@@ -2638,8 +2625,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3049,8 +3036,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3295,8 +3282,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3430,8 +3417,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3890,8 +3877,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4064,16 +4051,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
-    - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -4084,6 +4064,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Icon (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5522843949078575469, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6515396635140599047, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_Sprite
@@ -4093,7 +4078,7 @@ PrefabInstance:
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.75
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
@@ -4222,7 +4207,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sauce
+  m_text: Cheese,Sauce
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf, type: 2}
   m_sharedMaterial: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
@@ -4250,8 +4235,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4385,8 +4370,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4446,20 +4431,13 @@ PrefabInstance:
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_text
-      value: grocery_list.pdf
+      value: grcry_lst.pdf
       objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
-    - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -4469,6 +4447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: recipe (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5522843949078575469, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
@@ -4671,7 +4654,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ingredients: Bread, Lettuce, Pickle, Tomato, Cheese,'
+  m_text: 'Ingredients: Bread, Lettuce, Pickle, Tomato, '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf, type: 2}
   m_sharedMaterial: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
@@ -4699,8 +4682,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4867,8 +4850,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5002,8 +4985,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5063,20 +5046,13 @@ PrefabInstance:
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_text
-      value: sugar_bear.exe
+      value: sgr_br.exe
       objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
-    - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -5096,7 +5072,7 @@ PrefabInstance:
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.75
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
@@ -5178,16 +5154,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
-    - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -5198,6 +5167,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Icon (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5522843949078575469, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6515396635140599047, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_Sprite
@@ -5207,7 +5181,7 @@ PrefabInstance:
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.75
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
@@ -5364,8 +5338,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5499,8 +5473,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5634,8 +5608,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5774,16 +5748,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
-    - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -5794,6 +5761,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Icon (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5522843949078575469, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6515396635140599047, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_Sprite
@@ -5803,7 +5775,7 @@ PrefabInstance:
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.75
+      value: -3.75
       objectReference: {fileID: 0}
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
@@ -5960,8 +5932,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6053,16 +6025,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
-    - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -5107697569338706943, guid: 6e8ef4b828ba5684c9411604f7d6dfaf,
-        type: 2}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4465859346953771177, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -6073,10 +6038,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Icon
       objectReference: {fileID: 0}
+    - target: {fileID: 5522843949078575469, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.75
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 8137758147888760271, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
