@@ -10,25 +10,22 @@ public class MenuManager : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
 
-
     public void StartGame()
    {
-        //GameInstanceManager.Instance.UpdateGameState(GameState.Gameplay);
         SceneManager.LoadScene(firstLevelName);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    void Update(){
-        if(Input.GetKeyDown(KeyCode.Escape))
+    public void SetPause(bool p)
+    {
+        if (!p)
         {
-            if(GameIsPaused){
-                ResumeGame();
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-            else{
-                PauseGame();
-                Cursor.lockState = CursorLockMode.None;
-            }
+            ResumeGame();
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            PauseGame();
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -37,7 +34,6 @@ public class MenuManager : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-        //GameInstanceManager.Instance.UnpauseGame();
     }
 
     public void PauseGame()
@@ -45,8 +41,6 @@ public class MenuManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-
-        //GameInstanceManager.Instance.PauseGame();
     }
 
     public void QuitGame()

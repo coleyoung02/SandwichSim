@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private GameObject nearHomeReset;
     [SerializeField] private GameObject nearStoreReset;
+    [SerializeField] private MenuManager pause;
     [SerializeField] private float maxShift;
     [SerializeField] private float frequency;
     [SerializeField] private float moveSpeed = 6;
@@ -30,7 +31,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 deathCamPos;
     private Quaternion deathCamRot;
 
-    // Start is called before the first frame update
     void Awake()
     {
         xRotation = 0f;
@@ -43,10 +43,21 @@ public class PlayerController : MonoBehaviour
         deathCamRot = deathCam.transform.localRotation;
     }
 
+    private void Start()
+    {
+        GameInstanceManager.Instance.SetPlayer(this);
+    }
+
     public void SetSensitivity(float s)
     {
         sensitivity = s;
         PlayerPrefs.SetFloat("Sensitivity", s);
+    }
+
+    public void SetPause(bool p)
+    {
+        controlsLocked = p;
+        pause.SetPause(p);
     }
 
     private void OnCollisionEnter(Collision collision)

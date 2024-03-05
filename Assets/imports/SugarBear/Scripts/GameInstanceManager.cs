@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum GameState { StartMenu, Gameplay, Inactive }
+public enum GameState { StartMenu, Gameplay, Inactive, Paused }
 
 public class GameInstanceManager : MonoBehaviour
 {
@@ -13,6 +13,7 @@ public class GameInstanceManager : MonoBehaviour
 
     [SerializeField] private GameState gameState = GameState.Inactive;
     [SerializeField] private List<string> levels;
+    [SerializeField] private PlayerController pc;
     private int levelIndex = -1;
     private bool loading = false;
 
@@ -28,6 +29,7 @@ public class GameInstanceManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         Instance.music.volume = .1f;
+        gameState = GameState.Inactive;
     }
 
     public void TurnOn()
@@ -42,24 +44,42 @@ public class GameInstanceManager : MonoBehaviour
         music.Play();
     }
 
+    public void SetPlayer(PlayerController p)
+    {
+        pc = p;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (gameState == GameState.StartMenu)
+        Shader.SetGlobalFloat("_UnscaledTime", Time.unscaledTime);
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (gameState == GameState.StartMenu)
             {
                 ExitDesktop();
             }
-        }
-        if (gameState == GameState.Gameplay)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            else if (gameState == GameState.Gameplay)
             {
                 ExitGame();
             }
+            else if (pc == null)
+            {
+                // if there is no player in the scene, ignore
+                return;
+            }
+            else if (gameState == GameState.Inactive)
+            {
+
+                pc.SetPause(true);
+                gameState = GameState.Paused;
+            }
+            else if (gameState == GameState.Paused)
+            {
+                pc.SetPause(false);
+                gameState = GameState.Inactive;
+            }
         }
-        // Pause game
     }
 
     public void LoadDesktop(bool fromScratch=false)
