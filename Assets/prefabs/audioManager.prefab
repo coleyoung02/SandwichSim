@@ -50,15 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5105ad1e942c0e7439fe41a87970b7a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VOsources:
-  - {fileID: 9049267867061747796}
-  - {fileID: 5221742370557101047}
-  - {fileID: 8593922423874785397}
-  SFXsources:
-  - {fileID: 4057747650724627811}
-  - {fileID: 4605864847663120780}
-  - {fileID: 4460916908330929309}
-  MUSICsources: []
+  pitchShiftAmmount: 0.1
   soupClips:
   - {fileID: 8300000, guid: 4fe21361d81fc5040822712a4977c082, type: 3}
   - {fileID: 8300000, guid: ea2acdc05412ae6429c18ac3ec66bb77, type: 3}
@@ -70,6 +62,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 27f75afe77d210149a4a7b7f0a4d7a1f, type: 3}
   - {fileID: 8300000, guid: 7bdc122a210dae64dae1658b75d64da0, type: 3}
   - {fileID: 8300000, guid: 9572e474ea66ee6449d5cfd3d52e716b, type: 3}
+  VOsources:
+  - {fileID: 9049267867061747796}
+  - {fileID: 5221742370557101047}
+  - {fileID: 8593922423874785397}
+  SFXsources:
+  - {fileID: 4057747650724627811}
+  - {fileID: 4605864847663120780}
+  - {fileID: 4460916908330929309}
+  MUSICsources: []
 --- !u!82 &9049267867061747796
 AudioSource:
   m_ObjectHideFlags: 0

@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowingRate: 20
   maxDist: 440
-  moveSpeed: 35
+  moveSpeed: 32
 --- !u!65 &193510429803495305
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -66,12 +66,12 @@ PrefabInstance:
     - target: {fileID: 2215564383965321734, guid: b72b1a106a5a4594da5fbf1017871d00,
         type: 3}
       propertyPath: m_Name
-      value: FastCar
+      value: ZoomZoom
       objectReference: {fileID: 0}
     - target: {fileID: 5697422872483777895, guid: b72b1a106a5a4594da5fbf1017871d00,
         type: 3}
       propertyPath: moveSpeed
-      value: 54
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
