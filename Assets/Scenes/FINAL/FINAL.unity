@@ -3993,7 +3993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 2215564383965321734, guid: b72b1a106a5a4594da5fbf1017871d00, type: 3}
-  gap: 50
+  gap: 55
   spawnDistance: 380
   debug: 0
 --- !u!23 &157250469
@@ -12050,7 +12050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 2215564383965321734, guid: b72b1a106a5a4594da5fbf1017871d00, type: 3}
-  gap: 50
+  gap: 55
   spawnDistance: 380
   debug: 0
 --- !u!23 &490807358
@@ -57429,7 +57429,7 @@ PrefabInstance:
     - target: {fileID: 3533784121718679651, guid: d2f9189aa52b9e64aa0bf58370bcbb37,
         type: 3}
       propertyPath: gap
-      value: 65
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4328817235434520303, guid: d2f9189aa52b9e64aa0bf58370bcbb37,
         type: 3}
@@ -57457,6 +57457,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 292328473073274036, guid: 4f04ce8301fb34e438f3419c15783df4,
         type: 3}
+    - target: {fileID: 7278604628512289620, guid: d2f9189aa52b9e64aa0bf58370bcbb37,
+        type: 3}
+      propertyPath: gap
+      value: 85
+      objectReference: {fileID: 0}
     - target: {fileID: 7581579338538345561, guid: d2f9189aa52b9e64aa0bf58370bcbb37,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -57531,7 +57536,7 @@ PrefabInstance:
     - target: {fileID: 8339462071591296215, guid: d2f9189aa52b9e64aa0bf58370bcbb37,
         type: 3}
       propertyPath: gap
-      value: 65
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8758143066375409821, guid: d2f9189aa52b9e64aa0bf58370bcbb37,
         type: 3}
@@ -57539,6 +57544,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 292328473073274036, guid: 4f04ce8301fb34e438f3419c15783df4,
         type: 3}
+    - target: {fileID: 8758143066375409821, guid: d2f9189aa52b9e64aa0bf58370bcbb37,
+        type: 3}
+      propertyPath: gap
+      value: 85
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
