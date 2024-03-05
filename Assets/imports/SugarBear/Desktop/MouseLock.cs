@@ -17,8 +17,8 @@ public class MouseLock : MonoBehaviour
     void Update()
     {
         Vector3 p = transform.position;
-        p.x = Mathf.Clamp(p.x + Input.GetAxis("Mouse X") * .1f, -8f, 7.3f);
-        p.y = Mathf.Clamp(p.y + Input.GetAxis("Mouse Y") * .1f, -4.1f , 4.5f);
+        p.x = Mathf.Clamp(p.x + Input.GetAxis("Mouse X") * .3f, -8f, 7.3f);
+        p.y = Mathf.Clamp(p.y + Input.GetAxis("Mouse Y") * .3f, -4.1f , 4.5f);
         transform.position = p;
     }
 }

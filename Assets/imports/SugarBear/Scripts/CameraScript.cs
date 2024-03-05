@@ -33,9 +33,11 @@ public class CameraScript : MonoBehaviour
         }
         Transform t = gameObject.transform;
         float off = (bees.transform.position.x + bear.transform.position.x + 8) / 2 - t.position.x;
-        if (Mathf.Abs(off) > 2 && (t.position.x >= startX || off > 0) && (t.position.x <= maxX || off < 0))
+        if (Mathf.Abs(off) > 1.25f && (t.position.x >= startX || off > 0) && (t.position.x <= maxX || off < 0))
         {
-            gameObject.transform.position = new Vector3(Mathf.Sign(off)*.05f + t.position.x, t.position.y, t.position.z);
+            Debug.LogWarning(off);
+            float diff = Mathf.Clamp(Mathf.Abs(off), 1.5f, 4f);
+            gameObject.transform.position = new Vector3(Mathf.Sign(off) * Time.deltaTime * 1.5f * diff + t.position.x, t.position.y, t.position.z);
         }
     }
 }
