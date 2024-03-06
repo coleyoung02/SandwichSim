@@ -126,9 +126,11 @@ public class GameInstanceManager : MonoBehaviour
 
     public void UnpauseGame()
     {
-        FindAnyObjectByType<PauseManager>().TogglePause(false);
-        Time.timeScale = 1f;
-        gameState = GameState.Gameplay;
+        if (gameState == GameState.Paused)
+        {
+            pc.SetPause(false);
+            gameState = GameState.Inactive;
+        }
     }
 
     public void UpdateGameState(GameState newGameState)

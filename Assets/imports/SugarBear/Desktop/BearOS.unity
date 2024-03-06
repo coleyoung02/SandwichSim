@@ -1391,6 +1391,31 @@ PrefabInstance:
       propertyPath: sprite
       value: 
       objectReference: {fileID: 1457727728}
+    - target: {fileID: 8387572572815039322, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
+        type: 3}
+      propertyPath: doesPrint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8779150620477535058, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 12.037535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8779150620477535058, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4.1848726
+      objectReference: {fileID: 0}
+    - target: {fileID: 8779150620477535058, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8779150620477535058, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8779150620477535058, guid: 771fbf03f3154e84a8cd5f1b69e525ee,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x

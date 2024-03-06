@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float maxShift;
+    [SerializeField] private float frequency;
+    [SerializeField] private float moveSpeed = 6;
     [SerializeField] private Hands hands;
     [SerializeField] private GameObject cam;
     [SerializeField] private GameObject realCam;
@@ -16,9 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject nearHomeReset;
     [SerializeField] private GameObject nearStoreReset;
     [SerializeField] private MenuManager pause;
-    [SerializeField] private float maxShift;
-    [SerializeField] private float frequency;
-    [SerializeField] private float moveSpeed = 6;
+    [SerializeField] private GameObject openingCutscene;
     private float sensitivity = .5f;
     private bool usingHands;
     private float xRotation;
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
         isNearHome = true;
         deathCamPos = deathCam.transform.localPosition;
         deathCamRot = deathCam.transform.localRotation;
+        openingCutscene.SetActive(true);
     }
 
     private void Start()
@@ -66,7 +68,6 @@ public class PlayerController : MonoBehaviour
         {
             if (lastCarHit == null || collision.gameObject != lastCarHit)
             {
-                Debug.Log(lastCarHit);
                 pinballUI.CarHit();
                 AudioManager.Instance.PlayPooledClip(ClipPool.PINBALL);
                 lastCarHit = collision.gameObject;

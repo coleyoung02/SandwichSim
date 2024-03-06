@@ -5,6 +5,7 @@ using UnityEngine;
 public class Computer : HandInteractable
 {
     [SerializeField] private GameObject useCam;
+    [SerializeField] private GameObject hintText;
     private bool onComp = false;
 
     public override void Grab(Gripper g)
@@ -12,6 +13,7 @@ public class Computer : HandInteractable
         onComp = true;
         useCam.SetActive(true);
         GameInstanceManager.Instance.TurnOn();
+        hintText.SetActive(false);
         g.Toggle(true);
         SetHighlight(false);
     }

@@ -16,7 +16,8 @@ public class Cutscene : MonoBehaviour
     private enum Scene
     {
         FBI_One,
-        GrocerySubtitles
+        GrocerySubtitles,
+        Opening
     }
 
     [SerializeField] private List<Camera> cameras;
@@ -36,6 +37,7 @@ public class Cutscene : MonoBehaviour
     [SerializeField] private GameObject trigger;
     [SerializeField] private Scene scene;
     [SerializeField] private GameObject surferCloneTrigger;
+    [SerializeField] private List<GameObject> hintText;
 
     private float timer;
     private int index;
@@ -43,6 +45,7 @@ public class Cutscene : MonoBehaviour
     private float expectedLength;
     private float charClock;
     private bool charAddingMode = false;
+    private PlayerController pc;
 
     private void OnEnable()
     {
@@ -53,11 +56,12 @@ public class Cutscene : MonoBehaviour
         cameras[0].gameObject.SetActive(true);
         index = 0;
         cmode = Mode.Read;
+        pc = FindFirstObjectByType<PlayerController>();
         if (lockControls)
         {
-            FindObjectOfType<PlayerController>().LockControls(true);
+            pc.LockControls(true);
         }
-        FindObjectOfType<PlayerController>().gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        pc.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     private void Update()
@@ -78,10 +82,14 @@ public class Cutscene : MonoBehaviour
                     {
                         gr.Toggle(true);
                     }
-                    GameObject g = FindObjectOfType<PlayerController>().gameObject;
+                    GameObject g = pc.gameObject;
                     Vector3 p = g.transform.position;
                     p.x += Time.deltaTime * 6f;
                     g.transform.position = p;
+                }
+                else if (scene == Scene.Opening && index == 2)
+                {
+                    pc.transform.Rotate(new Vector3(0, Time.deltaTime * -90f / (afterTextLength), 0));
                 }
             }
         }
@@ -103,7 +111,7 @@ public class Cutscene : MonoBehaviour
 
         if (lockControls)
         {
-            FindObjectOfType<PlayerController>().LockControls(false);
+            pc.LockControls(false);
         }
         if (scene == Scene.FBI_One)
         {
@@ -111,6 +119,13 @@ public class Cutscene : MonoBehaviour
             GameObject g = FindObjectOfType<PlayerController>().gameObject;
             g.transform.position = endTeleportLocation.transform.position;
             g.transform.rotation = endTeleportLocation.transform.rotation;
+        }
+        else if (scene == Scene.Opening)
+        {
+            foreach (GameObject g in hintText)
+            {
+                g.SetActive(true);
+            }
         }
 
         gameObject.SetActive(false);

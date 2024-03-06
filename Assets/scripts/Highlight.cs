@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class Highlight : MonoBehaviour
@@ -84,6 +85,10 @@ public class Highlight : MonoBehaviour
 
     private List<MeshRenderer> descendentSearch(GameObject g)
     {
+        if (g.tag.Equals("dontHighlight"))
+        {
+            return new List<MeshRenderer>();
+        }
         if (g.transform.childCount == 0)
         {
             if (g.GetComponent<MeshRenderer>() != null)
@@ -98,6 +103,10 @@ public class Highlight : MonoBehaviour
         else
         {
             List<MeshRenderer> mList = new List<MeshRenderer>();
+            if (g.GetComponent<MeshRenderer>() != null)
+            {
+                mList = new List<MeshRenderer>() { g.GetComponent<MeshRenderer>() };
+            }
             foreach (Transform child in g.transform)
             {
                 mList.AddRange(descendentSearch(child.gameObject));

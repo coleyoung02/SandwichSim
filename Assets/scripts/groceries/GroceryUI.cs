@@ -36,6 +36,7 @@ public class GroceryUI : GroceryListUpdateable
     [SerializeField] private GroceryList groceryList;
     [SerializeField] private GameObject groceryListRow;
     private List<TextMeshProUGUI> groceryListRows;
+    private bool grabbed;
     private bool started;
     private bool completed;
 
@@ -53,11 +54,20 @@ public class GroceryUI : GroceryListUpdateable
         {
             MarkItemNeeded(i);
         }
+        completed = false;
+        grabbed = false;
+    }
+
+    public void Grab()
+    {
+        grabbed = true;
+
+        StartCoroutine(Twist(true));
     }
 
     private void Update()
     {
-        if (!completed)
+        if (grabbed && !completed)
         {
             if (Input.GetKeyDown(KeyCode.Tab))
             {
@@ -124,6 +134,8 @@ public class GroceryUI : GroceryListUpdateable
                 groceryListUI.GetComponent<RectTransform>().localRotation = Quaternion.Euler(Mathf.Lerp(0, 45, i / totalTime), Mathf.Lerp(0, 90, i / totalTime), Mathf.Lerp(0, 270, i / totalTime));
                 yield return new WaitForEndOfFrame();
             }
+            groceryListUI.GetComponent<RectTransform>().localRotation = Quaternion.Euler(45, 90, 270);
+            yield return new WaitForEndOfFrame();
             groceryListUI.SetActive(false);
         }
         started = false;

@@ -11,6 +11,7 @@ public class BearOSClickable : MonoBehaviour
     [SerializeField] private GameObject activates;
     [SerializeField] private GameObject deactivates;
     [SerializeField] private bool inWindow;
+    [SerializeField] private bool doesPrint;
     private Color baseColor;
     private static bool windowUp;
 
@@ -38,6 +39,10 @@ public class BearOSClickable : MonoBehaviour
     {
         if (hovered && Input.GetMouseButtonDown(0) && (!windowUp || inWindow))
         {
+            if (doesPrint)
+            {
+                FindFirstObjectByType<Printer>().Print();
+            }
             if (activates != null)
             {
                 activates.SetActive(true);

@@ -29,6 +29,12 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+
+    public void UIUnpause()
+    {
+        GameInstanceManager.Instance.UnpauseGame();
+    }
+
     public void ResumeGame()
     {
         pauseMenuUI.SetActive(false);

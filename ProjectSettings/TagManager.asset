@@ -10,6 +10,7 @@ TagManager:
   - vanish
   - ascensionLight
   - DoorBreak
+  - dontHighlight
   layers:
   - Default
   - TransparentFX
