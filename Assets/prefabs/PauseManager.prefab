@@ -155,14 +155,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1145253051233552726, guid: aba85b9bea6e67a458cf73f29dd56903,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2655342043494418031}
     - target: {fileID: 4698580431126326691, guid: aba85b9bea6e67a458cf73f29dd56903,
         type: 3}
       propertyPath: m_Name
       value: PauseCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4698580431126326691, guid: aba85b9bea6e67a458cf73f29dd56903,
+    - target: {fileID: 6758114812413127936, guid: aba85b9bea6e67a458cf73f29dd56903,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2655342043494418031}
+    - target: {fileID: 6958476651859428971, guid: aba85b9bea6e67a458cf73f29dd56903,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813934215626757437, guid: aba85b9bea6e67a458cf73f29dd56903,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
