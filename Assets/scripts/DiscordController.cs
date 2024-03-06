@@ -41,7 +41,6 @@ public class DiscordController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("doing discord");
         if (discord == null)
         {
             if (!waiting)
