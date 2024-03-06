@@ -36,9 +36,6 @@ EditorBuildSettings:
     path: Assets/imports/SugarBear/Final Levels/PrologueTextScroll.unity
     guid: d289f981e4e7f884b953abc6e2d5fa22
   - enabled: 1
-    path: Assets/imports/SugarBear/Final Levels/StartMenu.unity
-    guid: 92d87e6667b8b5d469ff204f7e085ba5
-  - enabled: 1
     path: Assets/imports/SugarBear/Final Levels/Win_Screen.unity
     guid: a17459bb2e9d48c47a222076c559a6eb
   - enabled: 1

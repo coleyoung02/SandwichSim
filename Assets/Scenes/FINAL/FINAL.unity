@@ -29391,6 +29391,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1075135168}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1081043415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1562110523920915529, guid: 7942c1b5c87d0e54db9a41a8249ce963,
+    type: 3}
+  m_PrefabInstance: {fileID: 1743397203}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1081043419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081043415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4426af4924706b444a0e1d21358f8758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applicationID: 0
+  details: Walking around the world
+  largeImage: game_logo
+  largeText: Discord Tutorial
 --- !u!1 &1087141134
 GameObject:
   m_ObjectHideFlags: 0
@@ -48137,7 +48159,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1562110523920915529, guid: 7942c1b5c87d0e54db9a41a8249ce963,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1081043419}
   m_SourcePrefab: {fileID: 100100000, guid: 7942c1b5c87d0e54db9a41a8249ce963, type: 3}
 --- !u!1001 &1745678129
 PrefabInstance:
@@ -58545,6 +58571,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1613995228}
+    - target: {fileID: 9168157939761822438, guid: d2f9189aa52b9e64aa0bf58370bcbb37,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
