@@ -75,8 +75,8 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(WaitABit());
             }
             SetDeceased(true);
-            rb.AddForce((collision.gameObject.GetComponent<Rigidbody>().velocity + Vector3.up * 15) / 3f, ForceMode.Impulse);
-            rb.AddTorque(Vector3.Cross(collision.gameObject.GetComponent<Rigidbody>().velocity, Vector3.down).normalized * 16, ForceMode.Impulse);
+            rb.AddForce((collision.gameObject.GetComponent<Rigidbody>().velocity + Vector3.up * collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude / 3) / 3f, ForceMode.Impulse);
+            rb.AddTorque(Vector3.Cross(collision.gameObject.GetComponent<Rigidbody>().velocity, Vector3.down) * .5f, ForceMode.Impulse);
             hands.ForceRelease();
         }
         else
@@ -172,6 +172,9 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
+                rb.angularVelocity = Vector3.zero;
+                rb.velocity = Vector3.zero;
+                rb.freezeRotation = true;
                 if (isNearHome)
                 {
                     transform.rotation = nearHomeReset.transform.rotation;

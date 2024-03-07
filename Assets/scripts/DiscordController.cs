@@ -35,7 +35,11 @@ public class DiscordController : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        discord.Dispose();
+        StopAllCoroutines();
+        if (discord != null)
+        {
+            discord.Dispose();
+        }
     }
 
     // Update is called once per frame

@@ -19,6 +19,15 @@ public class GameInstanceManager : MonoBehaviour
 
     protected void Awake()
     {
+        if (PlayerPrefs.GetInt("Scan", -1) != 0)
+        {
+            Debug.LogWarning("Enableing becasuse player pref was " + PlayerPrefs.GetInt("Scan", -1));
+            Shader.SetGlobalFloat("_SLineOn", 1f);
+        }
+        else
+        {
+            Shader.SetGlobalFloat("_SLineOn", -1f);
+        }
         if (Instance != null && Instance != this)
         {
             Destroy(this);

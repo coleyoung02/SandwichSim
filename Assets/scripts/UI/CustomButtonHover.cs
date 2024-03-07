@@ -12,6 +12,7 @@ public class CustomButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerEx
     [SerializeField] private bool toggleActiveDefault;
     [SerializeField] private string playerPrefsIntName;
     private bool toggleActive;
+    private bool hovered = false;
 
     void Start()
     {
@@ -23,20 +24,26 @@ public class CustomButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerEx
             {
                 if (pref == 0)
                 {
+                    Debug.Log("I " + gameObject.name + " am INactive because of playerpref");
                     toggleActive = false;
                 }
                 else
                 {
                     toggleActive = true;
+                    Debug.Log("I " + gameObject.name + " am active because of playerpref");
+
                 }
             }
             else if (!toggleActiveDefault)
             {
                 toggleActive = false;
+                Debug.Log("I " + gameObject.name + " am INactive because of NO playerpref");
+
             }
             else
             {
                 toggleActive = true;
+                Debug.Log("I " + gameObject.name + " am active because of NO playerpref");
             }
             tm.text = GetText();
         }
@@ -44,19 +51,34 @@ public class CustomButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     private void OnEnable()
     {
+        hovered = false;
         if (baseText != null)
         {
-            tm.text = baseText;
+            tm.text = GetText();
+        }
+    }
+
+    public void SetToggle(bool t, bool refreshUI=true)
+    {
+        toggleActive = t;
+        if (refreshUI)
+        {
+            if (hovered)
+            {
+                tm.text = "[" + GetText() + "]";
+            }
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        hovered = false;
         tm.text = GetText();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        hovered = true;
         tm.text = "[" + GetText() + "]";
     }
 
