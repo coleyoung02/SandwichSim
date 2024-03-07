@@ -21,7 +21,6 @@ public class GameInstanceManager : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Scan", -1) != 0)
         {
-            Debug.LogWarning("Enableing becasuse player pref was " + PlayerPrefs.GetInt("Scan", -1));
             Shader.SetGlobalFloat("_SLineOn", 1f);
         }
         else

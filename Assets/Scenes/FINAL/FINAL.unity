@@ -7604,6 +7604,11 @@ PrefabInstance:
       propertyPath: clockObject
       value: 
       objectReference: {fileID: 1142790301}
+    - target: {fileID: 2977526238406404431, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
+        type: 3}
+      propertyPath: playerPrefsIntName
+      value: Clock
+      objectReference: {fileID: 0}
     - target: {fileID: 4845875264606553678, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
         type: 3}
       propertyPath: m_LocalPosition.x

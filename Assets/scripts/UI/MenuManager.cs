@@ -35,8 +35,8 @@ public class MenuManager : MonoBehaviour
         int usedIndex = -1;
         fullscreen = PlayerPrefs.GetInt("Fullscreen", -1) != 0;
         noirMode = PlayerPrefs.GetInt("Noir", -1) == 1;
-        clock = PlayerPrefs.GetInt("Scan", -1) != 0;
-        vhsScan = PlayerPrefs.GetInt("Clock", -1) == 1;
+        clock = PlayerPrefs.GetInt("Clock", -1) == 1;
+        vhsScan = PlayerPrefs.GetInt("Scan", -1) != 0;
         if (PlayerPrefs.GetInt("Res", -1) == -1)
         {
             for (int i = 0; i < validResolutions.GetLength(0); ++i)
@@ -138,7 +138,7 @@ public class MenuManager : MonoBehaviour
 
     public void BumpResolution(bool up)
     {
-        if (up && currentRes != validResolutions.Length &&
+        if (up && currentRes + 1 < validResolutions.GetLength(0) &&
             validResolutions[currentRes + 1, 0] <= maxWidth && validResolutions[currentRes + 1, 1] <= maxHeight)
         {
             currentRes += 1;
