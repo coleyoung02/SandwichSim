@@ -11,6 +11,7 @@ TagManager:
   - ascensionLight
   - DoorBreak
   - dontHighlight
+  - noirAudio
   layers:
   - Default
   - TransparentFX

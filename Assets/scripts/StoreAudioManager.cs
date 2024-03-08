@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class StoreAudioManager : MonoBehaviour
 {
@@ -12,23 +13,59 @@ public class StoreAudioManager : MonoBehaviour
     [SerializeField] private bool wide;
     [SerializeField] private float maxDist;
     [SerializeField] private float minDist;
+    [SerializeField] private bool doCrossfade;
+    [SerializeField] private float crossfadeDuration;
     private GameObject player;
     private float t;
     private bool isIn;
     private bool hasExited;
     private bool announcementPlaying;
+    private int crossfadeIndex;
+    private List<float> volumeMultipliers;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         t = 0f;
         isIn = false;
         announcementPlaying = false;
-        SetVolumes(0);
         if (wide)
         {
             player = FindObjectOfType<PlayerController>().gameObject;
         }
+        if (doCrossfade)
+        {
+            volumeMultipliers = new List<float>();
+            for (int i = 0; i < sources.Count; ++i)
+            {
+                volumeMultipliers.Add(0f);
+            }
+            if (PlayerPrefs.GetInt("Noir", -1) == 1)
+            {
+
+                volumeMultipliers[1] = 1f;
+                crossfadeIndex = 1;
+            }
+            else
+            {
+                volumeMultipliers[0] = 1f;
+                crossfadeIndex = 0;
+            }
+        }
+        SetVolumes(0);
+    }
+
+    public void SetCrossfadeActive(int active)
+    {
+        if (!sources[0].isPlaying)
+        {
+            for (int i = 0; i < volumeMultipliers.Count; ++i)
+            {
+                volumeMultipliers[i] = 0f;
+            }
+            volumeMultipliers[active] = 1f;
+        }
+        crossfadeIndex = active;
     }
 
     // Update is called once per frame
@@ -46,27 +83,66 @@ public class StoreAudioManager : MonoBehaviour
             {
                 if (isIn)
                 {
-                    t = Mathf.Clamp(t + Time.deltaTime, 0, lerpInTime);
+                    t = Mathf.Clamp(t + Time.unscaledDeltaTime, 0, lerpInTime);
                 }
                 else
                 {
-                    t = Mathf.Clamp(t - Time.deltaTime, 0, lerpInTime);
+                    t = Mathf.Clamp(t - Time.unscaledDeltaTime, 0, lerpInTime);
                 }
 
             }
-            if (Mathf.Abs(t - oldT) >= .0001f)
+        }
+        if (doCrossfade)
+        {
+            if (crossfadeDuration == 0)
             {
-                UpdateVolume(t);
+                for (int i = 0; i < volumeMultipliers.Count; ++i)
+                {
+                    if (i != crossfadeIndex)
+                    {
+                        volumeMultipliers[i] = 0f;
+                    }
+                    else
+                    {
+                        volumeMultipliers[i] = 1f;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < volumeMultipliers.Count; ++i)
+                {
+                    if (i != crossfadeIndex)
+                    {
+                        volumeMultipliers[i] = Mathf.Max(volumeMultipliers[i] - Time.unscaledDeltaTime / crossfadeDuration, 0f);
+                    }
+                    else
+                    {
+                        volumeMultipliers[i] = Mathf.Min(volumeMultipliers[i] + Time.unscaledDeltaTime / crossfadeDuration, 1f);
+                    }
+                }
             }
         }
-        
+        if (doCrossfade || Mathf.Abs(t - oldT) >= .0001f)
+        {
+            UpdateVolume(t);
+        }
+
     }
 
     private void SetVolumes(float v)
     {
-        foreach (AudioSource source in sources)
+        for (int i = 0; i < sources.Count; ++i)
         {
-            source.volume = v;
+            if (doCrossfade)
+            {
+                float mult = volumeMultipliers[i];
+                sources[i].volume = v * mult;
+            }
+            else
+            {
+                sources[i].volume = v;
+            }
         }
     }
 

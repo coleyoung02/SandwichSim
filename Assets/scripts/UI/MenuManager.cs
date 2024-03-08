@@ -91,6 +91,15 @@ public class MenuManager : MonoBehaviour
         if (noirObject != null)
         {
             noirObject.SetActive(noirMode);
+            if (noirMode)
+            {
+                GameObject.FindGameObjectWithTag("noirAudio").GetComponent<StoreAudioManager>().SetCrossfadeActive(1);
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("noirAudio").GetComponent<StoreAudioManager>().SetCrossfadeActive(0);
+            }
+
         }
         noirToggle.SetToggle(noirMode);
     }
