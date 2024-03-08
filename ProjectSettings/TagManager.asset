@@ -12,6 +12,9 @@ TagManager:
   - DoorBreak
   - dontHighlight
   - noirAudio
+  - Undefined
+  - fish
+  - fishingRod
   layers:
   - Default
   - TransparentFX
