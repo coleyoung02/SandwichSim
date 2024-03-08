@@ -12,7 +12,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: dcca016a50d43f544a8db116fcd03e33, type: 2}
+      objectReference: {fileID: 2100000, guid: ff2a6e279a1d4774f8619deadc90b069, type: 2}
     - target: {fileID: 135242120632993515, guid: b72b1a106a5a4594da5fbf1017871d00,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -68,6 +68,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZoomZoom
       objectReference: {fileID: 0}
+    - target: {fileID: 3131122695869120110, guid: b72b1a106a5a4594da5fbf1017871d00,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1551113389355595217, guid: a05ea35457548d644897f28dc93a8514,
+        type: 3}
     - target: {fileID: 5697422872483777895, guid: b72b1a106a5a4594da5fbf1017871d00,
         type: 3}
       propertyPath: moveSpeed

@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: The Sandwich Squad
+  companyName: ' Sandwich Squad'
   productName: SandwichSim
   defaultCursor: {fileID: 2800000, guid: 43029f753ffb498488248cab1e2dfe8a, type: 3}
   cursorHotspot: {x: 0, y: 0}
