@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.212
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 75969226}
-  m_IndirectSpecularColor: {r: 0.003500483, g: 0.00029705762, b: 0.004923247, a: 0.212}
+  m_IndirectSpecularColor: {r: 0.003500486, g: 0.0002970585, b: 0.0049232575, a: 0.212}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10333,7 +10333,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: bbb2e628f272e42a6a354e83b76efb9a,
+      objectReference: {fileID: 21300000, guid: a2fff9476642c9e41a658adfb962b6db,
         type: 3}
     - target: {fileID: 1062660777355943964, guid: 2ad0f91caf7f860428908cf50dadfe53,
         type: 3}
@@ -10353,17 +10353,12 @@ PrefabInstance:
     - target: {fileID: 4817326272547755026, guid: 2ad0f91caf7f860428908cf50dadfe53,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4817326272547755026, guid: 2ad0f91caf7f860428908cf50dadfe53,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.5000002
       objectReference: {fileID: 0}
     - target: {fileID: 4817326272547755026, guid: 2ad0f91caf7f860428908cf50dadfe53,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.5000002
       objectReference: {fileID: 0}
     - target: {fileID: 4817326272547755026, guid: 2ad0f91caf7f860428908cf50dadfe53,
         type: 3}
@@ -10373,7 +10368,7 @@ PrefabInstance:
     - target: {fileID: 4817326272547755026, guid: 2ad0f91caf7f860428908cf50dadfe53,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.99
+      value: -3.35
       objectReference: {fileID: 0}
     - target: {fileID: 4817326272547755026, guid: 2ad0f91caf7f860428908cf50dadfe53,
         type: 3}
@@ -16567,7 +16562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &657072178
 Transform:
   m_ObjectHideFlags: 0
@@ -29849,12 +29844,6 @@ PrefabInstance:
       propertyPath: m_Cameras.Array.data[0]
       value: 
       objectReference: {fileID: 1951452374}
-    - target: {fileID: 713617763456985460, guid: 2ad0f91caf7f860428908cf50dadfe53,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3ba3d1ef8962743f7ac261ec9933f422,
-        type: 3}
     - target: {fileID: 1062660777355943964, guid: 2ad0f91caf7f860428908cf50dadfe53,
         type: 3}
       propertyPath: m_Name
@@ -29873,17 +29862,12 @@ PrefabInstance:
     - target: {fileID: 4817326272547755026, guid: 2ad0f91caf7f860428908cf50dadfe53,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4817326272547755026, guid: 2ad0f91caf7f860428908cf50dadfe53,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.5000001
       objectReference: {fileID: 0}
     - target: {fileID: 4817326272547755026, guid: 2ad0f91caf7f860428908cf50dadfe53,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.5000001
       objectReference: {fileID: 0}
     - target: {fileID: 4817326272547755026, guid: 2ad0f91caf7f860428908cf50dadfe53,
         type: 3}
@@ -29893,7 +29877,7 @@ PrefabInstance:
     - target: {fileID: 4817326272547755026, guid: 2ad0f91caf7f860428908cf50dadfe53,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.74
+      value: -2.61
       objectReference: {fileID: 0}
     - target: {fileID: 4817326272547755026, guid: 2ad0f91caf7f860428908cf50dadfe53,
         type: 3}
