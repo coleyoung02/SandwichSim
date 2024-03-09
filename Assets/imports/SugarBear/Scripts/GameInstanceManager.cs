@@ -17,6 +17,12 @@ public class GameInstanceManager : MonoBehaviour
     private int levelIndex = -1;
     private bool loading = false;
 
+
+    public GameState GetState()
+    {
+        return gameState;
+    }
+
     protected void Awake()
     {
         if (PlayerPrefs.GetInt("Scan", -1) != 0)

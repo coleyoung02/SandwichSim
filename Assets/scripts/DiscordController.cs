@@ -28,7 +28,6 @@ public class DiscordController : MonoBehaviour
         }
         catch 
         {
-            Debug.LogWarning("Discord connection failed");
         }
         time = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
     }
@@ -49,7 +48,6 @@ public class DiscordController : MonoBehaviour
         {
             if (!waiting)
             {
-                Debug.LogWarning("No discord connection made, retrying connection");
                 waiting = true;
                 StartCoroutine(ReTryDiscordConnect());
             }
@@ -77,7 +75,6 @@ public class DiscordController : MonoBehaviour
         }
         catch
         {
-            Debug.LogWarning("Discord connection failed");
         }
         waiting = false;
     }

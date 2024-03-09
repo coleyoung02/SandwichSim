@@ -19,6 +19,13 @@ public class Hands : MonoBehaviour
     private Gripper activeHand;
     private float sensitivity = .5f;
     private PlayerController pc;
+    private bool activityOverride = false;
+
+    public void SetHandOverride(bool o)
+    {
+        activityOverride = o;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +48,11 @@ public class Hands : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inUse && !pc.GetControlsLocked())
+        if (GameInstanceManager.Instance.GetState() == GameState.Paused)
+        {
+            return;
+        }
+        if (inUse && (activityOverride || !pc.GetControlsLocked()))
         {
             mainUpdateLoop();
         }

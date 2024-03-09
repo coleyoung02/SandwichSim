@@ -68,6 +68,11 @@ public class StoreAudioManager : MonoBehaviour
         crossfadeIndex = active;
     }
 
+    public float GetRelativeVolume()
+    {
+        return t / lerpInTime;
+    }
+
     // Update is called once per frame
     void Update()
     {

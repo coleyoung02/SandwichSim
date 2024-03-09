@@ -15,7 +15,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private CustomButtonHover vhsToggle;
     [SerializeField] private CustomButtonHover clockToggle;
 
-    public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
 
     private int maxWidth;
@@ -218,14 +217,12 @@ public class MenuManager : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        GameIsPaused = false;
     }
 
     public void PauseGame()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
     }
 
     public void QuitGame()

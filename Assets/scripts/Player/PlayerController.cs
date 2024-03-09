@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
 
     public void SetPause(bool p)
     {
-        controlsLocked = p;
         pause.SetPause(p);
     }
 
@@ -127,8 +126,21 @@ public class PlayerController : MonoBehaviour
         handsOnly = true;
     }
 
-    public void LockControls(bool mode)
+    public void LockControls(bool mode, bool allowHands=false)
     {
+        if (mode == true && allowHands)
+        {
+            hands.SetHandOverride(true);
+            if (!usingHands)
+            {
+                usingHands = true;
+                hands.Toggle();
+            }
+        }
+        else
+        {
+            hands.SetHandOverride(false);
+        }
         controlsLocked = mode;
     }
 
@@ -150,6 +162,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameInstanceManager.Instance.GetState() == GameState.Paused)
+        {
+            return;
+        }
         if (!deceased && !controlsLocked)
         {
             if (!usingHands)

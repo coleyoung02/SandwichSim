@@ -52,22 +52,24 @@ public class ChasePlayerControls : MonoBehaviour
     {
         if (isOn)
         {
-            if (!manuevering && !jumping)
+            if (GameInstanceManager.Instance.GetState() != GameState.Paused)
             {
-
-                rb.velocity = new Vector3(0f, rb.velocity.y, curSpeed);
-                BaseInputChecks();
-            }
-            else
-            {
-                rb.velocity = new Vector3(0f, rb.velocity.y, curSpeed);
-                if (manueverInClock > 0f)
+                if (!manuevering && !jumping)
                 {
-                    ManueverIn();
+                    rb.velocity = new Vector3(0f, rb.velocity.y, curSpeed);
+                    BaseInputChecks();
                 }
-                else if (manueveringOut || !checkSameInput())
+                else
                 {
-                    ManueverOut();
+                    rb.velocity = new Vector3(0f, rb.velocity.y, curSpeed);
+                    if (manueverInClock > 0f)
+                    {
+                        ManueverIn();
+                    }
+                    else if (manueveringOut || !checkSameInput())
+                    {
+                        ManueverOut();
+                    }
                 }
             }
             UpdateFeds();
@@ -84,7 +86,7 @@ public class ChasePlayerControls : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isOn)
+        if (isOn && GameInstanceManager.Instance.GetState() != GameState.Paused)
         {
             rb.AddForce(Vector3.down * downForce, ForceMode.Force);
         }

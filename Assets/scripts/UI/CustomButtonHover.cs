@@ -24,26 +24,26 @@ public class CustomButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerEx
             {
                 if (pref == 0)
                 {
-                    Debug.Log("I " + gameObject.name + " am INactive because of playerpref");
+                    //Debug.Log("I " + gameObject.name + " am INactive because of playerpref");
                     toggleActive = false;
                 }
                 else
                 {
                     toggleActive = true;
-                    Debug.Log("I " + gameObject.name + " am active because of playerpref");
+                    //Debug.Log("I " + gameObject.name + " am active because of playerpref");
 
                 }
             }
             else if (!toggleActiveDefault)
             {
                 toggleActive = false;
-                Debug.Log("I " + gameObject.name + " am INactive because of NO playerpref");
+                //Debug.Log("I " + gameObject.name + " am INactive because of NO playerpref");
 
             }
             else
             {
                 toggleActive = true;
-                Debug.Log("I " + gameObject.name + " am active because of NO playerpref");
+                //Debug.Log("I " + gameObject.name + " am active because of NO playerpref");
             }
             tm.text = GetText();
         }

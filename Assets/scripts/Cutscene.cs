@@ -17,7 +17,10 @@ public class Cutscene : MonoBehaviour
     {
         FBI_One,
         GrocerySubtitles,
-        Opening
+        Opening,
+        Coming,
+        RomanceWin,
+        RomanceLoss
     }
 
     [SerializeField] private List<Camera> cameras;
@@ -38,6 +41,8 @@ public class Cutscene : MonoBehaviour
     [SerializeField] private Scene scene;
     [SerializeField] private GameObject surferCloneTrigger;
     [SerializeField] private List<GameObject> hintText;
+    [SerializeField] private GameObject regAgent;
+    [SerializeField] private GameObject romancedAgent;
 
     private float timer;
     private int index;
@@ -60,6 +65,10 @@ public class Cutscene : MonoBehaviour
         if (lockControls)
         {
             pc.LockControls(true);
+        }
+        if (scene == Scene.Coming)
+        {
+            FindFirstObjectByType<ChasePlayerControls>().SetOn(false);
         }
         pc.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
@@ -116,17 +125,22 @@ public class Cutscene : MonoBehaviour
         if (scene == Scene.FBI_One)
         {
             surferCloneTrigger.SetActive(true);
+        }
+        foreach (GameObject g in hintText)
+        {
+            g.SetActive(true);
+        }
+        if (scene == Scene.Coming)
+        {
+            FindFirstObjectByType<RomanceEvent>().FinishCutscene();
+        }
+        if (endTeleportLocation != null)
+        {
             GameObject g = FindObjectOfType<PlayerController>().gameObject;
             g.transform.position = endTeleportLocation.transform.position;
             g.transform.rotation = endTeleportLocation.transform.rotation;
         }
-        else if (scene == Scene.Opening)
-        {
-            foreach (GameObject g in hintText)
-            {
-                g.SetActive(true);
-            }
-        }
+        
 
         gameObject.SetActive(false);
     }
@@ -157,6 +171,11 @@ public class Cutscene : MonoBehaviour
 
                 if (textBox.text.Length == dialogue[index].Length)
                 {
+                    if (index == 0 && scene == Scene.RomanceWin)
+                    {
+                        regAgent.SetActive(false);
+                        romancedAgent.SetActive(true);
+                    }
                     timer = afterTextLength;
                     charAddingMode = false;
                 }
