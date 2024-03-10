@@ -12,6 +12,7 @@ public class RomanceEvent : MonoBehaviour
     [SerializeField] private GameObject failureCutscene;
     [SerializeField] private GameObject walkingAgent;
     [SerializeField] private GameObject startTrigger;
+    [SerializeField] private GameObject bearTargetPos;
     private PlayerController pc;
     private bool walkingMode = true;
 
@@ -57,14 +58,19 @@ public class RomanceEvent : MonoBehaviour
 
     public void Romance()
     {
-        walkingMode = false;
-        walkingAgent.SetActive(false);
-        startTrigger.SetActive(false);
         if (pc == null)
         {
             pc = FindAnyObjectByType<PlayerController>();
         }
         GameObject g = pc.gameObject;
+        Vector3 cutscenePos = romanceCutscene.transform.position;
+        Vector3 shiftAmt = g.transform.position - bearTargetPos.transform.position;
+        cutscenePos.x += shiftAmt.x;
+        cutscenePos.z += shiftAmt.z;
+        romanceCutscene.transform.position = cutscenePos;
+        walkingMode = false;
+        walkingAgent.SetActive(false);
+        startTrigger.SetActive(false);
         g.GetComponent<Rigidbody>().velocity = Vector3.zero;
         romanceCutscene.SetActive(true);
     }

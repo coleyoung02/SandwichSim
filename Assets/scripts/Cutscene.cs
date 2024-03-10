@@ -100,11 +100,21 @@ public class Cutscene : MonoBehaviour
                 {
                     pc.transform.Rotate(new Vector3(0, Time.deltaTime * -90f / (afterTextLength), 0));
                 }
+                else if (scene == Scene.RomanceWin && index == 2)
+                {
+                    pc.transform.Rotate(new Vector3(0, Time.deltaTime * 90f / (afterTextLength), 0));
+                }
+                if (scene == Scene.RomanceWin && index == 3)
+                {
+                    pc.gameObject.GetComponent<Rigidbody>().velocity = -Vector3.forward * 50;
+                    pc.transform.rotation = Quaternion.Euler(0, 180, Mathf.Sin(Time.time * 3.14f * 6) * 10f);
+                }
             }
         }
         else if (timer >= 0)
         {
             timer -= Time.deltaTime;
+            
         }
         else
         {
@@ -244,7 +254,17 @@ public class Cutscene : MonoBehaviour
             }
             else
             {
-                timer = shotLength;
+                if (index < audios.Count && audios[index] != null)
+                {
+                    timer = audios[index].length + .05f;
+                    source.Stop();
+                    source.clip = audios[index];
+                    source.Play();
+                }
+                else
+                {
+                    timer = shotLength;
+                }
                 textHolder.SetActive(false);
                 cmode = Mode.Wait;
             }
