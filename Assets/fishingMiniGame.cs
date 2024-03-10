@@ -48,7 +48,7 @@ public class fishingMiniGame : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (isFishing && Input.GetKeyDown(KeyCode.F))
+        if (isFishing && Input.GetKeyDown(KeyCode.F) && other.tag == "fish")
         {
             for (int i =0; i<5; i++)
             {
