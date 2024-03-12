@@ -420,6 +420,7 @@ Transform:
   - {fileID: 8008538697603704381}
   - {fileID: 1493161685327436550}
   - {fileID: 8081031025013429815}
+  - {fileID: 2645465160864789024}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8892819358380931479
@@ -465,6 +466,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c593fe465f900c2429df20b599cce4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxShift: 0.01
+  frequency: 3
+  moveSpeed: 25
   hands: {fileID: 8005955128266696744}
   cam: {fileID: 5784930295841686606}
   realCam: {fileID: 4398427225071814072}
@@ -475,9 +479,7 @@ MonoBehaviour:
   nearHomeReset: {fileID: 0}
   nearStoreReset: {fileID: 0}
   pause: {fileID: 0}
-  maxShift: 0.01
-  frequency: 3
-  moveSpeed: 25
+  openingCutscene: {fileID: 0}
 --- !u!54 &8188867572569875352
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -519,8 +521,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manueverInTime: 0.15
   manueverOutTime: 0.2
-  moveSpeed: 45
-  slowedSpeed: 35
+  moveSpeed: 55
+  slowedSpeed: 40
   slowDuration: 0.75
   xShift: 12
   bumpAmount: 7.51
@@ -771,6 +773,90 @@ Transform:
   - {fileID: 3626019154510535657}
   m_Father: {fileID: 844011619377754179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6014142872110341912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2645465160864789024}
+  - component: {fileID: 5489085628964150670}
+  m_Layer: 11
+  m_Name: agent1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2645465160864789024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6014142872110341912}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.18952392, z: 0, w: 0.98187613}
+  m_LocalPosition: {x: 6.24, y: 4, z: 12.93}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 844011619377754179}
+  m_LocalEulerAnglesHint: {x: 0, y: 21.85, z: 0}
+--- !u!212 &5489085628964150670
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6014142872110341912}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 3ba3d1ef8962743f7ac261ec9933f422, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 9.6, y: 13.84}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &7584397698999634940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,8 +1837,8 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.2
-      minScalar: 0.2
+      scalar: 0.085
+      minScalar: 0.125
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1804,8 +1890,8 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 2
+      scalar: 1.3
+      minScalar: 1.9
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1857,8 +1943,8 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.2
-      minScalar: 0.2
+      scalar: 0.085
+      minScalar: 0.125
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2372,8 +2458,8 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 5
+      scalar: 4.5
+      minScalar: 6
       maxCurve:
         serializedVersion: 2
         m_Curve:

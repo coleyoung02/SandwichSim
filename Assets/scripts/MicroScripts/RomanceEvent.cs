@@ -77,13 +77,20 @@ public class RomanceEvent : MonoBehaviour
 
     public void Failure()
     {
-        walkingMode = false;
-        walkingAgent.SetActive(false);
         if (pc == null)
         {
             pc = FindAnyObjectByType<PlayerController>();
         }
         GameObject g = pc.gameObject;
+        Vector3 cutscenePos = failureCutscene.transform.position;
+        Vector3 shiftAmt = g.transform.position - bearTargetPos.transform.position;
+        Debug.LogWarning(shiftAmt);
+        cutscenePos.x += shiftAmt.x;
+        cutscenePos.z += shiftAmt.z;
+        failureCutscene.transform.position = cutscenePos;
+        walkingMode = false;
+        walkingAgent.SetActive(false);
+        romanceCutscene.transform.position = cutscenePos;
         g.GetComponent<Rigidbody>().velocity = Vector3.zero;
         failureCutscene.SetActive(true);
     }

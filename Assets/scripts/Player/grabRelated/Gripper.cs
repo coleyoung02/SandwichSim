@@ -110,7 +110,8 @@ public class Gripper : MonoBehaviour
         int minIndex = -1;
         for (int i = 0; i < nearHand.Count; ++i)
         {
-            float distance = (this.gameObject.transform.position - nearHand[i].gameObject.transform.position).magnitude;
+            //Error on this line
+            float distance = (this.gameObject.transform.position - nearHand[i].transform.position).magnitude;
             if (!anything || distance < minDistance)
             {
                 anything = true;
