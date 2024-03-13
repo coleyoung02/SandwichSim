@@ -21,6 +21,7 @@ public class Frobbable : HandInteractable
     [SerializeField] private bool isGroceryItem;
     [SerializeField] private bool isPreppedIngredient;
     [SerializeField] private float soupChance;
+    [SerializeField] private bool isBasket;
     [SerializeField] private GameObject geomoetry;
     [SerializeField] private GameObject soupGeomoetry;
 
@@ -54,7 +55,10 @@ public class Frobbable : HandInteractable
                 geomoetry.SetActive(false);
                 soupGeomoetry.SetActive(true);
                 soupChance = 0f;
-                g.OnTriggerExit(geomoetry.GetComponent<Collider>());
+                foreach (Gripper gr in FindObjectsByType<Gripper>(FindObjectsSortMode.None))
+                {
+                    gr.OnTriggerExit(geomoetry.GetComponent<Collider>());
+                }
                 FindFirstObjectByType<AudioManager>().PlayPooledClip(ClipPool.SOUP);
             }
             else
@@ -143,18 +147,25 @@ public class Frobbable : HandInteractable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (winOnTouch && hasLayer(LayerMask.GetMask("PreppedIngredient"), collision.gameObject.layer))
+        if (isBasket && collision.gameObject.tag.Equals("car") && held)
         {
-            gripper.Toggle(true);
-            sand.OnWin();
+            FindFirstObjectByType<PlayerController>().OnCollisionEnter(collision);
         }
-        if (held && !collision.gameObject.layer.Equals(LayerMask.GetMask("Hand")))
+        else
         {
-            if (hasLayer(extraIgnoredLayers, collision.gameObject.layer))
+            if (winOnTouch && hasLayer(LayerMask.GetMask("PreppedIngredient"), collision.gameObject.layer))
             {
-                return;
+                gripper.Toggle(true);
+                sand.OnWin();
             }
-            gripper.Toggle(true);
+            if (held && !collision.gameObject.layer.Equals(LayerMask.GetMask("Hand")))
+            {
+                if (hasLayer(extraIgnoredLayers, collision.gameObject.layer))
+                {
+                    return;
+                }
+                gripper.Toggle(true);
+            }
         }
     }
 

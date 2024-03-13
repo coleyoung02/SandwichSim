@@ -45,6 +45,18 @@ public class Hands : MonoBehaviour
         PlayerPrefs.SetFloat("Sensitivity", s);
     }
 
+    public Gripper GetHandInUse()
+    {
+        if (usingLeft)
+        {
+            return left;
+        }
+        else
+        {
+            return right;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

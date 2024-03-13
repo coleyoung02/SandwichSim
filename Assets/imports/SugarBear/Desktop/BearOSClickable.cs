@@ -41,6 +41,7 @@ public class BearOSClickable : MonoBehaviour
         {
             if (doesPrint)
             {
+                Debug.LogWarning("PRINGINT");
                 FindFirstObjectByType<Printer>().Print();
             }
             if (activates != null)

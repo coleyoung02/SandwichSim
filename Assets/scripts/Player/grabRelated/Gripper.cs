@@ -43,6 +43,11 @@ public class Gripper : MonoBehaviour
         }
     }
 
+    public GameObject GetHeldObject()
+    {
+        return inHand;
+    }
+
     private void Update()
     {
         if (activity && isOpen)
@@ -101,6 +106,11 @@ public class Gripper : MonoBehaviour
             return false;
         }
         
+    }
+
+    public bool HoldingBasket()
+    {
+        return inHand != null && inHand.tag.Equals("basket");
     }
 
     private GameObject getClosest()

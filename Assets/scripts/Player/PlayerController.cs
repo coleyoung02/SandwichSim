@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private bool isNearHome;
     private Vector3 deathCamPos;
     private Quaternion deathCamRot;
+    private bool tpBasket = false;
 
     void Awake()
     {
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviour
         pause.SetPause(p);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("car"))
         {
@@ -76,6 +77,14 @@ public class PlayerController : MonoBehaviour
             SetDeceased(true);
             rb.AddForce((collision.gameObject.GetComponent<Rigidbody>().velocity + Vector3.up * collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude / 3) / 3f, ForceMode.Impulse);
             rb.AddTorque(Vector3.Cross(collision.gameObject.GetComponent<Rigidbody>().velocity, Vector3.down) * .5f, ForceMode.Impulse);
+            tpBasket = false;
+            foreach (Gripper gr in FindObjectsByType<Gripper>(FindObjectsSortMode.None))
+            {
+                if (gr.HoldingBasket())
+                {
+                    tpBasket = true;
+                }
+            }
             hands.ForceRelease();
         }
         else
@@ -159,6 +168,11 @@ public class PlayerController : MonoBehaviour
         isNearHome = home;
     }
 
+    public bool GetUsingHands()
+    {
+        return usingHands;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -195,11 +209,29 @@ public class PlayerController : MonoBehaviour
                 {
                     transform.rotation = nearHomeReset.transform.rotation;
                     transform.position = nearHomeReset.transform.position;
+                    if (tpBasket)
+                    {
+                        GameObject b = GameObject.FindGameObjectWithTag("basket");
+                        b.transform.position = nearHomeReset.transform.position + Vector3.right * 5 + Vector3.forward * 3.5f;
+                        b.transform.rotation = nearHomeReset.transform.rotation;
+                        Rigidbody brb = b.GetComponent<Rigidbody>();
+                        brb.velocity = Vector3.zero;
+                        brb.angularVelocity = Vector3.zero;
+                    }
                 }
                 else
                 {
                     transform.rotation = nearStoreReset.transform.rotation;
                     transform.position = nearStoreReset.transform.position;
+                    if (tpBasket)
+                    {
+                        GameObject b = GameObject.FindGameObjectWithTag("basket");
+                        b.transform.position = nearStoreReset.transform.position - Vector3.right * 5 - Vector3.forward * 3.5f;
+                        b.transform.rotation = nearStoreReset.transform.rotation;
+                        Rigidbody brb = b.GetComponent<Rigidbody>();
+                        brb.velocity = Vector3.zero;
+                        brb.angularVelocity = Vector3.zero;
+                    }
                 }
                 rb.angularVelocity = Vector3.zero;
                 rb.velocity = Vector3.zero;

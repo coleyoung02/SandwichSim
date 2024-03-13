@@ -7,5 +7,6 @@ public class FailTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         FindFirstObjectByType<RomanceEvent>().Failure();
+        Debug.Log(other.gameObject.name);
     }
 }
