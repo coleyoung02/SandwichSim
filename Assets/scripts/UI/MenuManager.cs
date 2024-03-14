@@ -32,7 +32,9 @@ public class MenuManager : MonoBehaviour
         maxWidth = Display.main.systemWidth;
         validResolutions = new int[6, 2] { { 1280, 720 }, { 1366, 768 }, { 1600, 900 }, { 1920, 1080 }, { 2560, 1440 }, { 3840, 2160 } };
         int usedIndex = -1;
+        Debug.LogError(PlayerPrefs.GetInt("Fullscreen", -1));
         fullscreen = PlayerPrefs.GetInt("Fullscreen", -1) != 0;
+        Debug.LogError(fullscreen);
         noirMode = PlayerPrefs.GetInt("Noir", -1) == 1;
         clock = PlayerPrefs.GetInt("Clock", -1) == 1;
         vhsScan = PlayerPrefs.GetInt("Scan", -1) != 0;
@@ -46,6 +48,7 @@ public class MenuManager : MonoBehaviour
                     if (validResolutions[i, 0] == maxWidth && validResolutions[i, 1] == maxHeight)
                     {
                         fullscreen = true;
+                        PlayerPrefs.SetInt("Fullscreen", 1);
                     }
                 }
             }
@@ -66,6 +69,8 @@ public class MenuManager : MonoBehaviour
         noirToggle.SetToggle(noirMode, false);
         vhsToggle.SetToggle(vhsScan, false);
         clockToggle.SetToggle(clock, false);
+        //needs to be true becuase if res is already at max it will set to fullscreen
+        fullscreenToggle.SetToggle(fullscreen, true);
         if (noirObject != null)
         {
             noirObject.SetActive(noirMode);

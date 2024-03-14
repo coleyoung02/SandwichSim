@@ -2086,7 +2086,7 @@ MonoBehaviour:
   tm: {fileID: 1181924861503845509}
   toggle: 1
   toggleActiveDefault: 0
-  playerPrefsIntName: Fullscreen
+  playerPrefsIntName: Clock
 --- !u!1 &4063470355808992403
 GameObject:
   m_ObjectHideFlags: 0
