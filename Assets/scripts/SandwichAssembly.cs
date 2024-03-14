@@ -63,14 +63,14 @@ public class SandwichAssembly : GroceryListUpdateable
     private bool CheckSandwichness(bool skipAdd=false)
     {
         inside = inside.OrderBy(x => x.transform.position.y).ToList();
-        if (inside[0].GetComponent<Frobbable>().GetItem() == GroceryItem.Bread &&
+        if (GetFirstIngredient() == GroceryItem.Bread &&
             inside[inside.Count - 1].GetComponent<Frobbable>().GetItem() == GroceryItem.Bread &&
             !skipAdd)
         {
             alreadyWon = true;
             inside[inside.Count - 1].GetComponent<Frobbable>().WinOnTouch(this);
         }
-        return inside[0].GetComponent<Frobbable>().GetItem() == GroceryItem.Bread &&
+        return GetFirstIngredient() == GroceryItem.Bread &&
             inside[inside.Count - 1].GetComponent<Frobbable>().GetItem() == GroceryItem.Bread;
     }
 
@@ -82,5 +82,19 @@ public class SandwichAssembly : GroceryListUpdateable
     public override void OnUpdate(int index, bool has)
     {
         return;
+    }
+
+    private GroceryItem GetFirstIngredient()
+    {
+        foreach (GameObject g in inside)
+        {
+            GroceryItem i = g.GetComponent<Frobbable>().GetItem();
+            if (i != GroceryItem.Sauce)
+            {
+                return i;
+            }
+        }
+        //only return sauce if every object is sauce
+        return GroceryItem.Sauce;
     }
 }

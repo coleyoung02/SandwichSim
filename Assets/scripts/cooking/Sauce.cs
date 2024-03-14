@@ -16,6 +16,7 @@ public class Sauce : Frobbable
     private float useZ;
     private Hands hands;
     private float timer = 0f;
+    // Should rename this one to S pressed :(
     private bool fPressed = false;
 
     // Start is called before the first frame update
@@ -31,7 +32,7 @@ public class Sauce : Frobbable
     {
         if (GetHeld() && pc.GetUsingHands() && (hands.GetHandInUse().GetHeldObject() == this.gameObject))
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 currentAngle = transform.rotation.eulerAngles.x;
                 useY = transform.rotation.eulerAngles.y;
@@ -39,7 +40,7 @@ public class Sauce : Frobbable
                 fPressed = true;
                 hintText.SetActive(false);
             }
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKey(KeyCode.S))
             {
                 currentAngle = Mathf.Max(90f, currentAngle - Time.deltaTime * rotateSpeed);
                 Vector3 curRot = transform.rotation.eulerAngles;
@@ -51,7 +52,7 @@ public class Sauce : Frobbable
                 currentAngle = Mathf.Min(270f, currentAngle + Time.deltaTime * rotateSpeed);
                 transform.rotation = Quaternion.Euler(currentAngle, useY, useZ);
             }
-            if (currentAngle <= 90.1f && Input.GetKey(KeyCode.F))
+            if (currentAngle <= 90.1f && Input.GetKey(KeyCode.S))
             {
                 if (timer <= 0f)
                 {

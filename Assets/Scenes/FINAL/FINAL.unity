@@ -59634,11 +59634,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 464596522742933903, guid: 237e7fd329173844299ac069ce1d67f4,
+        type: 3}
+      propertyPath: m_text
+      value: Hold S to apply sauce
+      objectReference: {fileID: 0}
     - target: {fileID: 3203304592388103205, guid: 237e7fd329173844299ac069ce1d67f4,
         type: 3}
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 246270790}
+    - target: {fileID: 3203304592388103205, guid: 237e7fd329173844299ac069ce1d67f4,
+        type: 3}
+      propertyPath: sauceDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203304592388103205, guid: 237e7fd329173844299ac069ce1d67f4,
+        type: 3}
+      propertyPath: rotateSpeed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4209445776602193985, guid: 237e7fd329173844299ac069ce1d67f4,
         type: 3}
       propertyPath: m_Name

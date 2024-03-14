@@ -106,6 +106,7 @@ MonoBehaviour:
   isGroceryItem: 1
   isPreppedIngredient: 0
   soupChance: 0
+  isBasket: 0
   geomoetry: {fileID: 0}
   soupGeomoetry: {fileID: 0}
 --- !u!65 &5536040223907325707
@@ -168,5 +169,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d24c6a8130c83444b9d7c179f30c7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cut: {fileID: 4908228813108507694, guid: d785e4708d98ead48becab3ce391c027, type: 3}
+  cut: {fileID: 4908228813108507694, guid: 9d90c57092889ef40a76affbd98455a5, type: 3}
   sliceParent: {fileID: 875890779893003353}

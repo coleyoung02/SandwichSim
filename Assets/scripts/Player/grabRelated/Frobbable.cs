@@ -14,6 +14,8 @@ public class Frobbable : HandInteractable
     private bool winOnTouch;
     private SandwichAssembly sand;
     private bool usable;
+    private bool leaveHandActive;
+    private Coroutine coroutine;
 
 
     [Header ("grocery items")]
@@ -31,6 +33,7 @@ public class Frobbable : HandInteractable
         rb = GetComponent<Rigidbody>();
         gameObject.AddComponent<Highlight>();
         held = false;
+        leaveHandActive = false;
         isInBasket = false;
         usable = true;
     }
@@ -44,6 +47,12 @@ public class Frobbable : HandInteractable
     public override void Grab(Gripper g)
     {
         rb.constraints = RigidbodyConstraints.FreezeAll;
+        leaveHandActive = false;
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+        coroutine = StartCoroutine(SetLeaveHandActive());
         held = true;
         gripper = g;
         if (soupChance > 0f)
@@ -66,6 +75,12 @@ public class Frobbable : HandInteractable
                 soupChance = -1f;
             }
         }
+    }
+
+    private IEnumerator SetLeaveHandActive()
+    {
+        yield return new WaitForSeconds(.15f);
+        leaveHandActive = true;
     }
 
     public bool GetHeld()
@@ -151,7 +166,7 @@ public class Frobbable : HandInteractable
         {
             FindFirstObjectByType<PlayerController>().OnCollisionEnter(collision);
         }
-        else
+        else if (leaveHandActive)
         {
             if (winOnTouch && hasLayer(LayerMask.GetMask("PreppedIngredient"), collision.gameObject.layer))
             {
