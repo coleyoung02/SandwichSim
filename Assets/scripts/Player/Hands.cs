@@ -128,32 +128,34 @@ public class Hands : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(2))
-        {
-            activeHand.Toggle();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             mode = Mode.move;
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             mode = Mode.rotate;
         }
         if (Input.GetMouseButtonDown(0))
         {
-            activeHand = left;
-            usingLeft = true;
-            left.SetActivity(true);
-            right.SetActivity(false);
+            activeHand.Toggle();
         }
         if (Input.GetMouseButtonDown(1))
         {
-            activeHand = right;
-            usingLeft = false;
-            left.SetActivity(false);
-            right.SetActivity(true);
+            if (usingLeft)
+            {
+                activeHand = right;
+                usingLeft = false;
+                left.SetActivity(false);
+                right.SetActivity(true);
+            }
+            else
+            {
+                activeHand = left;
+                usingLeft = true;
+                left.SetActivity(true);
+                right.SetActivity(false);
+            }
         }
     }
 }
