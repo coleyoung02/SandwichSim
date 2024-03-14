@@ -9,7 +9,9 @@ public enum GroceryItem
     Tomato,
     Lettuce,
     Pickle,
-    Cheese
+    Cheese,
+    Sauce,
+    Mushroom,
 }
 
 public class GroceryList : MonoBehaviour
