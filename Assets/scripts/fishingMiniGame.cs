@@ -52,7 +52,9 @@ public class fishingMiniGame : MonoBehaviour
         {
             for (int i =0; i<5; i++)
             {
-                Instantiate(winObject, spawnLocation);
+                Instantiate(winObject, 
+                    spawnLocation.transform.position + new Vector3(UnityEngine.Random.Range(-2f, 2f), UnityEngine.Random.Range(-2f, 2f), UnityEngine.Random.Range(-2f, 2f)), 
+                    Quaternion.Euler(UnityEngine.Random.Range(0f, 360f), UnityEngine.Random.Range(0f, 360f), UnityEngine.Random.Range(0f, 360f)));
             }
             StartCoroutine(barOff());
             
