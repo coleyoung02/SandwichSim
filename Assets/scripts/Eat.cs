@@ -12,12 +12,15 @@ public class Eat : MonoBehaviour
         winEnabled = b;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (winEnabled && Frobbable.hasLayer(LayerMask.GetMask("Player"), collision.gameObject.layer))
         {
-            FindFirstObjectByType<FadeIn>().SetWinOnFinish(true);
-            FindFirstObjectByType<FadeIn>().BeginFade();
+            if (GetComponent<Frobbable>().GetHeld())
+            {
+                FindFirstObjectByType<FadeIn>().SetWinOnFinish(true);
+                FindFirstObjectByType<FadeIn>().BeginFade();
+            }
         }
     }
 

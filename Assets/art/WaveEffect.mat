@@ -42,8 +42,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColorAmount: 3.81
-    - _SLineHOffset: 1.2
+    - _ColorAmount: 3.8
+    - _SLineHOffset: 1.4
     - _ScanSpeed: -4.4
     - _ShiftIntensity: 1.5
     m_Colors: []

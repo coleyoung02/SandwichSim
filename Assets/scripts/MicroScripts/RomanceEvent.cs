@@ -61,6 +61,7 @@ public class RomanceEvent : MonoBehaviour
         {
             g.GetComponent<Rigidbody>().velocity = Vector3.right * 12.5f;
         }
+        pc.ResetCamRot();
     }
 
     //can only happen once so no need to check if it has already happened
@@ -76,14 +77,7 @@ public class RomanceEvent : MonoBehaviour
     public void Failure()
     {
         GameObject g;
-        if (hasFailed)
-        {
-            g = ResetAndShift(failureCutscene);
-        }
-        else
-        {
-            g = ResetState();
-        }
+        g = ResetState();
         hasFailed = true;
         g.GetComponent<Rigidbody>().velocity = Vector3.zero;
         failureCutscene.SetActive(true);

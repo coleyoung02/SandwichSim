@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/FINAL/MainMenu.unity
+    guid: ae2664c523c632746819d61839174283
+  - enabled: 1
     path: Assets/Scenes/FINAL/FINAL.unity
     guid: eea028847a3030e4f8c20100051628b3
   - enabled: 1
@@ -41,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/imports/SugarBear/Desktop/BearOS.unity
     guid: e140f2fbc0c9cd8499c957bc49886e9d
+  - enabled: 1
+    path: Assets/Scenes/FINAL/TUTORIAL.unity
+    guid: ae69a1ad834d9ab4386e2d5482d16062
   m_configObjects: {}

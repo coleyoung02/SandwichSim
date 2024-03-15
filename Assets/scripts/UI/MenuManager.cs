@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private string firstLevelName = "FINAL";
+    [SerializeField] private string tutorialSceneName = "TUTORIAL";
     [SerializeField] private TextMeshProUGUI resText;
     [SerializeField] private GameObject noirObject;
     [SerializeField] private GameObject clockObject;
@@ -14,6 +16,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private CustomButtonHover noirToggle;
     [SerializeField] private CustomButtonHover vhsToggle;
     [SerializeField] private CustomButtonHover clockToggle;
+    [SerializeField] private Slider sensitivity;
 
     public GameObject pauseMenuUI;
 
@@ -25,16 +28,17 @@ public class MenuManager : MonoBehaviour
     private bool noirMode;
     private bool vhsScan;
     private bool clock;
+    private bool sceneLoading = false;
 
     void Awake()
     {
+
+        sceneLoading = false;
         maxHeight = Display.main.systemHeight;
         maxWidth = Display.main.systemWidth;
         validResolutions = new int[6, 2] { { 1280, 720 }, { 1366, 768 }, { 1600, 900 }, { 1920, 1080 }, { 2560, 1440 }, { 3840, 2160 } };
         int usedIndex = -1;
-        Debug.LogError(PlayerPrefs.GetInt("Fullscreen", -1));
         fullscreen = PlayerPrefs.GetInt("Fullscreen", -1) != 0;
-        Debug.LogError(fullscreen);
         noirMode = PlayerPrefs.GetInt("Noir", -1) == 1;
         clock = PlayerPrefs.GetInt("Clock", -1) == 1;
         vhsScan = PlayerPrefs.GetInt("Scan", -1) != 0;
@@ -66,11 +70,18 @@ public class MenuManager : MonoBehaviour
 
     private void SetUI()
     {
-        noirToggle.SetToggle(noirMode, false);
-        vhsToggle.SetToggle(vhsScan, false);
-        clockToggle.SetToggle(clock, false);
-        //needs to be true becuase if res is already at max it will set to fullscreen
-        fullscreenToggle.SetToggle(fullscreen, true);
+        if (noirToggle != null)
+        {
+            noirToggle.SetToggle(noirMode, false);
+            vhsToggle.SetToggle(vhsScan, false);
+            clockToggle.SetToggle(clock, false);
+            //needs to be true becuase if res is already at max it will set to fullscreen
+            fullscreenToggle.SetToggle(fullscreen, true);
+        }
+        if (sensitivity != null)
+        {
+            sensitivity.value = PlayerPrefs.GetFloat("Sensitivity", .5f);
+        }
         if (noirObject != null)
         {
             noirObject.SetActive(noirMode);
@@ -97,15 +108,32 @@ public class MenuManager : MonoBehaviour
             noirObject.SetActive(noirMode);
             if (noirMode)
             {
-                GameObject.FindGameObjectWithTag("noirAudio").GetComponent<StoreAudioManager>().SetCrossfadeActive(1);
+                if (GameObject.FindGameObjectWithTag("noirAudio") != null)
+                    GameObject.FindGameObjectWithTag("noirAudio").GetComponent<StoreAudioManager>().SetCrossfadeActive(1);
             }
             else
             {
-                GameObject.FindGameObjectWithTag("noirAudio").GetComponent<StoreAudioManager>().SetCrossfadeActive(0);
+                if (GameObject.FindGameObjectWithTag("noirAudio") != null)
+                    GameObject.FindGameObjectWithTag("noirAudio").GetComponent<StoreAudioManager>().SetCrossfadeActive(0);
             }
 
         }
         noirToggle.SetToggle(noirMode);
+    }
+
+    public void SetSensitivity(float s)
+    {
+        PlayerPrefs.SetFloat("Sensitivity", s);
+        PlayerController pc = FindFirstObjectByType<PlayerController>();
+        Hands h = FindFirstObjectByType<Hands>();
+        if (pc != null)
+        {
+            pc.SetSensitivity(s);
+        }
+        if (h != null)
+        {
+            h.SetSensitivity(s);
+        }
     }
 
     public void ToggleClock()
@@ -185,7 +213,10 @@ public class MenuManager : MonoBehaviour
     {
         if (currentRes >= 0)
         {
-            resText.text = validResolutions[currentRes, 0] + "x" + validResolutions[currentRes, 1];
+            if (resText != null)
+            {
+                resText.text = validResolutions[currentRes, 0] + "x" + validResolutions[currentRes, 1];
+            }
         }
         else
         {
@@ -195,7 +226,30 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(firstLevelName);
+        if (!sceneLoading)
+        {
+            SceneManager.LoadSceneAsync(firstLevelName);
+            sceneLoading = true;
+        }
+    }
+
+    public void StartTutorial()
+    {
+        if (!sceneLoading)
+        {
+            SceneManager.LoadSceneAsync(tutorialSceneName);
+            sceneLoading = true;
+        }
+    }
+
+    public void LoadMenu()
+    {
+            if (!sceneLoading)
+            {
+                SceneManager.LoadSceneAsync("MainMenu");
+                sceneLoading = true;
+            }
+
     }
 
     public void SetPause(bool p)
@@ -228,6 +282,12 @@ public class MenuManager : MonoBehaviour
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    public void ShowUI()
+    {
+        pauseMenuUI.SetActive(true);
+
     }
 
     public void QuitGame()

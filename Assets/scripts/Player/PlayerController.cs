@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject nearStoreReset;
     [SerializeField] private MenuManager pause;
     [SerializeField] private GameObject openingCutscene;
-    private float sensitivity = .5f;
+    [SerializeField] private float sensitivity = .5f;
     private bool usingHands;
     private float xRotation;
     private bool deceased;
@@ -35,15 +35,18 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        sensitivity = PlayerPrefs.GetFloat("Sensitivity", sensitivity);
         xRotation = 0f;
         usingHands = false;
         deceased = false;
         controlsLocked = false;
-        sensitivity = PlayerPrefs.GetFloat("Sensitivity", .5f);
         isNearHome = true;
         deathCamPos = deathCam.transform.localPosition;
         deathCamRot = deathCam.transform.localRotation;
-        openingCutscene.SetActive(true);
+        if (openingCutscene != null )
+        {
+            openingCutscene.SetActive(true);
+        }
     }
 
     private void Start()
@@ -62,6 +65,12 @@ public class PlayerController : MonoBehaviour
         pause.SetPause(p);
     }
 
+    public void ResetCamRot()
+    {
+        xRotation = 0f;
+        cam.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+    }
+
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("car"))
@@ -77,7 +86,6 @@ public class PlayerController : MonoBehaviour
             SetDeceased(true);
             rb.AddForce((collision.gameObject.GetComponent<Rigidbody>().velocity + Vector3.up * collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude / 3) / 3f, ForceMode.Impulse);
             rb.AddTorque(Vector3.Cross(collision.gameObject.GetComponent<Rigidbody>().velocity, Vector3.down) * .5f, ForceMode.Impulse);
-            tpBasket = false;
             foreach (Gripper gr in FindObjectsByType<Gripper>(FindObjectsSortMode.None))
             {
                 if (gr.HoldingBasket())
@@ -85,13 +93,17 @@ public class PlayerController : MonoBehaviour
                     tpBasket = true;
                 }
             }
+            Debug.LogError(tpBasket);
             hands.ForceRelease();
         }
         else
         {
-            if (pinballUI.gameObject.activeSelf)
+            if (pinballUI != null)
             {
-                pinballUI.ResetMult();
+                if (pinballUI.gameObject.activeSelf)
+                {
+                    pinballUI.ResetMult();
+                }
             }
         }
     }
@@ -217,6 +229,7 @@ public class PlayerController : MonoBehaviour
                         Rigidbody brb = b.GetComponent<Rigidbody>();
                         brb.velocity = Vector3.zero;
                         brb.angularVelocity = Vector3.zero;
+                        tpBasket = false;
                     }
                 }
                 else
@@ -231,6 +244,7 @@ public class PlayerController : MonoBehaviour
                         Rigidbody brb = b.GetComponent<Rigidbody>();
                         brb.velocity = Vector3.zero;
                         brb.angularVelocity = Vector3.zero;
+                        tpBasket = false;
                     }
                 }
                 rb.angularVelocity = Vector3.zero;
@@ -253,10 +267,6 @@ public class PlayerController : MonoBehaviour
         float unclamped = xRotation - Input.GetAxis("Mouse Y") * sensitivity;
         float newX = Mathf.Clamp(unclamped, -90f, 90f);
         xRotation = newX;
-        if (Mathf.Abs(unclamped - newX) > 1f)
-        {
-            Debug.Log(unclamped);
-        }
         cam.transform.localRotation = Quaternion.Euler(newX, 0, 0);
     }
 

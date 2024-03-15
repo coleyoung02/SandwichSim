@@ -17,7 +17,7 @@ public class Hands : MonoBehaviour
     [SerializeField] float moveSpeed = .2f;
     [SerializeField] float rotateSpeed = .2f;
     private Gripper activeHand;
-    private float sensitivity = .5f;
+    [SerializeField] private float sensitivity = .5f;
     private PlayerController pc;
     private bool activityOverride = false;
 
@@ -29,6 +29,7 @@ public class Hands : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sensitivity = PlayerPrefs.GetFloat("Sensitivity", sensitivity);
         inUse = false;
         mode = Mode.move;
         usingLeft = false;

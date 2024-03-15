@@ -160,7 +160,7 @@ public class Frobbable : HandInteractable
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         if (isBasket && collision.gameObject.tag.Equals("car") && held)
         {

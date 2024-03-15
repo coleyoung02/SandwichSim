@@ -157,7 +157,7 @@ public class Cutscene : MonoBehaviour
 
     private bool CheckSkip()
     {
-        return skippable && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0));
+        return skippable && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && Time.timeScale >= .01f;
     }
 
     private void MainUpdateLoop()
