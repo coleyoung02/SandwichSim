@@ -286,6 +286,7 @@ public class MenuManager : MonoBehaviour
 
     public void ShowUI()
     {
+        Cursor.lockState =  CursorLockMode.None;
         pauseMenuUI.SetActive(true);
 
     }
