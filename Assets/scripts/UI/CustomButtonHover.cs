@@ -14,7 +14,7 @@ public class CustomButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerEx
     private bool toggleActive;
     private bool hovered = false;
 
-    void Start()
+    void Awake()
     {
         baseText = tm.text;
         if (toggle)
