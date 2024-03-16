@@ -99,7 +99,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hold F to apply sauce
+  m_text: Hold S to apply sauce
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2ea23a9df773d4144a9a4fab61539b3c, type: 2}
   m_sharedMaterial: {fileID: 5365514972316279544, guid: 2ea23a9df773d4144a9a4fab61539b3c,
@@ -333,8 +333,8 @@ MonoBehaviour:
   saucePrefab: {fileID: 2077945165796767537, guid: c8f17e8e1d41fb84a8f48d78d753a864,
     type: 3}
   tip: {fileID: 3757343034870080794}
-  rotateSpeed: 120
-  sauceDelay: 0.05
+  rotateSpeed: 200
+  sauceDelay: 0.1
   hintText: {fileID: 2290855074969553496}
   playerCam: {fileID: 0}
 --- !u!1 &8037128200168506872
