@@ -76,6 +76,7 @@ public class GameInstanceManager : MonoBehaviour
             else if (gameState == GameState.Gameplay)
             {
                 ExitGame();
+                music.Pause();
             }
             else if (pc == null)
             {
@@ -162,6 +163,11 @@ public class GameInstanceManager : MonoBehaviour
     public void LoadLevel(int i, bool fromDesktop=false)
     {
         gameState = GameState.Gameplay;
+        Debug.LogWarning(music.isPlaying);
+        if (!music.isPlaying)
+        {
+            music.Play();
+        }
         if (fromDesktop)
         {
             SceneManager.UnloadSceneAsync("BearOS");
