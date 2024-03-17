@@ -62,6 +62,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 27f75afe77d210149a4a7b7f0a4d7a1f, type: 3}
   - {fileID: 8300000, guid: 7bdc122a210dae64dae1658b75d64da0, type: 3}
   - {fileID: 8300000, guid: 9572e474ea66ee6449d5cfd3d52e716b, type: 3}
+  buttonClips:
+  - {fileID: 8300000, guid: aad3ba9e91f599c47b9d65d1d3f9461e, type: 3}
   VOsources:
   - {fileID: 9049267867061747796}
   - {fileID: 5221742370557101047}

@@ -13,7 +13,8 @@ public enum ClipPool
 {
     SOUP,
     SANDWICH,
-    PINBALL
+    PINBALL,
+    BUTTON,
 }
 
 public class AudioManager : MonoBehaviour
@@ -26,6 +27,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private List<AudioClip> soupClips;
     [SerializeField] private List<AudioClip> sandwichClips;
     [SerializeField] private List<AudioClip> pinballClips;
+    [SerializeField] private List<AudioClip> buttonClips;
 
     [Header ("Sources")]
     [SerializeField] private List<AudioSource> VOsources;
@@ -52,12 +54,12 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void PlayClip(Channel channel, AudioClip clip)
+    public void PlayClip(Channel channel, AudioClip clip, float sfxShiftOveride=1f)
     {
         AudioSource s = sources[channel][indicies[channel]];
         if (channel == Channel.SFX)
         {
-            s.pitch = UnityEngine.Random.Range(1f - pitchShiftAmmount, 1 + pitchShiftAmmount);
+            s.pitch = UnityEngine.Random.Range(1f - pitchShiftAmmount * sfxShiftOveride, 1 + pitchShiftAmmount * sfxShiftOveride);
         }
         s.clip = clip;
         s.Play();
@@ -72,6 +74,7 @@ public class AudioManager : MonoBehaviour
             case ClipPool.SOUP: PlayClip(Channel.VO, soupClips[randomIndex(soupClips.Count)]); return;
             case ClipPool.SANDWICH: PlayClip(Channel.VO, sandwichClips[randomIndex(sandwichClips.Count)]); return;
             case ClipPool.PINBALL: PlayClip(Channel.SFX, pinballClips[randomIndex(pinballClips.Count)]); return;
+            case ClipPool.BUTTON: PlayClip(Channel.SFX, buttonClips[randomIndex(buttonClips.Count)], .3f); return;
             default: break;
         }
     }

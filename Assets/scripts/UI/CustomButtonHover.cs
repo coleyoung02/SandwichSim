@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CustomButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -11,11 +12,13 @@ public class CustomButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerEx
     private string baseText;
     [SerializeField] private bool toggleActiveDefault;
     [SerializeField] private string playerPrefsIntName;
+    private AudioManager audioManager;
     private bool toggleActive;
     private bool hovered = false;
 
     void Awake()
     {
+        audioManager = FindFirstObjectByType<AudioManager>();
         baseText = tm.text;
         if (toggle)
         {
@@ -47,6 +50,8 @@ public class CustomButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerEx
             }
             tm.text = GetText();
         }
+        UnityEngine.UI.Button b = GetComponent<UnityEngine.UI.Button>();
+        b.onClick.AddListener(PlaySound);
     }
 
     private void OnEnable()
@@ -68,6 +73,11 @@ public class CustomButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerEx
                 tm.text = "[" + GetText() + "]";
             }
         }
+    }
+
+    private void PlaySound()
+    {
+        audioManager.PlayPooledClip(ClipPool.BUTTON);
     }
 
     public void OnPointerExit(PointerEventData eventData)

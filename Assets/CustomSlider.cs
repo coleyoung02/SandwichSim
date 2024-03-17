@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class CustomSlider : MonoBehaviour
     [SerializeField] private GameObject fillParent;
     [SerializeField] private Color emptyColor;
     [SerializeField] private Color filledColor;
+    [SerializeField] private TextMeshProUGUI tm;
     private List<Image> fills;
     private float range;
 
@@ -16,6 +18,11 @@ public class CustomSlider : MonoBehaviour
     {
         range = slider.maxValue - slider.minValue;
         slider.onValueChanged.AddListener(delegate { UpdateSliderUI(); });
+        if (tm != null)
+        {
+            slider.onValueChanged.AddListener(delegate { SetSliderText(); });
+            SetSliderText();
+        }
         fills = new List<Image>();
         foreach (Transform t in fillParent.transform)
         {
@@ -38,5 +45,10 @@ public class CustomSlider : MonoBehaviour
                 fills[i].color = emptyColor;
             }
         }
+    }
+
+    public void SetSliderText()
+    {
+        tm.text = slider.value.ToString("0.000");
     }
 }
