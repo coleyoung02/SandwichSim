@@ -244,12 +244,12 @@ public class MenuManager : MonoBehaviour
 
     public void LoadMenu()
     {
-            if (!sceneLoading)
-            {
-                SceneManager.LoadSceneAsync("MainMenu");
-                sceneLoading = true;
-            }
-
+        Time.timeScale = 1f;
+        if (!sceneLoading)
+        {
+            SceneManager.LoadSceneAsync("MainMenu");
+            sceneLoading = true;
+        }
     }
 
     public void SetPause(bool p)
