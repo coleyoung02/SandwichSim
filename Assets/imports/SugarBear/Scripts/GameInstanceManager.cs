@@ -1,3 +1,4 @@
+using Steamworks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,9 @@ public class GameInstanceManager : MonoBehaviour
     [SerializeField] private PlayerController pc;
     private int levelIndex = -1;
     private bool loading = false;
+
+    private static float callbackDelay = 1f;
+    private float callbackTimer = 0f;
 
 
     public GameState GetState()
@@ -44,6 +48,19 @@ public class GameInstanceManager : MonoBehaviour
         }
         Instance.music.volume = .1f;
         gameState = GameState.Inactive;
+    }
+
+    private void FixedUpdate()
+    {
+        if (callbackTimer <= 0f)
+        {
+            SteamAPI.RunCallbacks();
+            callbackTimer = callbackDelay;
+        }
+        else
+        {
+            callbackTimer -= Time.fixedUnscaledDeltaTime;
+        }
     }
 
     public void TurnOn()
