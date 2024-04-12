@@ -20,11 +20,25 @@ public class GameInstanceManager : MonoBehaviour
 
     private static float callbackDelay = 1f;
     private float callbackTimer = 0f;
-
+    private bool spanishMode = false;
 
     public GameState GetState()
     {
         return gameState;
+    }
+
+    public void SetLanguage(bool spanish)
+    {
+        spanishMode = spanish;
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+    }
+
+    public bool IsSpanishMode()
+    {
+        return spanishMode;
     }
 
     protected void Awake()

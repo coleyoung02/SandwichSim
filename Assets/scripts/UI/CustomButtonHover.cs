@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class CustomButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private TextMeshProUGUI tm;
+    [SerializeField] private string spanishText;
     [SerializeField] private bool toggle;
     private string baseText;
     [SerializeField] private bool toggleActiveDefault;
@@ -18,6 +19,14 @@ public class CustomButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     void Awake()
     {
+        if (GameInstanceManager.Instance != null && GameInstanceManager.Instance.IsSpanishMode())
+        {
+            if (spanishText != null && spanishText.Length > 0)
+            {
+                tm.text = spanishText;
+            }
+        }
+
         audioManager = FindFirstObjectByType<AudioManager>();
         baseText = tm.text;
         if (toggle)

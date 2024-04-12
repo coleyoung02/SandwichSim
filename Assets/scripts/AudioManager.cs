@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using UnityEngine;
@@ -42,10 +43,12 @@ public class AudioManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
+            Debug.Log("self destroying");
             Destroy(this);
         }
         else
         {
+            Debug.Log("initializing");
             Instance = this;
 
             DontDestroyOnLoad(gameObject);
@@ -56,7 +59,24 @@ public class AudioManager : MonoBehaviour
 
     public void PlayClip(Channel channel, AudioClip clip, float sfxShiftOveride=1f)
     {
-        AudioSource s = sources[channel][indicies[channel]];
+        AudioSource s = null;
+        try
+        {
+            s = sources[channel][indicies[channel]];
+        }
+        catch (Exception e) 
+        {
+            Debug.LogError("channel "  + channel);
+            if (indicies == null)
+            {
+                Debug.Log("null i");
+            }
+            foreach (KeyValuePair<Channel, int> kvp in indicies)
+            {
+                Debug.LogWarning(kvp.Key + " " + kvp.Value);
+            }
+            throw e;
+        }
         if (channel == Channel.SFX)
         {
             s.pitch = UnityEngine.Random.Range(1f - pitchShiftAmmount * sfxShiftOveride, 1 + pitchShiftAmmount * sfxShiftOveride);
@@ -86,6 +106,7 @@ public class AudioManager : MonoBehaviour
 
     private void setupSources()
     {
+        Debug.Log("setting up sources");
         sources = new Dictionary<Channel, List<AudioSource>>();
         indicies = new Dictionary<Channel, int>();
         sources[Channel.VO] = VOsources;
