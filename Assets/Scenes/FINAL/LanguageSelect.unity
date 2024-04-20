@@ -476,7 +476,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "(M\xE9xico/Estados Unidos)"
+  m_text: "(M\xE9xico)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2ea23a9df773d4144a9a4fab61539b3c, type: 2}
   m_sharedMaterial: {fileID: 5365514972316279544, guid: 2ea23a9df773d4144a9a4fab61539b3c,
@@ -639,7 +639,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355367968}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef4bffeda13d7a748973ff9204401c07, type: 3}
   m_Name: 

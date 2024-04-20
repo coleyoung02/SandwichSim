@@ -687,7 +687,7 @@ PrefabInstance:
     - target: {fileID: 8913847801151070035, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
         type: 3}
       propertyPath: spokenLines.Array.data[1]
-      value: 'Bear: Lets do it!'
+      value: 'Bear: Let''s do it!'
       objectReference: {fileID: 0}
     - target: {fileID: 8913847801151070035, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
         type: 3}
