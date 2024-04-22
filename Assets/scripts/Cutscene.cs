@@ -25,7 +25,9 @@ public class Cutscene : MonoBehaviour
 
     [SerializeField] private List<Camera> cameras;
     [SerializeField] private List<string> dialogue;
+    [SerializeField] private List<string> dialogueEsp;
     [SerializeField] private List<AudioClip> audios;
+    [SerializeField] private List<AudioClip> audiosEsp;
     [SerializeField] private GameObject textHolder;
     [SerializeField] private TextMeshProUGUI textBox;
     [SerializeField] private bool lockControls;
@@ -54,6 +56,12 @@ public class Cutscene : MonoBehaviour
 
     private void OnEnable()
     {
+        if (GameInstanceManager.Instance != null && GameInstanceManager.Instance.IsSpanishMode())
+        {
+            audios = audiosEsp;
+            dialogue = dialogueEsp;
+        }
+
         foreach (Camera c in cameras)
         {
             c.gameObject.SetActive(false);

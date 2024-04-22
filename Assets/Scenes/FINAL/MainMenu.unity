@@ -4237,7 +4237,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 200, y: 80}
+  m_SizeDelta: {x: 320, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &561314616
 MonoBehaviour:
@@ -6402,7 +6402,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -400}
-  m_SizeDelta: {x: 200, y: 80}
+  m_SizeDelta: {x: 320, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &812668374
 MonoBehaviour:
@@ -7201,6 +7201,7 @@ GameObject:
   - component: {fileID: 984184267}
   - component: {fileID: 984184269}
   - component: {fileID: 984184268}
+  - component: {fileID: 984184270}
   m_Layer: 5
   m_Name: dash
   m_TagString: Untagged
@@ -7325,6 +7326,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984184266}
   m_CullTransparentMesh: 1
+--- !u!114 &984184270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984184266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: "Cr\xE9ditos Adicionales"
 --- !u!1 &1010253610
 GameObject:
   m_ObjectHideFlags: 0
@@ -8015,7 +8029,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 375.92136}
-  m_SizeDelta: {x: 1000, y: 100}
+  m_SizeDelta: {x: 1300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1109987477
 MonoBehaviour:
@@ -8127,7 +8141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spanishText: SPANISH!
+  spanishText: "Sim de S\xE1ndwich"
 --- !u!1 &1136028122
 GameObject:
   m_ObjectHideFlags: 0
@@ -9418,6 +9432,7 @@ GameObject:
   - component: {fileID: 1319250403}
   - component: {fileID: 1319250405}
   - component: {fileID: 1319250404}
+  - component: {fileID: 1319250406}
   m_Layer: 5
   m_Name: dash
   m_TagString: Untagged
@@ -9542,6 +9557,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319250402}
   m_CullTransparentMesh: 1
+--- !u!114 &1319250406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319250402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: "Sugar Bear (Oso de Az\xFAcar)"
 --- !u!1 &1333480866
 GameObject:
   m_ObjectHideFlags: 0
@@ -10478,7 +10506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tm: {fileID: 843901577}
-  spanishText: 
+  spanishText: "<Atr\xE1s"
   toggle: 0
   toggleActiveDefault: 0
   playerPrefsIntName: 
@@ -12237,15 +12265,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4884339042593422968, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
-        type: 3}
-      propertyPath: spanishText
-      value: Iniciar
-      objectReference: {fileID: 0}
     - target: {fileID: 5182947571604241189, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828168793930610403, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 5895418140096464402, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
         type: 3}
@@ -12256,6 +12284,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Credits
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397965801199034894, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 6397965801199034894, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
         type: 3}
@@ -12270,7 +12303,7 @@ PrefabInstance:
     - target: {fileID: 6692090568940091044, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
         type: 3}
       propertyPath: spanishText
-      value: Credits
+      value: "Cr\xE9ditos"
       objectReference: {fileID: 0}
     - target: {fileID: 6697665705923486404, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
         type: 3}
@@ -12296,6 +12329,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8034775922237209402, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 8034775922237209402, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
         type: 3}
@@ -13942,6 +13980,7 @@ GameObject:
   - component: {fileID: 2079063682}
   - component: {fileID: 2079063684}
   - component: {fileID: 2079063683}
+  - component: {fileID: 2079063685}
   m_Layer: 5
   m_Name: dash
   m_TagString: Untagged
@@ -14066,6 +14105,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079063681}
   m_CullTransparentMesh: 1
+--- !u!114 &2079063685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079063681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: "Sim de S\xE1ndwich"
 --- !u!1 &2133342169
 GameObject:
   m_ObjectHideFlags: 0

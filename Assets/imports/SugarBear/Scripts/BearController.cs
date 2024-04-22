@@ -34,7 +34,7 @@ public class BearController : MonoBehaviour, IPlayerInput
     {
         instance = Resources.FindObjectsOfTypeAll<GameInstanceManager>()[0];
         instance.UpdateGameState(GameState.Gameplay);
-        if (SceneManager.GetActiveScene().buildIndex < 6)
+        if (GameInstanceManager.Instance.GetSugarLevel() < 4)
         {
             animator.runtimeAnimatorController = pixel;
         }

@@ -184,6 +184,11 @@ public class GameInstanceManager : MonoBehaviour
         gameState = newGameState;
     }
 
+    public int GetSugarLevel()
+    {
+        return levelIndex;
+    }
+
     public void NextLevel()
     {
         SceneManager.UnloadSceneAsync(levels[levelIndex]);
