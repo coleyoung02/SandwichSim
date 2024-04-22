@@ -7,28 +7,31 @@ public class GroceryUI : GroceryListUpdateable
 {
     public static string groceryItemToString(GroceryItem item)
     {
-        switch (item) {
-            case GroceryItem.Bread: return "Bread";
-            case GroceryItem.Tomato: return "Tomato";
-            case GroceryItem.Lettuce: return "Lettuce";
-            case GroceryItem.Pickle: return "Pickle";
-            case GroceryItem.Cheese: return "Cheese";
-            default: return "oh no";
-        }
-    }
-
-    public static GroceryItem StringToGroceryItem(string s)
-    {
-        switch (s)
+        if (GameInstanceManager.Instance != null && GameInstanceManager.Instance.IsSpanishMode())
         {
-            case "bread": return GroceryItem.Bread;
-            case "tomato": return GroceryItem.Tomato;
-            case "lettuce": return GroceryItem.Lettuce;
-            case "pickle": return GroceryItem.Pickle;
-            case "cheese": return GroceryItem.Cheese;
-            //might break C#
-            default: return (GroceryItem)(-1);
+            switch (item)
+            {
+                case GroceryItem.Bread: return "Pan";
+                case GroceryItem.Tomato: return "Tomate";
+                case GroceryItem.Lettuce: return "Lechuga";
+                case GroceryItem.Pickle: return "Pepinillo";
+                case GroceryItem.Cheese: return "Queso";
+                default: return "no hablo español";
+            }
         }
+        else
+        {
+            switch (item)
+            {
+                case GroceryItem.Bread: return "Bread";
+                case GroceryItem.Tomato: return "Tomato";
+                case GroceryItem.Lettuce: return "Lettuce";
+                case GroceryItem.Pickle: return "Pickle";
+                case GroceryItem.Cheese: return "Cheese";
+                default: return "oh no";
+            }
+        }
+        
     }
 
     [SerializeField] private Color completeColor;

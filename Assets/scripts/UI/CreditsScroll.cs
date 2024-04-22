@@ -21,7 +21,7 @@ public class Scroll : MonoBehaviour
     {
         showY = this.gameObject.transform.position.y;
         float mult = 1f;
-        if (showY >= 48)
+        if (showY >= 52)
         {
             mult = 2f;
         }

@@ -360,7 +360,7 @@ Transform:
   m_GameObject: {fileID: 2206866615288006174}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0, z: -15.25}
+  m_LocalPosition: {x: 37.3, y: 0, z: -15.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -385,8 +385,13 @@ MonoBehaviour:
   dialogue:
   - As Zeus condemned Sisiphus to roll a boulder for all eternity, I now sentence
     you to be trapped in this obstacle course for the rest of your days!
+  dialogueEsp:
+  - "\xA1Como Zeus conden\xF3 a S\xEDsifo a rodar una piedra por toda la eternidad,
+    ahora te condeno en esta pista de obst\xE1culos por el resto de tus d\xEDas!"
   audios:
   - {fileID: 8300000, guid: 1767e0ba780de7d42a1cec5363f8a817, type: 3}
+  audiosEsp:
+  - {fileID: 0}
   textHolder: {fileID: 0}
   textBox: {fileID: 0}
   lockControls: 1
@@ -412,7 +417,8 @@ AudioSource:
   m_GameObject: {fileID: 2206866615288006174}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2792998186549872069, guid: f9be3c2af09a12d48b5afd56aff72e77,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -6494,7 +6500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7308051140741282381
 Transform:
   m_ObjectHideFlags: 0
@@ -6527,8 +6533,12 @@ MonoBehaviour:
   - {fileID: 2631558530753511837}
   dialogue:
   - Hey, you're coming with me
+  dialogueEsp:
+  - "Hey t\xFA, vienes conmigo."
   audios:
   - {fileID: 8300000, guid: d1c8f3d94ff26bd4e8864ed84b11b5db, type: 3}
+  audiosEsp:
+  - {fileID: 0}
   textHolder: {fileID: 0}
   textBox: {fileID: 0}
   lockControls: 1
@@ -6884,11 +6894,22 @@ MonoBehaviour:
   - I can't BEAR to see you struggle in this obstacle course. I'll let you go and
     you can run away while the other agents aren't looking.
   - 
+  dialogueEsp:
+  - "Qu\xE9 guapo mi dulcesito de miel."
+  - 
+  - "Ay qu\xE9 dolorOSO verte batallar en esta pista. Te dejar\xE9 ir y puedes escapar
+    mientras que los agentes no est\xE1n viendo."
+  - 
   audios:
   - {fileID: 8300000, guid: a0e05c5096a81dd469fc4f0291441810, type: 3}
   - {fileID: 0}
   - {fileID: 8300000, guid: 45e3e1c570ea4fc479fc4f4c4ed6f8a2, type: 3}
   - {fileID: 8300000, guid: dbab88f4a7c7bc64483b2a347ffc1905, type: 3}
+  audiosEsp:
+  - {fileID: 8300000, guid: 1ad4bb3604d181247819dfb196f75fe8, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   textHolder: {fileID: 0}
   textBox: {fileID: 0}
   lockControls: 1
@@ -6913,7 +6934,8 @@ AudioSource:
   m_GameObject: {fileID: 5547956840852403275}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2792998186549872069, guid: f9be3c2af09a12d48b5afd56aff72e77,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
