@@ -62644,8 +62644,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9093443226403188296, guid: 3191ee72d6b729946b697f229e73dae6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1947088706}
   m_SourcePrefab: {fileID: 100100000, guid: 3191ee72d6b729946b697f229e73dae6, type: 3}
+--- !u!1 &1947088705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9093443226403188296, guid: 3191ee72d6b729946b697f229e73dae6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1947088704}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1947088706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947088705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: Pulsa [P] para pescar
 --- !u!1001 &1950384358
 PrefabInstance:
   m_ObjectHideFlags: 0

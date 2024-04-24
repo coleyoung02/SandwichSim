@@ -13,17 +13,25 @@ public class fishingMiniGame : MonoBehaviour
 
     private bool canFish = false;
     private bool isFishing = false;
+    private bool spanishMode = false;
+
+    private KeyCode fishingKey = KeyCode.F;
 
     private void Start()
     {
         UIElement.SetActive(false);
         bar.SetActive(false);
-
+        if (GameInstanceManager.Instance != null)
+        {
+            spanishMode = GameInstanceManager.Instance.IsSpanishMode();
+            // P para pescar
+            fishingKey = KeyCode.P;
+        }
     }
 
     private void Update()
     {
-        if (canFish && Input.GetKeyDown(KeyCode.F))
+        if (canFish && Input.GetKeyDown(fishingKey))
         {
             if (!isFishing)
             {
@@ -48,7 +56,7 @@ public class fishingMiniGame : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (isFishing && Input.GetKeyDown(KeyCode.F) && other.tag == "fish")
+        if (isFishing && Input.GetKeyDown(fishingKey) && other.tag == "fish")
         {
             for (int i =0; i<5; i++)
             {
