@@ -8734,6 +8734,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4884339042593422968, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
+        type: 3}
+      propertyPath: spanishText
+      value: Continuar
+      objectReference: {fileID: 0}
     - target: {fileID: 5182947571604241189, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -8767,8 +8772,87 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5384522610050144972, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 300274201}
+    - targetCorrespondingSourceObject: {fileID: 6352964352725102783, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 300274205}
+    - targetCorrespondingSourceObject: {fileID: 7139593238587141386, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 300274204}
+    - targetCorrespondingSourceObject: {fileID: 6585256429933106666, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 348346824}
   m_SourcePrefab: {fileID: 100100000, guid: 6371eaf4e7a10724f805ee5375ae7f7a, type: 3}
+--- !u!1 &300274200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5384522610050144972, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
+    type: 3}
+  m_PrefabInstance: {fileID: 300274199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &300274201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300274200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: Continuar
+  blockSpanishText: 
+  shrinkToFit: 0
+--- !u!1 &300274202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7139593238587141386, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
+    type: 3}
+  m_PrefabInstance: {fileID: 300274199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &300274203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6352964352725102783, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
+    type: 3}
+  m_PrefabInstance: {fileID: 300274199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &300274204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300274202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: "Salir al men\xFA"
+  blockSpanishText: 
+  shrinkToFit: 0
+--- !u!114 &300274205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300274203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: Salir
+  blockSpanishText: 
+  shrinkToFit: 0
 --- !u!1001 &305531774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9771,6 +9855,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 345282692}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &348346823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6585256429933106666, guid: 6371eaf4e7a10724f805ee5375ae7f7a,
+    type: 3}
+  m_PrefabInstance: {fileID: 300274199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &348346824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348346823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: Opciones
+  blockSpanishText: 
+  shrinkToFit: 0
 --- !u!1001 &349699046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16144,6 +16249,7 @@ MonoBehaviour:
   lerpInTime: 1
   mustExit: 0
   StoreVO: {fileID: 0}
+  spanishStoreClip: {fileID: 0}
   wide: 0
   maxDist: 0
   minDist: 0
@@ -19595,7 +19701,7 @@ MonoBehaviour:
   dialogueEsp:
   - "\xA1FBI ALTO!"
   - "Estamos con la Federaci\xF3n de Bolillos e Ingredientes y sospechamos que tienes
-    planes para armar un s\xE1ndwich que va  amenazar las ganancias de la agroindustria."
+    planes para armar un s\xE1ndwich que va a amenazar las ganancias de la agroindustria."
   - "espera, no, se supon\xEDa que deb\xEDa decir amenazar la democracia o la libertad
     o algo as\xED\u2026"
   - 
@@ -19607,7 +19713,7 @@ MonoBehaviour:
     no ha podido saltar en todo el juego."
   - "Ah s\xED, supongo que \u2018S\u2019 para agacharse s\xF3lo tendr\xEDa sentido
     si hubiera alg\xFAn tipo de tutorial o exposici\xF3n."
-  - "La \xFAnica parta sencilla es que presionando \u2018A\u2019 y \u2018D\u2019
+  - "La \xFAnica parte sencilla es que presionando \u2018A\u2019 y \u2018D\u2019
     te mueve al carril de la izquierda o derecha respectivamente."
   - "Pues, de nada sirve perseguirlo despu\xE9s de discutirlo por tanto tiempo."
   - "\xBFLos otros agentes? \xA1Ellos pueden!"
@@ -19643,26 +19749,26 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 288a6f507c80b8d4297ab564f20fc214, type: 3}
   - {fileID: 8300000, guid: f0c6deaea4b99c04bbb0c0cd7452a3ea, type: 3}
   audiosEsp:
+  - {fileID: 8300000, guid: 0b69f4dac8e156640be9991a81899ad5, type: 3}
+  - {fileID: 8300000, guid: 660e8d2b5a5266d43b4e700e573c113b, type: 3}
+  - {fileID: 8300000, guid: 8c4af880e0084e747ac5381aca39e401, type: 3}
   - {fileID: 0}
+  - {fileID: 8300000, guid: 24eef4bc13c837e40969d41b769d98c0, type: 3}
+  - {fileID: 8300000, guid: c3aca39f2df236b4aaf7c59068063666, type: 3}
+  - {fileID: 8300000, guid: 3fbb2e13e463852458eac0a75ea60dd1, type: 3}
+  - {fileID: 8300000, guid: 9dc8fd13e84fcf94abacd4c7079547e8, type: 3}
+  - {fileID: 8300000, guid: 0b5026fc3e24230498eb1fc95e5c1e2e, type: 3}
+  - {fileID: 8300000, guid: 064f416d0a0d2184ca992358e9ece83d, type: 3}
+  - {fileID: 8300000, guid: fa8a0d11816c00147b077a6b2d7a62e0, type: 3}
+  - {fileID: 8300000, guid: da7da6052bd2a584784067296427f377, type: 3}
+  - {fileID: 8300000, guid: 55d4a61c4151ca748ad4f8424a211155, type: 3}
+  - {fileID: 8300000, guid: 1202e74658787f34886741239e9f4a2a, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 107223eb8418a6f4490bbc9de7d100ae, type: 3}
+  - {fileID: 8300000, guid: 3bc5baa09886b384fadde50d3616b093, type: 3}
+  - {fileID: 8300000, guid: bbb670c51ff111e44b9386380235dd5b, type: 3}
+  - {fileID: 8300000, guid: 410c45e22012340468156950326e77a8, type: 3}
+  - {fileID: 8300000, guid: 80eb092739d242641ba6d77502e44b3b, type: 3}
   textHolder: {fileID: 703852553}
   textBox: {fileID: 703852552}
   lockControls: 1
@@ -20653,6 +20759,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4236329896066786873, guid: a97340d1e028bec49b46a875490d4d63,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6665637653972109048, guid: a97340d1e028bec49b46a875490d4d63,
         type: 3}
       propertyPath: m_Name
@@ -20713,6 +20824,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8256631646120540064, guid: a97340d1e028bec49b46a875490d4d63,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 464.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256631646120540064, guid: a97340d1e028bec49b46a875490d4d63,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -124.890015
+      objectReference: {fileID: 0}
     - target: {fileID: 8863380714960864479, guid: a97340d1e028bec49b46a875490d4d63,
         type: 3}
       propertyPath: m_Camera
@@ -20721,7 +20842,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1625293532086757579, guid: a97340d1e028bec49b46a875490d4d63,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 703852555}
+    - targetCorrespondingSourceObject: {fileID: 6726756784785886994, guid: a97340d1e028bec49b46a875490d4d63,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 703852557}
   m_SourcePrefab: {fileID: 100100000, guid: a97340d1e028bec49b46a875490d4d63, type: 3}
 --- !u!114 &703852552 stripped
 MonoBehaviour:
@@ -20741,6 +20870,48 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 703852551}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &703852554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1625293532086757579, guid: a97340d1e028bec49b46a875490d4d63,
+    type: 3}
+  m_PrefabInstance: {fileID: 703852551}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &703852555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703852554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: 'PUNTAJE:'
+  blockSpanishText: 
+  shrinkToFit: 0
+--- !u!1 &703852556 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6726756784785886994, guid: a97340d1e028bec49b46a875490d4d63,
+    type: 3}
+  m_PrefabInstance: {fileID: 703852551}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &703852557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703852556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: Pulsa p para resucitar
+  blockSpanishText: 
+  shrinkToFit: 0
 --- !u!1001 &705851244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23086,7 +23257,7 @@ MonoBehaviour:
   skippable: 0
   source: {fileID: 0}
   shotLength: 1.5
-  charDelay: 0.05
+  charDelay: 0.051
   afterTextLength: 0.4
   endTeleportLocation: {fileID: 0}
   trigger: {fileID: 0}
@@ -56201,6 +56372,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8463844893410518550}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1763868069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763868068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: "Agarra la computadora para interactuar con \xE9l."
+  blockSpanishText: 
+  shrinkToFit: 0
 --- !u!1 &1770958896
 GameObject:
   m_ObjectHideFlags: 0
@@ -61952,6 +62138,7 @@ MonoBehaviour:
   lerpInTime: 2
   mustExit: 0
   StoreVO: {fileID: 1939406098}
+  spanishStoreClip: {fileID: 8300000, guid: bf486e077169acf428a84a8ec50e3e91, type: 3}
   wide: 0
   maxDist: 0
   minDist: 0
@@ -62669,6 +62856,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spanishText: Pulsa [P] para pescar
+  blockSpanishText: 
+  shrinkToFit: 0
 --- !u!1001 &1950384358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68521,6 +68710,7 @@ MonoBehaviour:
   lerpInTime: 1
   mustExit: 1
   StoreVO: {fileID: 0}
+  spanishStoreClip: {fileID: 0}
   wide: 0
   maxDist: 0
   minDist: 0
@@ -68962,6 +69152,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 464596522742933903, guid: 237e7fd329173844299ac069ce1d67f4,
+        type: 3}
+      propertyPath: m_text
+      value: Hold [S] to apply sauce
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782664479672734203, guid: 237e7fd329173844299ac069ce1d67f4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782664479672734203, guid: 237e7fd329173844299ac069ce1d67f4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782664479672734203, guid: 237e7fd329173844299ac069ce1d67f4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782664479672734203, guid: 237e7fd329173844299ac069ce1d67f4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2290855074969553496, guid: 237e7fd329173844299ac069ce1d67f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3203304592388103205, guid: 237e7fd329173844299ac069ce1d67f4,
         type: 3}
       propertyPath: playerCam
@@ -69025,8 +69245,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2290855074969553496, guid: 237e7fd329173844299ac069ce1d67f4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4069348804326972434}
   m_SourcePrefab: {fileID: 100100000, guid: 237e7fd329173844299ac069ce1d67f4, type: 3}
+--- !u!1 &4069348804326972433 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2290855074969553496, guid: 237e7fd329173844299ac069ce1d67f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4069348804326972432}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4069348804326972434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348804326972433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: "Mant\xE9n pulsado [S] para aplicar la salsa"
+  blockSpanishText: 
+  shrinkToFit: 0
 --- !u!1 &4387409184374370515
 GameObject:
   m_ObjectHideFlags: 0
@@ -69309,6 +69554,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 47900955468743999, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.465
+      objectReference: {fileID: 0}
     - target: {fileID: 1423573134245718523, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
         type: 3}
       propertyPath: m_Cameras.Array.data[0]
@@ -69329,6 +69579,11 @@ PrefabInstance:
       propertyPath: textHolder
       value: 
       objectReference: {fileID: 703852553}
+    - target: {fileID: 2376245313534496030, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
+        type: 3}
+      propertyPath: audiosEsp.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: b84be54a47ec50a419bca839d1600e90, type: 3}
     - target: {fileID: 2787382379650612924, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
         type: 3}
       propertyPath: textBox
@@ -69339,6 +69594,11 @@ PrefabInstance:
       propertyPath: textHolder
       value: 
       objectReference: {fileID: 703852553}
+    - target: {fileID: 2787382379650612924, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
+        type: 3}
+      propertyPath: audiosEsp.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: cb78bc028fd3f474ea76b151acca1c9a, type: 3}
     - target: {fileID: 3000474228311531738, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
         type: 3}
       propertyPath: hands
@@ -69359,6 +69619,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: sub
       objectReference: {fileID: 0}
+    - target: {fileID: 3823736881544650122, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3985759948744403378, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
         type: 3}
       propertyPath: m_Mesh
@@ -69374,6 +69639,11 @@ PrefabInstance:
       propertyPath: m_Cameras.Array.data[0]
       value: 
       objectReference: {fileID: 1951452374}
+    - target: {fileID: 5281979561928806547, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5502535693178215179, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
         type: 3}
       propertyPath: m_Cameras.Array.data[0]
@@ -69399,6 +69669,16 @@ PrefabInstance:
       propertyPath: endTeleportLocation
       value: 
       objectReference: {fileID: 307989499}
+    - target: {fileID: 8590410527698329757, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
+        type: 3}
+      propertyPath: audiosEsp.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: d4cf76fdc2984b54c94f8fdb5fdff5a9, type: 3}
+    - target: {fileID: 8590410527698329757, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
+        type: 3}
+      propertyPath: audiosEsp.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: dbab88f4a7c7bc64483b2a347ffc1905, type: 3}
     - target: {fileID: 8666850926051252314, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -69457,8 +69737,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5281979561928806547, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6830728081024107296}
   m_SourcePrefab: {fileID: 100100000, guid: 5aabe7a1d4f2a3e45b60b882a43479b9, type: 3}
+--- !u!1 &6830728081024107295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5281979561928806547, guid: 5aabe7a1d4f2a3e45b60b882a43479b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 6830728081024107294}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6830728081024107296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6830728081024107295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: "\xA1Agarra este bot\xF3n para enamorar al agente!"
+  blockSpanishText: 
+  shrinkToFit: 0
 --- !u!23 &7019007525622122370
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -69654,7 +69959,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1704267125901064213, guid: f6de55ae673a09342ae3f5888cf6ede4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1763868069}
   m_SourcePrefab: {fileID: 100100000, guid: f6de55ae673a09342ae3f5888cf6ede4, type: 3}
 --- !u!1001 &9007083982191695644
 PrefabInstance:

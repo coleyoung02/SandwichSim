@@ -13,12 +13,17 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private float typeDelay = 0.02f;
     [TextArea(3, 10)]
     [SerializeField] private string[] spokenLines;
+    [SerializeField] private string[] spanishLines;
 
     private int index = 0;
     private string currentLine = "";
 
-    private void Start()
+    private void Awake()
     {
+        if (GameInstanceManager.Instance != null && GameInstanceManager.Instance.IsSpanishMode())
+        {
+            spokenLines = spanishLines;
+        }
         StartDialogue();
     }
 

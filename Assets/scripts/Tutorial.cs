@@ -7,12 +7,17 @@ using UnityEngine.SceneManagement;
 public class Tutorial : MonoBehaviour
 {
     [SerializeField] private List<string> tutorialTexts;
+    [SerializeField] private List<string> spanishTexts;
     [SerializeField] private TextMeshProUGUI tm;
 
     private int textIndex = 0;
 
     private void Start()
     {
+        if(GameInstanceManager.Instance != null && GameInstanceManager.Instance.IsSpanishMode())
+        {
+            tutorialTexts = spanishTexts;
+        }
         tm.text = tutorialTexts[0];
     }
 

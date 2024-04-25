@@ -93,7 +93,6 @@ public class PlayerController : MonoBehaviour
                     tpBasket = true;
                 }
             }
-            Debug.LogError(tpBasket);
             hands.ForceRelease();
         }
         else

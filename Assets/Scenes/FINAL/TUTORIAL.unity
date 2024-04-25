@@ -1404,6 +1404,24 @@ MonoBehaviour:
   - Congratulations you should now be ready to prepare a sandwich.
   - Congratulations you should now be ready to prepare a sandwich.
   - ' '
+  spanishTexts:
+  - "Hola y bienvenido al tutorial de sandwich sim. Puedes caminar con [WASD] y utilizar
+    el [rat\xF3n] para mirar a tu alrededor. Cuando est\xE9s listo, pulsa [ESPACIO]."
+  - "Mientras utilizas las manos, puedes moverlas con el [rat\xF3n]."
+  - "Si mantienes pulsado [SHIFT], podr\xE1s acercar o alejar las manos."
+  - Pulse [ESPACIO] para volver al modo caminar.
+  - Camina hacia el hongo.
+  - "Cuando est\xE9s cerca, pulsa [ESPACIO] de nuevo y mueve la mano sobre \xE9l.
+    Cuando se ilumine en amarillo, puedes hacer [clic izquierdo] para agarrarlo."
+  - "Puedes hacer [clic izquierdo] una segunda vez para soltarlo. Tambi\xE9n se soltar\xE1
+    si choca contra algo. (pero para avanzar en el tutorial tienes que soltarlo t\xFA
+    mismo)."
+  - Mientras usas las manos, puedes cambiar entre los modos mover y rotar pulsando
+    [Q](mover) y [E](rotar).
+  - "Utiliza el [clic derecho] para alternar entre la mano que est\xE1s utilizando."
+  - "Enhorabuena, ahora deber\xEDa estar listo para preparar un s\xE1ndwich."
+  - "Enhorabuena, ahora deber\xEDa estar listo para preparar un s\xE1ndwich."
+  - 
   tm: {fileID: 383166210}
 --- !u!114 &1861835275
 MonoBehaviour:

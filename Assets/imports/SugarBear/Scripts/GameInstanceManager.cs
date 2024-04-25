@@ -30,6 +30,10 @@ public class GameInstanceManager : MonoBehaviour
     public void SetLanguage(bool spanish)
     {
         spanishMode = spanish;
+        if (AudioManager.Instance!= null)
+        {
+            AudioManager.Instance.SetSpanish(spanish);
+        }
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             SceneManager.LoadScene("MainMenu");

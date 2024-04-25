@@ -10,6 +10,7 @@ public class StoreAudioManager : MonoBehaviour
     [SerializeField] private float lerpInTime;
     [SerializeField] private bool mustExit;
     [SerializeField] private AudioSource StoreVO;
+    [SerializeField] private AudioClip spanishStoreClip;
     [SerializeField] private bool wide;
     [SerializeField] private float maxDist;
     [SerializeField] private float minDist;
@@ -180,6 +181,10 @@ public class StoreAudioManager : MonoBehaviour
             UpdateVolume(i);
         }
         transform.GetChild(0).gameObject.SetActive(true);
+        if (GameInstanceManager.Instance != null && GameInstanceManager.Instance.IsSpanishMode())
+        {
+            StoreVO.clip = spanishStoreClip;
+        }
         StoreVO.Play();
         yield return new WaitForSeconds(StoreVO.clip.length);
         for (float i = lerpInTime / 4; i < lerpInTime; i += Time.deltaTime)

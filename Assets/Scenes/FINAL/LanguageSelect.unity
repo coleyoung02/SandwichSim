@@ -620,37 +620,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1562110523920915529, guid: 7942c1b5c87d0e54db9a41a8249ce963,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 355367969}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7942c1b5c87d0e54db9a41a8249ce963, type: 3}
---- !u!1 &355367968 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1562110523920915529, guid: 7942c1b5c87d0e54db9a41a8249ce963,
-    type: 3}
-  m_PrefabInstance: {fileID: 355367967}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &355367969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355367968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4bffeda13d7a748973ff9204401c07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &355367972 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4273066044991532825, guid: 7942c1b5c87d0e54db9a41a8249ce963,
     type: 3}
   m_PrefabInstance: {fileID: 355367967}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355367968}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c815d246518e20841842a91869561075, type: 3}
@@ -713,7 +691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Epsa\xF1ol"
+  m_text: "Espa\xF1ol"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2ea23a9df773d4144a9a4fab61539b3c, type: 2}
   m_sharedMaterial: {fileID: 5365514972316279544, guid: 2ea23a9df773d4144a9a4fab61539b3c,
@@ -741,8 +719,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 72
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1228,6 +1206,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6534988053764089354, guid: 2a015d4a3f912cf4aa45e37d8aef377d,
+        type: 3}
+      propertyPath: sopaClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534988053764089354, guid: 2a015d4a3f912cf4aa45e37d8aef377d,
+        type: 3}
+      propertyPath: sopaClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6748802951307902267, guid: 2a015d4a3f912cf4aa45e37d8aef377d,
         type: 3}
       propertyPath: m_Name

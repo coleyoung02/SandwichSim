@@ -101,7 +101,7 @@ public class Cutscene : MonoBehaviour
                     }
                     GameObject g = pc.gameObject;
                     Vector3 p = g.transform.position;
-                    p.x += Time.deltaTime * 6f;
+                    p.x += Time.deltaTime * 10.5f;
                     g.transform.position = p;
                 }
                 else if (scene == Scene.Opening && index == 2)

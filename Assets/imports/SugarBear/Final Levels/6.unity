@@ -253,6 +253,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8913847801151070035, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
         type: 3}
+      propertyPath: spanishLines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913847801151070035, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
+        type: 3}
       propertyPath: spokenLines.Array.data[0]
       value: 'Bees: We are almost to the end, we can make it!'
       objectReference: {fileID: 0}
@@ -265,6 +270,11 @@ PrefabInstance:
         type: 3}
       propertyPath: spokenLines.Array.data[2]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913847801151070035, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
+        type: 3}
+      propertyPath: spanishLines.Array.data[0]
+      value: "Abejas: Ya casi llegamos al final, \xA1podemos lograrlo!"
       objectReference: {fileID: 0}
     - target: {fileID: 8913847801151070044, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
         type: 3}

@@ -876,6 +876,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8913847801151070035, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
         type: 3}
+      propertyPath: spanishLines.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913847801151070035, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
+        type: 3}
       propertyPath: spokenLines.Array.data[0]
       value: 'Bees: We made it out!'
       objectReference: {fileID: 0}
@@ -897,8 +902,34 @@ PrefabInstance:
     - target: {fileID: 8913847801151070035, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
         type: 3}
       propertyPath: spokenLines.Array.data[4]
-      value: 'Bees: Well lets not stick around this facility too long, I say lets
+      value: 'Bees: Well let''s not stick around this facility too long, I say lets
         get on out of here!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913847801151070035, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
+        type: 3}
+      propertyPath: spanishLines.Array.data[0]
+      value: "Abejas: \xA1Lo hemos conseguido!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913847801151070035, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
+        type: 3}
+      propertyPath: spanishLines.Array.data[1]
+      value: "Oso: \xA1Vaya! Hab\xEDa olvidado c\xF3mo era el mundo exterior."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913847801151070035, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
+        type: 3}
+      propertyPath: spanishLines.Array.data[2]
+      value: "Abejas: Es incre\xEDble, \xBFverdad?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913847801151070035, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
+        type: 3}
+      propertyPath: spanishLines.Array.data[3]
+      value: "Oso: El olor del aire fresco es incre\xEDble. Me siento mucho mejor."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913847801151070035, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
+        type: 3}
+      propertyPath: spanishLines.Array.data[4]
+      value: "Abejas: Bueno, no nos quedemos aqu\xED mucho tiempo, \xA1salgamos de
+        aqu\xED!"
       objectReference: {fileID: 0}
     - target: {fileID: 8913847801151070044, guid: b8b6c439c3c34a34a85d2acd3fe26af3,
         type: 3}

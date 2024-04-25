@@ -64,9 +64,8 @@ public class Sauce : Frobbable
             if (!fPressed)
             {
                 hintText.transform.LookAt(hintText.transform.position + playerCam.transform.rotation * Vector3.forward, playerCam.transform.rotation * Vector3.up);
-                Vector3 pos = hintText.transform.localPosition;
-                pos = .035f * hintText.transform.forward + hintText.transform.up * .02f;
-                hintText.transform.localPosition = pos;
+                Vector3 pos = new Vector3(0, 3f, 0) + hintText.transform.forward * -.5f;
+                hintText.transform.position = gameObject.transform.position + pos;
             }
 
         }

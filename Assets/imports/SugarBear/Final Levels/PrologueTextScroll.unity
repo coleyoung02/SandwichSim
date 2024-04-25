@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 400538398}
   - component: {fileID: 400538397}
   - component: {fileID: 400538399}
+  - component: {fileID: 400538400}
   m_Layer: 18
   m_Name: Text
   m_TagString: Untagged
@@ -400,14 +401,14 @@ MonoBehaviour:
     its products on it.\r\n\r\nThey forced it to ingest high concentrations of \u201Csugar\u201D,
     to the point that the bear\u2019s intelligence became severely impaired and could
     not operate even something as simple as a lever.\r\n\r\nAs the bear\u2019s brain
-    deteriorated, so too did its resistance, and eventually it resided itself to
+    deteriorated, so too did its resistance, and eventually it resigned itself to
     the company\u2019s daily doses of 10,000 grams of \u201Chigh fructose corn syrup\u201D.\r\n\r\nOne
     day, however, the facility went into complete lockdown.\r\n\r\nThe bear sat still
     as alarms blared and people screamed, for it knew it couldn\u2019t escape anyway.\r\n\r\nHowever,
     just when he was about to take a nap from his latest dose of highly-processed
     \u201Csugar\u201D, the door to his prison opened.\r\n\r\nThere, in the entrance,
-    hovered a swarm of bees.\r\n\r\nHe roared. They responded. \n\nHe went up to
-    them as they buzzed around, and nodded.\r\n\r\nSomehow, they could understand
+    hovered a swarm of bees.\r\n\r\nHe roared. They responded. \r\n\r\nHe went up
+    to them as they buzzed around, and nodded.\r\n\r\nSomehow, they could understand
     each other\u2019s needs and wants.\r\n\r\nFor now they shared one, singular goal\u2026\r\n\r\nGet
     out.\r\n"
   m_isRightToLeft: 0
@@ -507,6 +508,52 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &400538400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400538395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: "En unas instalaciones para probar az\xFAcar hab\xEDa un singular
+    oso solar.  Considerado indigno de vivir en libertad, un conglomerado alimentario
+    lo compr\xF3 y empez\xF3 a probar sus productos en \xE9l.  Le obligaron a ingerir
+    altas concentraciones de \"az\xFAcar\", hasta el punto de que la inteligencia
+    del oso qued\xF3 gravemente mermada y no pod\xEDa manejar ni siquiera algo tan
+    sencillo como una palanca.  A medida que el cerebro del oso se deterioraba, tambi\xE9n
+    lo hac\xEDa su resistencia, y finalmente se resign\xF3 a las dosis diarias de
+    la empresa de 10.000 gramos de \"jarabe de ma\xEDz de alta fructosa\".  Un d\xEDa,
+    sin embargo, las instalaciones se cerraron por completo.  El oso se qued\xF3
+    quieto mientras sonaban las alarmas y la gente gritaba, pues sab\xEDa que de
+    todos modos no podr\xEDa escapar.  Sin embargo, justo cuando estaba a punto de
+    echarse una siesta por su \xFAltima dosis de \"az\xFAcar\" altamente procesada,
+    la puerta de su prisi\xF3n se abri\xF3.  All\xED, en la entrada, revoloteaba
+    un enjambre de abejas.  \xC9l rugi\xF3. Ellas respondieron.   Se acerc\xF3 a
+    ellas mientras zumbaban y asinti\xF3.  De alg\xFAn modo, comprend\xEDan sus necesidades
+    y deseos.  Por ahora compart\xEDan un \xFAnico objetivo...  \\n\\nSalir."
+  blockSpanishText: "En unas instalaciones para probar az\xFAcar hab\xEDa un singular
+    oso solar.\r\n\r\nConsiderado indigno de vivir en libertad, un conglomerado alimentario
+    lo compr\xF3 y empez\xF3 a probar sus productos en \xE9l.\r\n\r\nLe obligaron
+    a ingerir altas concentraciones de \"az\xFAcar\", hasta el punto de que la inteligencia
+    del oso qued\xF3 gravemente mermada y no pod\xEDa manejar ni siquiera algo tan
+    sencillo como una palanca.\r\n\r\nA medida que el cerebro del oso se deterioraba,
+    tambi\xE9n lo hac\xEDa su resistencia, y finalmente se resign\xF3 a las dosis
+    diarias de la empresa de 10.000 gramos de \"jarabe de ma\xEDz de alta fructosa\".\r\n\r\nUn
+    d\xEDa, sin embargo, las instalaciones se cerraron por completo.\r\n\r\nEl oso
+    se qued\xF3 quieto mientras sonaban las alarmas y la gente gritaba, pues sab\xEDa
+    que de todos modos no podr\xEDa escapar.\r\n\r\nSin embargo, justo cuando estaba
+    a punto de echarse una siesta por su \xFAltima dosis de \"az\xFAcar\" altamente
+    procesada, la puerta de su prisi\xF3n se abri\xF3.\r\n\r\nAll\xED, en la entrada,
+    revoloteaba un enjambre de abejas.\r\n\r\n\xC9l rugi\xF3. Ellas respondieron.
+    \r\n\r\nSe acerc\xF3 a ellas mientras zumbaban y asinti\xF3.\r\n\r\nDe alg\xFAn
+    modo, comprend\xEDan sus necesidades y deseos.\r\n\r\nPor ahora compart\xEDan
+    un \xFAnico objetivo...\r\n\r\nSalir.\r\n"
+  shrinkToFit: 1
 --- !u!1 &1801421685
 GameObject:
   m_ObjectHideFlags: 0

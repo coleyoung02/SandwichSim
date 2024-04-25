@@ -55,6 +55,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4fe21361d81fc5040822712a4977c082, type: 3}
   - {fileID: 8300000, guid: ea2acdc05412ae6429c18ac3ec66bb77, type: 3}
   - {fileID: 8300000, guid: fe18c3d7edc7e9846979612ff32f7400, type: 3}
+  sopaClips:
+  - {fileID: 8300000, guid: cc16a5305fcb0254cbfa5142f7cd4f43, type: 3}
+  - {fileID: 8300000, guid: af499791969115e4aba1ac44c3057b8c, type: 3}
   sandwichClips: []
   pinballClips:
   - {fileID: 8300000, guid: ae9bf725c7d48764e9dc38281f6ca733, type: 3}

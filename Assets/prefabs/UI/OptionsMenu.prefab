@@ -321,7 +321,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 0}
+  m_SizeDelta: {x: 110, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &77022947275966092
 CanvasRenderer:
@@ -607,6 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spanishText: "Opciones de V\xEDdeo"
+  blockSpanishText: 
 --- !u!1 &912937168059632332
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,6 +961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spanishText: "Resoluci\xF3n"
+  blockSpanishText: 
 --- !u!1 &2347988861082695512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,7 +1309,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 330, y: 74}
+  m_SizeDelta: {x: 390, y: 74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4062598825360142433
 CanvasRenderer:
@@ -1416,7 +1418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tm: {fileID: 945601906278627678}
-  spanishText: 
+  spanishText: Pantalla Completa
   toggle: 1
   toggleActiveDefault: 1
   playerPrefsIntName: Fullscreen
@@ -1567,7 +1569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tm: {fileID: 867809690288489127}
-  spanishText: 
+  spanishText: Reloj
   toggle: 1
   toggleActiveDefault: 0
   playerPrefsIntName: Clock
@@ -2077,7 +2079,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 0}
+  m_SizeDelta: {x: 90, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2322410737160875520
 CanvasRenderer:
@@ -2634,7 +2636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tm: {fileID: 7446654519216358864}
-  spanishText: 
+  spanishText: Moda Noir
   toggle: 1
   toggleActiveDefault: 0
   playerPrefsIntName: Noir
@@ -2787,6 +2789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spanishText: Opciones
+  blockSpanishText: 
 --- !u!1 &4841883240974727938
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,7 +3098,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 75}
-  m_SizeDelta: {x: 370, y: 74}
+  m_SizeDelta: {x: 390, y: 74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &995011812374701843
 CanvasRenderer:
@@ -3204,7 +3207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tm: {fileID: 777181446704470882}
-  spanishText: 
+  spanishText: Seguimiento VHS
   toggle: 1
   toggleActiveDefault: 1
   playerPrefsIntName: Scan
@@ -4934,8 +4937,32 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3503623728638612112}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4246428690164305066, guid: bb8ace9239a3c5646888db3b83a44e6d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 123667735762692901}
   m_SourcePrefab: {fileID: 100100000, guid: bb8ace9239a3c5646888db3b83a44e6d, type: 3}
+--- !u!1 &988534407135135028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4246428690164305066, guid: bb8ace9239a3c5646888db3b83a44e6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3988397801960622494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &123667735762692901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988534407135135028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: Sensibilidad
+  blockSpanishText: 
 --- !u!224 &4102378827604901311 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1132428143613113377, guid: bb8ace9239a3c5646888db3b83a44e6d,
@@ -5358,6 +5385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spanishText: "M\xFAsica"
+  blockSpanishText: 
 --- !u!1001 &6617644012068677659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5575,6 +5603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spanishText: "Di\xE1logo"
+  blockSpanishText: 
 --- !u!1001 &8993234377841325552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5781,6 +5810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spanishText: Ambiente
+  blockSpanishText: 
 --- !u!224 &8320772363791024593 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1132428143613113377, guid: bb8ace9239a3c5646888db3b83a44e6d,

@@ -12,11 +12,16 @@ public class StoreLock : GroceryListUpdateable
     [SerializeField] private StoreDoorOpen openTrigger;
 
     private bool hasLocked = false;
+    private bool triggered = false;
 
     public override void OnCompletion()
     {
-        cutsceneTrigger.SetActive(true);
-        openTrigger.StartOpen();
+        if (!triggered)
+        {
+            cutsceneTrigger.SetActive(true);
+            openTrigger.StartOpen();
+            triggered = true;
+        }
     }
 
     public override void OnUpdate(int index, bool has)

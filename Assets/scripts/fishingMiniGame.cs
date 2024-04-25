@@ -25,7 +25,10 @@ public class fishingMiniGame : MonoBehaviour
         {
             spanishMode = GameInstanceManager.Instance.IsSpanishMode();
             // P para pescar
-            fishingKey = KeyCode.P;
+            if (GameInstanceManager.Instance.IsSpanishMode())
+            {
+                fishingKey = KeyCode.P;
+            }
         }
     }
 

@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 673691820166599920}
   - component: {fileID: 673691820166599922}
   - component: {fileID: 673691820166599921}
+  - component: {fileID: 6745400534194362137}
   m_Layer: 5
   m_Name: ContinueText
   m_TagString: Untagged
@@ -208,6 +209,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6745400534194362137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673691820166599927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: '[Barra espaciadora] para continuar'
 --- !u!1 &673691820229646445
 GameObject:
   m_ObjectHideFlags: 0
