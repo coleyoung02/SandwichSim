@@ -20762,7 +20762,7 @@ PrefabInstance:
     - target: {fileID: 4236329896066786873, guid: a97340d1e028bec49b46a875490d4d63,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6665637653972109048, guid: a97340d1e028bec49b46a875490d4d63,
         type: 3}
@@ -20909,7 +20909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ad0f09e8a09554e8727d5daa38727a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spanishText: Pulsa p para resucitar
+  spanishText: Pulsa R para resucitar
   blockSpanishText: 
   shrinkToFit: 0
 --- !u!1001 &705851244
