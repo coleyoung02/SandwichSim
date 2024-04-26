@@ -14,11 +14,20 @@ public class Tutorial : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1.0f;
+        StartCoroutine(Unpause());
         if(GameInstanceManager.Instance != null && GameInstanceManager.Instance.IsSpanishMode())
         {
             tutorialTexts = spanishTexts;
         }
         tm.text = tutorialTexts[0];
+    }
+
+    private IEnumerator Unpause()
+    {
+        yield return new WaitForSeconds(.05f);
+        FindFirstObjectByType<MenuManager>().PauseGame();
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void Update()

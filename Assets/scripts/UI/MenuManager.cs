@@ -245,6 +245,7 @@ public class MenuManager : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
+        ResumeGame();
         if (!sceneLoading)
         {
             SceneManager.LoadSceneAsync("MainMenu");
