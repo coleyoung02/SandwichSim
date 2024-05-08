@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/FINAL/MacFixScene.unity
+    guid: ddd4206d16eef6a4594882a6151f9854
+  - enabled: 1
     path: Assets/Scenes/FINAL/LanguageSelect.unity
     guid: 7276beae69f8e2140aea08320a01cec2
   - enabled: 1
